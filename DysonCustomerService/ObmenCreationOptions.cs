@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DysonCustomerService
+{
+    public class ObmenCreationOptions
+    {
+        public string Url { get; set; }
+        public string Login { get; set; }
+        public string Password { get; set; }
+        public int Timeout { get; set; }
+        public int RetryDelay { get; set; }
+        public int RetryLimit { get; set; }
+        public int[] RetryErrorCodes { get; set; }
+    }
+}
