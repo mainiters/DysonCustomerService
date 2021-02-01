@@ -11,6 +11,8 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Net;
+using System.Reflection;
 using System.Web.Services;
 using System.Web.Services.Protocols;
 using System.Xml.Serialization;
@@ -233,6 +235,36 @@ public partial class ObmenCreation : System.Web.Services.Protocols.SoapHttpClien
             System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
             this.PostPartnersCompleted(this, new PostPartnersCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
         }
+    }
+
+    protected override WebResponse GetWebResponse(WebRequest request)
+    {
+        var response = base.GetWebResponse(request);
+
+        if (response != null)
+
+        {
+            var responseField = response.GetType().GetField("_base", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (responseField != null)
+            {
+                var webResp = responseField.GetValue(response) as HttpWebResponse;
+                if (webResp != null)
+                {
+                    if (webResp.StatusCode.Equals(HttpStatusCode.InternalServerError))
+                        throw new WebException("500");
+                }
+            }
+        }
+
+        return response;
+    }
+
+    [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovars", RequestNamespace = "http://31.13.35.34/dyson_share_111", ResponseNamespace = "http://31.13.35.34/dyson_share_111", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+    [return: System.Xml.Serialization.XmlElementAttribute("return")]
+    public object PostData(string methodName, object data)
+    {
+        object[] results = this.Invoke(methodName, new object[] {data});
+        return results[0];
     }
     
     /// <remarks/>

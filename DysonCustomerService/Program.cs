@@ -9,18 +9,24 @@ namespace DysonCustomerService
 {
     class Program
     {
-        const string URL = @"http://31.13.35.34/dyson_share_111/ws/ObmenCreation.1cws";
-        const string LOGIN = "yandex";
-        const string PASSWORD = "a123";
-
         static void Main(string[] args)
         {
             ObmenCreationWrapper wrapper = new ObmenCreationWrapper(new ObmenCreationOptions()
             {
-                Url = URL,
-                Login = LOGIN,
-                Password = PASSWORD
+                Url = @"http://31.13.35.34/dyson_share_111/ws/ObmenCreation.1cws",
+                Login = "yandex",
+                Password = "a123",
+                RetryDelay = 3000,
+                RetryLimit = 3,
+                RetryErrorCodes = new List<string>()
             });
+
+            var task = wrapper.SendRequest("PostTovars", new ПакетНоменклатуры()
+            {
+
+            });
+
+            task.Wait();
         }
     }
 }

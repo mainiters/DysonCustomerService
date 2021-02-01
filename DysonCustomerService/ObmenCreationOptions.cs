@@ -14,6 +14,6 @@ namespace DysonCustomerService
         public int Timeout { get; set; }
         public int RetryDelay { get; set; }
         public int RetryLimit { get; set; }
-        public int[] RetryErrorCodes { get; set; }
+        public List<string> RetryErrorCodes { get; set; }
     }
 }

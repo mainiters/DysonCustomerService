@@ -22,5 +22,31 @@ namespace DysonCustomerService
 
             service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
+
+        public async Task SendRequest(string methodName, object data)
+        {
+            var retryCount = 0;
+
+            while (true)
+            {
+                try
+                {
+                    service.PostData(methodName, data);
+                }
+                catch (Exception e)
+                {
+                    if (this.options.RetryErrorCodes.Contains(e.Message) && retryCount < this.options.RetryLimit)
+                    {
+                        retryCount++;
+
+                        await Task.Delay(this.options.RetryDelay);
+                    }
+                    else
+                    {
+                        throw e;
+                    }
+                }
+            }
+        }
     }
 }
