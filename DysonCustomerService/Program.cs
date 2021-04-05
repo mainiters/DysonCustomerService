@@ -21,7 +21,10 @@ namespace DysonCustomerService
                 RetryErrorCodes = new List<string>()
             });
 
-            var task = wrapper.SendRequest("PostTovars", Guid.Empty);
+            var task = wrapper.SendRequest("PostTovars", new ПакетНоменклатуры()
+            {
+                
+            });
 
             task.Wait();
         }
