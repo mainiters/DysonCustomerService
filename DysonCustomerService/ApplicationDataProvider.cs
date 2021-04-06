@@ -10,8 +10,8 @@ namespace DysonCustomerService
 {
     public class ApplicationDataProvider : BaseEntityDataProvider
     {
-        public ApplicationDataProvider(Guid OrderId, UserConnection UserConnection)
-            : base("TrcApplication", OrderId, UserConnection)
+        public ApplicationDataProvider(Guid Id, UserConnection UserConnection)
+            : base("TrcApplication", Id, UserConnection)
         {
 
         }

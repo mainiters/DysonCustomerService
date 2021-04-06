@@ -62,7 +62,7 @@ namespace DysonCustomerService
                     IgnoreDisplayValues = true
                 };
 
-                relatedEsq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, this.EntitySchemaName, this.EntityId));
+                relatedEsq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, string.IsNullOrEmpty(item.FilterFieldName) ?  this.EntitySchemaName : item.FilterFieldName, this.EntityId));
 
                 relatedEsq.AddAllSchemaColumns();
 
