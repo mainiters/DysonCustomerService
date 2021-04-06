@@ -204,12 +204,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountDataProvider.cs" />
     <Compile Include="ApplicationDataProvider.cs" />
     <Compile Include="BaseEntityDataProvider.cs" />
     <Compile Include="ObmenCreation.cs" />
     <Compile Include="ObmenCreationOptions.cs" />
     <Compile Include="ObmenCreationWrapper.cs" />
     <Compile Include="OrderDataProvider.cs" />
+    <Compile Include="ProductDataProvider.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
