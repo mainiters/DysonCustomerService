@@ -16,14 +16,26 @@ namespace DysonCustomerService
 
         }
 
-        protected override void AddRelatedColumns(EntitySchemaQuery esq)
+        protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            base.AddRelatedColumns(esq);
+            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            {
+                Name = "OrderProduct",
+                AdditionalColumns = new List<string>()
+                {
+                    "Product.Code",
+                    "PriceList.TrcCode"
+                }
+            });
 
             esq.AddColumn("TrcOrderState.Name");
             esq.AddColumn("TrcOrcerPaymentWay.Name");
             esq.AddColumn("TrcDeliveryCompany.Name");
             esq.AddColumn("Owner.Name");
+            esq.AddColumn("TrcOrganization.Name");
+            esq.AddColumn("TrcWarehouseForShippingOrder.Name");
+
+            base.AddRelatedColumns(esq, relatedEntitiesData);
         }
 
         public override object GetEntityData(Guid EntityId)
@@ -32,6 +44,7 @@ namespace DysonCustomerService
 
             res.ID_Pack = new Guid().ToString();
 
+            // Данные заказа
             res.Order = new ЗаказКлиента[]
             {
                 new ЗаказКлиента()
@@ -63,10 +76,35 @@ namespace DysonCustomerService
                     PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("ContactNumber"),
                     email = this.EntityObject.GetTypedColumnValue<string>("TrcClientEmail"),
                     CourierInfo = this.EntityObject.GetTypedColumnValue<string>("Comment"),
-                    ShipDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcShipmentDate")
-                    // Деталь продуктов
+                    ShipDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcShipmentDate"),
+                    Organization = this.EntityObject.GetTypedColumnValue<string>("TrcOrganization_Name"),
+                    WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_Name"),
+                    CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
                 }
             };
+
+            // Деталь продуктов
+            if(this.RelatedEntitiesData.Count > 0)
+            {
+                var orderProducts = new List<ЗаказКлиентаTovars>();
+
+                foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection)
+                {
+                    orderProducts.Add(new ЗаказКлиентаTovars()
+                    {
+                        TovarCod = item.GetTypedColumnValue<string>("Product_Code"),
+                        Kol = item.GetTypedColumnValue<decimal>("Quantity"),
+                        TovarSum = item.GetTypedColumnValue<decimal>("TotalAmount"),
+                        TypePriceCode = item.GetTypedColumnValue<string>("PriceList_TrcCode"),
+                        RRC = item.GetTypedColumnValue<decimal>("Price"),
+                        ProductsCanceled = item.GetTypedColumnValue<bool>("ProductsCanceled"),
+                        ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
+                        PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode")
+                    });
+                }
+
+                res.Order.First().Tovars = orderProducts.ToArray();
+            }
 
             return res;
         }
