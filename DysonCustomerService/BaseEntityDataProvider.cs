@@ -83,6 +83,6 @@ namespace DysonCustomerService
 
         }
 
-        public abstract object GetEntityData(Guid EntityId);
+        public abstract object GetEntityData();
     }
 }

@@ -47,9 +47,27 @@ namespace DysonCustomerService
             }
         }
 
-        protected IEntityDataGetable GetPrepareDataHelper(string EntityName)
+        protected BaseEntityDataProvider GetEntityDataProvider(string EntityName, Guid EntityId)
         {
-            return null;
+            switch (EntityName)
+            {
+                case "TrcSerialNumberHistory":
+                    return new SerialNumberHistoryDataProvider(EntityId, this.userConnection);
+                case "SysAdminUnit":
+                    return new SysAdminUnitDataProvider(EntityId, this.userConnection);
+                case "Product":
+                    return new ProductDataProvider(EntityId, this.userConnection);
+                case "Account":
+                    return new AccountDataProvider(EntityId, this.userConnection);
+                case "TrcApplication":
+                    return new ApplicationDataProvider(EntityId, this.userConnection);
+                case "Order":
+                    return new OrderDataProvider(EntityId, this.userConnection);
+                case "TrcCustomerDefect":
+                    return new CustomerDefectDataProvider(EntityId, this.userConnection);
+            }
+
+            throw new ArgumentException($"No DataProvider was found by EntityName {EntityName}");
         }
 
         protected string GetEntityNameByMethod(string methodName)
@@ -111,9 +129,13 @@ namespace DysonCustomerService
                 {
                     var entityName = GetEntityNameByMethod(methodName);
 
-                    var helper = GetPrepareDataHelper(entityName);
+                    var dataProvider = GetEntityDataProvider(entityName, entityId);
 
-                    service.PostData(methodName, helper.GetIntityData(entityId));
+                    service.PostData(methodName, dataProvider.GetEntityData());
+                }
+                catch (ArgumentException e)
+                {
+                    throw e;
                 }
                 catch (Exception e)
                 {
