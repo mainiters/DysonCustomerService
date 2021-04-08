@@ -56,7 +56,7 @@ namespace DysonCustomerService
                     TK_Plandate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDeliveryDate"),
                     completeDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcActualDeliveryDate"),
                     modifyDate = this.EntityObject.GetTypedColumnValue<DateTime>("ModifiedOn"),
-                    orderID = this.EntityObject.GetTypedColumnValue<string>("Id"),
+                    orderID = this.EntityObject.GetTypedColumnValue<string>("TrcNumberForClient"),
                     orderIdPublic = 0,  //this.EntityObject.GetTypedColumnValue<int>("TrcNumberForClient"),
                     OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Name"),
                     TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
@@ -80,6 +80,7 @@ namespace DysonCustomerService
                     Organization = this.EntityObject.GetTypedColumnValue<string>("TrcOrganization_Name"),
                     WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_Name"),
                     CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
+                    
                 }
             };
 

@@ -26,6 +26,7 @@ namespace DysonCustomerService
             esq.AddColumn("SerialNumberHistory.Name");
             esq.AddColumn("Engineer.Name");
             esq.AddColumn("TrcWarrantyType.Name");
+            esq.AddColumn("TrcShop.TrcCode");
 
             relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
             {
@@ -92,7 +93,8 @@ namespace DysonCustomerService
                     ActualDateRepairExecution = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRepairDate"),
                     InformationClient = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalInformation"),
                     InternalComment = this.EntityObject.GetTypedColumnValue<string>("TrcInternalComment"),
-                    ViolationOperation  = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation")
+                    ViolationOperation  = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation"),
+                    Shop = this.EntityObject.GetTypedColumnValue<string>("TrcShop_TrcCode")
                 }
             };
 
@@ -134,7 +136,7 @@ namespace DysonCustomerService
                         Spare = item.GetTypedColumnValue<string>("TrcVendorCode"),
                         Required = item.GetTypedColumnValue<int>("TrcQuantity"),
                         Availability = item.GetTypedColumnValue<int>("TrcAvailability"),
-                        Price = item.GetTypedColumnValue<decimal>("TrcPrice")
+                        Price = item.GetTypedColumnValue<decimal>("TrcPrice"),
                     });
                 }
 

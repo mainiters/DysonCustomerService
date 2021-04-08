@@ -8,10 +8,10 @@ using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService
 {
-    public class AccountDataProvider : BaseEntityDataProvider
+    public class ContactDataProvider : BaseEntityDataProvider
     {
-        public AccountDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Account", Id, UserConnection)
+        public ContactDataProvider(Guid Id, UserConnection UserConnection)
+            : base("Contact", Id, UserConnection)
         {
 
         }
@@ -22,7 +22,7 @@ namespace DysonCustomerService
 
             relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
             {
-                Name = "AccountAddress",
+                Name = "ContactAddress",
                 AdditionalColumns = new List<string>()
                 {
                     "TrcFiasCode",
@@ -43,12 +43,12 @@ namespace DysonCustomerService
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
-            var fias = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
+            var fias = RelatedEntitiesData.Where(e => e.Name == "ContactAddress")
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<bool>("Primary"))
                 .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
 
-            // Данные Контрагента
-            res.Partner = new Контрагенты[]
+            // Данные Контактов
+            res.Partner = new []
             {
                 new Контрагенты()
                 {
@@ -95,7 +95,7 @@ namespace DysonCustomerService
             relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Address", address));
 
             relatedEsq.AddAllSchemaColumns();
-            
+
             return relatedEsq.GetEntityCollection(this.UserConnection).FirstOrDefault();
         }
     }

@@ -43,6 +43,7 @@ namespace DysonCustomerService
             {
                 new Номенклатура()
                 {
+                    Article = this.EntityObject.GetTypedColumnValue<string>("Code")
                 }
             };
 

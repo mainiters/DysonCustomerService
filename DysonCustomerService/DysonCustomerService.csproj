@@ -207,6 +207,7 @@
     <Compile Include="AccountDataProvider.cs" />
     <Compile Include="ApplicationDataProvider.cs" />
     <Compile Include="BaseEntityDataProvider.cs" />
+    <Compile Include="ContactDataProvider.cs" />
     <Compile Include="CustomerDefectDataProvider.cs" />
     <Compile Include="ObmenCreation.cs" />
     <Compile Include="ObmenCreationOptions.cs" />

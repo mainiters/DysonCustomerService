@@ -62,7 +62,7 @@ namespace DysonCustomerService
                     IgnoreDisplayValues = true
                 };
 
-                relatedEsq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, string.IsNullOrEmpty(item.FilterFieldName) ?  this.EntitySchemaName : item.FilterFieldName, this.EntityId));
+                relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, string.IsNullOrEmpty(item.FilterFieldName) ?  this.EntitySchemaName : item.FilterFieldName, this.EntityId));
 
                 relatedEsq.AddAllSchemaColumns();
 
@@ -83,6 +83,6 @@ namespace DysonCustomerService
 
         }
 
-        public abstract object GetEntityData();
+        public abstract object GetEntityData(Guid EntityId);
     }
 }
