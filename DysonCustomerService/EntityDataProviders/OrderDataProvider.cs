@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
-namespace DysonCustomerService
+namespace DysonCustomerService.EntityDataProviders
 {
     public class OrderDataProvider : BaseEntityDataProvider
     {
@@ -18,7 +18,7 @@ namespace DysonCustomerService
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "OrderProduct",
                 AdditionalColumns = new List<string>()

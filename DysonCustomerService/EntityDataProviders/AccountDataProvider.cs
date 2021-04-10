@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
-namespace DysonCustomerService
+namespace DysonCustomerService.EntityDataProviders
 {
-    public class ContactDataProvider : BaseEntityDataProvider
+    public class AccountDataProvider : BaseEntityDataProvider
     {
-        public ContactDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Contact", Id, UserConnection)
+        public AccountDataProvider(Guid Id, UserConnection UserConnection)
+            : base("Account", Id, UserConnection)
         {
 
         }
@@ -20,9 +20,9 @@ namespace DysonCustomerService
         {
             esq.AddColumn("TrcCustomerSegment.Name");
 
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
-                Name = "ContactAddress",
+                Name = "AccountAddress",
                 AdditionalColumns = new List<string>()
                 {
                     "TrcFiasCode",
@@ -43,12 +43,12 @@ namespace DysonCustomerService
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
-            var fias = RelatedEntitiesData.Where(e => e.Name == "ContactAddress")
+            var fias = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<bool>("Primary"))
                 .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
 
-            // Данные Контактов
-            res.Partner = new []
+            // Данные Контрагента
+            res.Partner = new Контрагенты[]
             {
                 new Контрагенты()
                 {
@@ -95,7 +95,7 @@ namespace DysonCustomerService
             relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Address", address));
 
             relatedEsq.AddAllSchemaColumns();
-
+            
             return relatedEsq.GetEntityCollection(this.UserConnection).FirstOrDefault();
         }
     }

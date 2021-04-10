@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
-namespace DysonCustomerService
+namespace DysonCustomerService.EntityDataProviders
 {
     public class RelatedEntitiesData
     {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
-namespace DysonCustomerService
+namespace DysonCustomerService.EntityDataProviders
 {
     public class ApplicationDataProvider : BaseEntityDataProvider
     {
@@ -28,14 +28,14 @@ namespace DysonCustomerService
             esq.AddColumn("TrcWarrantyType.Name");
             esq.AddColumn("TrcShop.TrcCode");
 
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "TrcExpertOpinion",
                 FilterFieldName = "TrcRequest",
                 AdditionalColumns = new List<string>()
             });
 
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "TrcClientDefectDetail",
                 FilterFieldName = "TrcRequest",
@@ -45,14 +45,14 @@ namespace DysonCustomerService
                 }
             });
 
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "TrcSparePart",
                 FilterFieldName = "TrcRequest",
                 AdditionalColumns = new List<string>()
             });
 
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "TrcService",
                 FilterFieldName = "TrcRequest",

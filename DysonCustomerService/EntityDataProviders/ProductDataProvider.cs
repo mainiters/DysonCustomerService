@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
-namespace DysonCustomerService
+namespace DysonCustomerService.EntityDataProviders
 {
     public class ProductDataProvider : BaseEntityDataProvider
     {
@@ -20,7 +20,7 @@ namespace DysonCustomerService
         {
             esq.AddColumn("TrcCustomerSegment.Name");
 
-            relatedEntitiesData.Add(new DysonCustomerService.RelatedEntitiesData()
+            relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "AccountAddress",
                 AdditionalColumns = new List<string>()

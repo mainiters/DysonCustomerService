@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
-namespace DysonCustomerService
+namespace DysonCustomerService.EntityDataProviders
 {
-    public class CustomerDefectDataProvider : BaseEntityDataProvider
+    public class SysAdminUnitDataProvider : BaseEntityDataProvider
     {
-        public CustomerDefectDataProvider(Guid Id, UserConnection UserConnection)
-            : base("TrcCustomerDefect", Id, UserConnection)
+        public SysAdminUnitDataProvider(Guid Id, UserConnection UserConnection)
+            : base("SysAdminUnit", Id, UserConnection)
         {
 
         }
@@ -23,14 +23,14 @@ namespace DysonCustomerService
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетДефектыКлиента();
+            var res = new ПакетПользователи();
 
             res.ID_Pack = new Guid().ToString();
 
-            // Данные Дефекты
-            res.DefectClient = new ДефектыСоСловКлиента[]
+            // Данные Пользователей
+            res.User = new Пользователи[]
             {
-                new ДефектыСоСловКлиента()
+                new Пользователи()
                 {
                     Name = this.EntityObject.GetTypedColumnValue<string>("Name")
                 }

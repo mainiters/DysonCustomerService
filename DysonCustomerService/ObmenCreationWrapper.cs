@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DysonCustomerService.EntityDataProviders;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -131,7 +132,7 @@ namespace DysonCustomerService
 
                     var dataProvider = GetEntityDataProvider(entityName, entityId);
 
-                    service.PostData(methodName, dataProvider.GetEntityData());
+                    service.PostData(methodName, dataProvider.GetEntityData(entityId));
                 }
                 catch (ArgumentException e)
                 {
