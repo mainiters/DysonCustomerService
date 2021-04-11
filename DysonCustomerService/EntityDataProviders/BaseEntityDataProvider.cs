@@ -31,6 +31,7 @@ namespace DysonCustomerService.EntityDataProviders
 
             this.UserConnection = UserConnection;
             this.EntityId = EntityId;
+            this.EntitySchemaName = EntitySchemaName;
             this.Initialize();
         }
 
@@ -76,6 +77,11 @@ namespace DysonCustomerService.EntityDataProviders
                 
                 item.EntityCollection = relatedEsq.GetEntityCollection(this.UserConnection);
             }
+        }
+
+        public virtual string GetServiceMethodName()
+        {
+            return null;
         }
 
         protected virtual void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)

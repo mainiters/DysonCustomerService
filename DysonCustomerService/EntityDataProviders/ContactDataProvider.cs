@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terrasoft.Core;
+using Terrasoft.Core.DB;
 using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService.EntityDataProviders
@@ -18,8 +19,6 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            esq.AddColumn("TrcCustomerSegment.Name");
-
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "ContactAddress",
@@ -38,8 +37,8 @@ namespace DysonCustomerService.EntityDataProviders
 
             res.ID_Pack = new Guid().ToString();
 
-            var clientId = this.EntityObject.GetTypedColumnValue<Guid>(this.EntitySchemaName);
-            var address = this.EntityObject.GetTypedColumnValue<string>("DeliveryAddress");
+            var clientId = this.EntityObject.GetTypedColumnValue<Guid>("Id");
+            var address = this.EntityObject.GetTypedColumnValue<string>("Address");
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
@@ -55,22 +54,11 @@ namespace DysonCustomerService.EntityDataProviders
                     Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                     LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
                     FIAS = fias,
-                    ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_Name"),
-                    INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
-                    KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),
-                    FIOYO = this.EntityObject.GetTypedColumnValue<string>("TrcMainContactFIO"),
-                    PostYO = this.EntityObject.GetTypedColumnValue<string>("TrcJobMainContact"),
-                    MobTelYO = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneMainContact"),
-                    EmailYO = this.EntityObject.GetTypedColumnValue<string>("TrcEmailMainContact"),
-                    FIOYD = this.EntityObject.GetTypedColumnValue<string>("TrcFIOAdditionalContact"),
-                    PostYD = this.EntityObject.GetTypedColumnValue<string>("TrcJobAdditionalContact"),
-                    MobTelYD = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneAdditionalContact"),
-                    EmailYD = this.EntityObject.GetTypedColumnValue<string>("TrcEmailAdditionalContact"),
                     FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
                     FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
                     FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
                     FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
-                    FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCal"),
+                    FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
                     FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
                     FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                     FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing")
@@ -80,23 +68,20 @@ namespace DysonCustomerService.EntityDataProviders
             return res;
         }
 
-        protected Entity GetOrderAddressData(Guid clientId, string address)
+        public override string GetServiceMethodName()
         {
-            EntitySchema relatedSchema = this.UserConnection.EntitySchemaManager.GetInstanceByName("VwClientAddress");
+            return "PostPartners";
+        }
 
-            EntitySchemaQuery relatedEsq = new EntitySchemaQuery(relatedSchema)
-            {
-                UseAdminRights = true,
-                CanReadUncommitedData = true,
-                IgnoreDisplayValues = true
-            };
+        protected Guid GetOrderAddressData(Guid clientId, string address)
+        {
+            var select = new Select(UserConnection)
+                    .Column("CityId")
+                    .From("VwClientAddress")
+                    .Where("ClientId").IsEqual(Column.Parameter(clientId))
+                    .And("Address").IsEqual(Column.Parameter(address)) as Select;
 
-            relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Client", clientId));
-            relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Address", address));
-
-            relatedEsq.AddAllSchemaColumns();
-
-            return relatedEsq.GetEntityCollection(this.UserConnection).FirstOrDefault();
+            return select.ExecuteScalar<Guid>();
         }
     }
 }

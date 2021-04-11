@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terrasoft.Core;
+using Terrasoft.Core.DB;
 using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService.EntityDataProviders
@@ -38,8 +39,8 @@ namespace DysonCustomerService.EntityDataProviders
 
             res.ID_Pack = new Guid().ToString();
 
-            var clientId = this.EntityObject.GetTypedColumnValue<Guid>(this.EntitySchemaName);
-            var address = this.EntityObject.GetTypedColumnValue<string>("DeliveryAddress");
+            var clientId = this.EntityObject.GetTypedColumnValue<Guid>("Id");
+            var address = this.EntityObject.GetTypedColumnValue<string>("Address");
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
@@ -70,7 +71,7 @@ namespace DysonCustomerService.EntityDataProviders
                     FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
                     FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
                     FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
-                    FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCal"),
+                    FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
                     FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
                     FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                     FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing")
@@ -80,23 +81,15 @@ namespace DysonCustomerService.EntityDataProviders
             return res;
         }
 
-        protected Entity GetOrderAddressData(Guid clientId, string address)
+        protected Guid GetOrderAddressData(Guid clientId, string address)
         {
-            EntitySchema relatedSchema = this.UserConnection.EntitySchemaManager.GetInstanceByName("VwClientAddress");
+            var select = new Terrasoft.Core.DB.Select(UserConnection)
+                    .Column("CityId")
+                    .From("VwClientAddress")
+                    .Where("ClientId").IsEqual(Column.Parameter(clientId))
+                    .And("Address").IsEqual(Column.Parameter(address)) as Select;
 
-            EntitySchemaQuery relatedEsq = new EntitySchemaQuery(relatedSchema)
-            {
-                UseAdminRights = true,
-                CanReadUncommitedData = true,
-                IgnoreDisplayValues = true
-            };
-
-            relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Client", clientId));
-            relatedEsq.Filters.Add(relatedEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Address", address));
-
-            relatedEsq.AddAllSchemaColumns();
-            
-            return relatedEsq.GetEntityCollection(this.UserConnection).FirstOrDefault();
+            return select.ExecuteScalar<Guid>();
         }
     }
 }

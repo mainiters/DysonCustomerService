@@ -60,6 +60,8 @@ namespace DysonCustomerService
                     return new ProductDataProvider(EntityId, this.userConnection);
                 case "Account":
                     return new AccountDataProvider(EntityId, this.userConnection);
+                case "Contact":
+                    return new ContactDataProvider(EntityId, this.userConnection);
                 case "TrcApplication":
                     return new ApplicationDataProvider(EntityId, this.userConnection);
                 case "Order":
@@ -78,7 +80,7 @@ namespace DysonCustomerService
                 throw new ArgumentException("The name of the method could not be empty or white space");
             }
 
-            if (methodsToEntityNamesMap.ContainsKey(methodName))
+            if (!MethodsToEntityNamesMap.ContainsKey(methodName))
             {
                 throw new ArgumentException($"Method {methodName} was not found in TrcEndpoint");
             }
@@ -90,7 +92,7 @@ namespace DysonCustomerService
         {
             this.userConnection = userConnection;
 
-            if (options == null)
+            if (options != null)
             {
                 this.options = options;
             }
@@ -132,7 +134,7 @@ namespace DysonCustomerService
 
                     var dataProvider = GetEntityDataProvider(entityName, entityId);
 
-                    service.PostData(methodName, dataProvider.GetEntityData(entityId));
+                    service.PostData(dataProvider.GetServiceMethodName() ?? methodName, dataProvider.GetEntityData(entityId));
                 }
                 catch (ArgumentException e)
                 {
