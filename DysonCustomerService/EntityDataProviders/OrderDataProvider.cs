@@ -69,7 +69,7 @@ namespace DysonCustomerService.EntityDataProviders
                     DataReleaseM = this.EntityObject.GetTypedColumnValue<DateTime>("TrcActualWriteOffClientsFunds"),
                     PayTransactionODM = this.EntityObject.GetTypedColumnValue<string>("TrcTransactionsCodeOrangeData"),
                     DataCheckM = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCheckBreakDateOrangeData"),
-                    PayDate = this.EntityObject.GetTypedColumnValue<DateTime>("PaymentDate"),
+                    PayDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPaymentDate"),
                     DeliveryCost = this.EntityObject.GetTypedColumnValue<decimal>("TrcDeliveryCost"),
                     Comment = this.EntityObject.GetTypedColumnValue<string>("TrcCommentFrom1C"),
                     Manager = this.EntityObject.GetTypedColumnValue<string>("Owner_Name"),
@@ -98,7 +98,7 @@ namespace DysonCustomerService.EntityDataProviders
                         TovarSum = item.GetTypedColumnValue<decimal>("TotalAmount"),
                         TypePriceCode = item.GetTypedColumnValue<string>("PriceList_TrcCode"),
                         RRC = item.GetTypedColumnValue<decimal>("Price"),
-                        ProductsCanceled = item.GetTypedColumnValue<bool>("ProductsCanceled"),
+                        ProductsCanceled = item.GetTypedColumnValue<bool>("TrcProductsCanceled"),
                         ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
                         PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode")
                     });
