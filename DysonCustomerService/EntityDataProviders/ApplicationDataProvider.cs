@@ -28,6 +28,9 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcWarrantyType.Name");
             esq.AddColumn("TrcShop.TrcCode");
 
+            esq.AddColumn("Account.Trc1CAccountID");
+            esq.AddColumn("Contact.Trc1CContactID");
+
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "TrcExpertOpinion",
@@ -72,11 +75,15 @@ namespace DysonCustomerService.EntityDataProviders
 
             res.ID_Pack = new Guid().ToString();
 
+            string AccountId = this.EntityObject.GetTypedColumnValue<string>("Account_Trc1CAccountID");
+            string ContactId = this.EntityObject.GetTypedColumnValue<string>("Contact_Trc1CContactID");
+
             // Данные заказа
             res.Request = new ЗаявкаНаРемонт[]
             {
                 new ЗаявкаНаРемонт()
                 {
+                    ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
                     DocumentNumber = this.EntityObject.GetTypedColumnValue<string>("TrcNumber"),
                     CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCreationDate"),
                     Organization = this.EntityObject.GetTypedColumnValue<string>("TrcServiceCenter_Name"),
@@ -95,6 +102,7 @@ namespace DysonCustomerService.EntityDataProviders
                     InternalComment = this.EntityObject.GetTypedColumnValue<string>("TrcInternalComment"),
                     ViolationOperation  = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation"),
                     Shop = this.EntityObject.GetTypedColumnValue<string>("TrcShop_TrcCode")
+                    
                 }
             };
 
@@ -137,6 +145,8 @@ namespace DysonCustomerService.EntityDataProviders
                         Required = item.GetTypedColumnValue<int>("TrcQuantity"),
                         Availability = item.GetTypedColumnValue<int>("TrcAvailability"),
                         Price = item.GetTypedColumnValue<decimal>("TrcPrice"),
+                        Paid = this.EntityObject.GetTypedColumnValue<string>("TrcZIPPaymentMethodId").ToLower() == "c540283c-c811-4c16-9144-8ee555bcba8f",
+                        SpareAmount = item.GetTypedColumnValue<decimal>("TrcAmount")
                     });
                 }
 

@@ -107,12 +107,6 @@
 					<xs:element name="ManagerPhone"
 							type="xs:string"
 							nillable="true"/>
-					<xs:element name="INN"
-							type="xs:string"/>
-					<xs:element name="KPP"
-							type="xs:string"/>
-					<xs:element name="PhoneNumber"
-							type="xs:string"/>
 					<xs:element name="email"
 							type="xs:string"/>
 					<xs:element name="CourierInfo"
@@ -127,6 +121,8 @@
 							type="xs:string"
 							nillable="true"/>
 					<xs:element name="kladr"
+							type="xs:string"/>
+					<xs:element name="FIAS"
 							type="xs:string"/>
 					<xs:element name="Metro"
 							type="xs:string"/>
@@ -184,6 +180,8 @@
 							type="xs:string"/>
 					<xs:element name="CommentTK"
 							type="xs:string"/>
+					<xs:element name="ID_Сlient"
+							type="xs:string"/>
 					<xs:element name="Tovars"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -195,9 +193,6 @@
 									use="required"/>
 							<xs:attribute name="TovarSum"
 									type="xs:decimal"
-									use="required"/>
-							<xs:attribute name="TypePriceCode"
-									type="xs:string"
 									use="required"/>
 							<xs:attribute name="RRC"
 									type="xs:decimal"
@@ -231,12 +226,6 @@
 					<xs:element name="DocumentNumber"
 							type="xs:string"/>
 					<xs:element name="Organization"
-							type="xs:string"/>
-					<xs:element name="INN"
-							type="xs:string"/>
-					<xs:element name="KPP"
-							type="xs:string"/>
-					<xs:element name="PhoneNumber"
 							type="xs:string"/>
 					<xs:element name="WarehouseCode"
 							type="xs:string"/>
@@ -316,7 +305,7 @@
 							<xs:attribute name="Paid"
 									type="xs:boolean"
 									use="required"/>
-							<xs:attribute name="Amount"
+							<xs:attribute name="SpareAmount"
 									type="xs:decimal"
 									use="required"/>
 						</xs:complexType>
@@ -350,22 +339,31 @@
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
+					<xs:element name="ID_Сlient"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Контрагенты">
 				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
 					<xs:element name="MarkDeletion"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="Legal"
 							type="xs:boolean"/>
 					<xs:element name="INN"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="KPP"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="PhoneNumber"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="Name"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="LegalPhoneNumber"
 							type="xs:string"
 							nillable="true"/>
@@ -382,29 +380,41 @@
 							type="xs:string"
 							nillable="true"/>
 					<xs:element name="FSSMS"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FSE"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FME"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FSCO"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FMCO"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FMSMS"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FSR"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FMR"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="IDDepersonalizedClient"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="ThereAreLK"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="FIAS"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="ObjectTypeList"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="FIOYO"
 							type="xs:string"
 							nillable="true"/>
@@ -430,23 +440,183 @@
 							type="xs:string"
 							nillable="true"/>
 					<xs:element name="PointSale"
-							type="xs:boolean"/>
+							type="xs:boolean"
+							nillable="true"/>
 					<xs:element name="DysonChannelCode"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="StatusClient"
-							type="xs:string"/>
+							type="xs:string"
+							nillable="true"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Номенклатура">
 				<xs:sequence>
-					<xs:element name="MarkDeletion"
-							type="xs:boolean"/>
-					<xs:element name="Article"
+					<xs:element name="TrcMarkDeletion"
+							type="xs:boolean"
+							nillable="true"/>
+					<xs:element name="Code"
 							type="xs:string"/>
+					<xs:element name="WorkName"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="PrintName"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="TradeMark"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Category"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="UnitID"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Weight"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="DeviceType"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Distribution"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="LifeTime"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Guarantee"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Personalization"
+							type="xs:boolean"
+							nillable="true"/>
+					<xs:element name="ProductSubcategory"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Type"
+							type="xs:string"
+							nillable="true"/>
 					<xs:element name="Name"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="OriginCountry"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="AddressProduction"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="ProductColor"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="ProductModel"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="NumberOfAirFlowRates"
+							type="xs:int"
+							nillable="true"/>
+					<xs:element name="PackingLength"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="PackingWidth"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="PackingHeight"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="PackingVolume"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="AssemblyWeight"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="ProductGrossWeightInPackaging"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="OptimalVisitingArea"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="ProductPowerConsumption"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="MinTemperature"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="MaxTemperature"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="HeatingElemenType"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="AirHumidificationType"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="MaxWaterConsumption"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="WaterTankVolume"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="IssueYear"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="Nozzle"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="CableLengthMeter"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="FilterTypes"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="SuctionPowerTurbo"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="SuctionPowerAuto"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="SuctionPowerEco"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="ContainerVolume"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="PipeType"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="NoiseLevelWithPipeTurbo"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="NoiseLevelWithPipeEco"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="NoiseLevelWithoutPipeTurbo"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="NoiseLevelWithoutPipeEco"
+							type="xs:decimal"
+							nillable="true"/>
+					<xs:element name="PowerSource"
+							type="xs:string"
+							nillable="true"/>
+					<xs:element name="TemperatureMode"
+							type="xs:int"
+							nillable="true"/>
+					<xs:element name="AdditionalMode"
+							type="xs:string"
+							nillable="true"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="Ответ">
+				<xs:sequence>
+					<xs:element name="ID_1С"
 							type="xs:string"/>
-					<xs:element name="FullName"
-							type="xs:string"/>
+					<xs:element name="YesError"
+							type="xs:boolean"/>
+					<xs:element name="Errors"
+							type="xs:string"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="ПакетДефектыКлиента">
@@ -454,7 +624,7 @@
 					<xs:element name="ID_Pack"
 							type="xs:string"
 							nillable="true"/>
-					<xs:element name="DefectClient"
+					<xs:element name="ClientDefect"
 							type="tns:ДефектыСоСловКлиента"
 							maxOccurs="unbounded"/>
 				</xs:sequence>
@@ -555,12 +725,6 @@
 							type="xs:boolean"/>
 					<xs:element name="SN"
 							type="xs:string"/>
-					<xs:element name="INN"
-							type="xs:string"/>
-					<xs:element name="KPP"
-							type="xs:string"/>
-					<xs:element name="PhoneNumber"
-							type="xs:string"/>
 					<xs:element name="CreateDate"
 							type="xs:dateTime"/>
 					<xs:element name="Article"
@@ -575,57 +739,11 @@
 							nillable="true"/>
 					<xs:element name="Comment"
 							type="xs:string"/>
+					<xs:element name="ID_Сlient"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
-			<xs:element name="PostOrders">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетЗаказов"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostOrdersResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostRequests">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетЗаявок"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostRequestsResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostSN">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетРегистрация"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostSNResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostPartners">
+			<xs:element name="PostClients">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Pack"
@@ -633,7 +751,23 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostPartnersResponse">
+			<xs:element name="PostClientsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClient">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:Контрагенты"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return"
@@ -657,7 +791,23 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostDefectClient">
+			<xs:element name="PostTovar">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:Номенклатура"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostTovarResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefects">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Pack"
@@ -665,7 +815,39 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostDefectClientResponse">
+			<xs:element name="PostClientDefectsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefect">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ДефектыСоСловКлиента"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefectResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostManagers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетПользователи"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostManagersResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return"
@@ -676,8 +858,8 @@
 			<xs:element name="PostManager">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетПользователи"/>
+						<xs:element name="Object"
+								type="tns:Пользователи"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
@@ -689,39 +871,119 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="PostOrders">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетЗаказов"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostOrdersResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostOrder">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ЗаказКлиента"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostOrderResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostRequests">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетЗаявок"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostRequestsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostRequest">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ЗаявкаНаРемонт"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostRequestResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostSNs">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетРегистрация"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostSNsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostSN">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:РегистрацияСерийныхНомеровКлиентов"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostSNResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
-	<message name="PostOrdersRequestMessage">
+	<message name="PostClientsRequestMessage">
 		<part name="parameters"
-				element="tns:PostOrders"/>
+				element="tns:PostClients"/>
 	</message>
-	<message name="PostOrdersResponseMessage">
+	<message name="PostClientsResponseMessage">
 		<part name="parameters"
-				element="tns:PostOrdersResponse"/>
+				element="tns:PostClientsResponse"/>
 	</message>
-	<message name="PostRequestsRequestMessage">
+	<message name="PostClientRequestMessage">
 		<part name="parameters"
-				element="tns:PostRequests"/>
+				element="tns:PostClient"/>
 	</message>
-	<message name="PostRequestsResponseMessage">
+	<message name="PostClientResponseMessage">
 		<part name="parameters"
-				element="tns:PostRequestsResponse"/>
-	</message>
-	<message name="PostSNRequestMessage">
-		<part name="parameters"
-				element="tns:PostSN"/>
-	</message>
-	<message name="PostSNResponseMessage">
-		<part name="parameters"
-				element="tns:PostSNResponse"/>
-	</message>
-	<message name="PostPartnersRequestMessage">
-		<part name="parameters"
-				element="tns:PostPartners"/>
-	</message>
-	<message name="PostPartnersResponseMessage">
-		<part name="parameters"
-				element="tns:PostPartnersResponse"/>
+				element="tns:PostClientResponse"/>
 	</message>
 	<message name="PostTovarsRequestMessage">
 		<part name="parameters"
@@ -731,13 +993,37 @@
 		<part name="parameters"
 				element="tns:PostTovarsResponse"/>
 	</message>
-	<message name="PostDefectClientRequestMessage">
+	<message name="PostTovarRequestMessage">
 		<part name="parameters"
-				element="tns:PostDefectClient"/>
+				element="tns:PostTovar"/>
 	</message>
-	<message name="PostDefectClientResponseMessage">
+	<message name="PostTovarResponseMessage">
 		<part name="parameters"
-				element="tns:PostDefectClientResponse"/>
+				element="tns:PostTovarResponse"/>
+	</message>
+	<message name="PostClientDefectsRequestMessage">
+		<part name="parameters"
+				element="tns:PostClientDefects"/>
+	</message>
+	<message name="PostClientDefectsResponseMessage">
+		<part name="parameters"
+				element="tns:PostClientDefectsResponse"/>
+	</message>
+	<message name="PostClientDefectRequestMessage">
+		<part name="parameters"
+				element="tns:PostClientDefect"/>
+	</message>
+	<message name="PostClientDefectResponseMessage">
+		<part name="parameters"
+				element="tns:PostClientDefectResponse"/>
+	</message>
+	<message name="PostManagersRequestMessage">
+		<part name="parameters"
+				element="tns:PostManagers"/>
+	</message>
+	<message name="PostManagersResponseMessage">
+		<part name="parameters"
+				element="tns:PostManagersResponse"/>
 	</message>
 	<message name="PostManagerRequestMessage">
 		<part name="parameters"
@@ -747,43 +1033,119 @@
 		<part name="parameters"
 				element="tns:PostManagerResponse"/>
 	</message>
+	<message name="PostOrdersRequestMessage">
+		<part name="parameters"
+				element="tns:PostOrders"/>
+	</message>
+	<message name="PostOrdersResponseMessage">
+		<part name="parameters"
+				element="tns:PostOrdersResponse"/>
+	</message>
+	<message name="PostOrderRequestMessage">
+		<part name="parameters"
+				element="tns:PostOrder"/>
+	</message>
+	<message name="PostOrderResponseMessage">
+		<part name="parameters"
+				element="tns:PostOrderResponse"/>
+	</message>
+	<message name="PostRequestsRequestMessage">
+		<part name="parameters"
+				element="tns:PostRequests"/>
+	</message>
+	<message name="PostRequestsResponseMessage">
+		<part name="parameters"
+				element="tns:PostRequestsResponse"/>
+	</message>
+	<message name="PostRequestRequestMessage">
+		<part name="parameters"
+				element="tns:PostRequest"/>
+	</message>
+	<message name="PostRequestResponseMessage">
+		<part name="parameters"
+				element="tns:PostRequestResponse"/>
+	</message>
+	<message name="PostSNsRequestMessage">
+		<part name="parameters"
+				element="tns:PostSNs"/>
+	</message>
+	<message name="PostSNsResponseMessage">
+		<part name="parameters"
+				element="tns:PostSNsResponse"/>
+	</message>
+	<message name="PostSNRequestMessage">
+		<part name="parameters"
+				element="tns:PostSN"/>
+	</message>
+	<message name="PostSNResponseMessage">
+		<part name="parameters"
+				element="tns:PostSNResponse"/>
+	</message>
 	<portType name="ObmenCreationPortType">
-		<operation name="PostOrders">
-			<input message="tns:PostOrdersRequestMessage"/>
-			<output message="tns:PostOrdersResponseMessage"/>
+		<operation name="PostClients">
+			<input message="tns:PostClientsRequestMessage"/>
+			<output message="tns:PostClientsResponseMessage"/>
 		</operation>
-		<operation name="PostRequests">
-			<input message="tns:PostRequestsRequestMessage"/>
-			<output message="tns:PostRequestsResponseMessage"/>
-		</operation>
-		<operation name="PostSN">
-			<input message="tns:PostSNRequestMessage"/>
-			<output message="tns:PostSNResponseMessage"/>
-		</operation>
-		<operation name="PostPartners">
-			<input message="tns:PostPartnersRequestMessage"/>
-			<output message="tns:PostPartnersResponseMessage"/>
+		<operation name="PostClient">
+			<input message="tns:PostClientRequestMessage"/>
+			<output message="tns:PostClientResponseMessage"/>
 		</operation>
 		<operation name="PostTovars">
 			<input message="tns:PostTovarsRequestMessage"/>
 			<output message="tns:PostTovarsResponseMessage"/>
 		</operation>
-		<operation name="PostDefectClient">
-			<input message="tns:PostDefectClientRequestMessage"/>
-			<output message="tns:PostDefectClientResponseMessage"/>
+		<operation name="PostTovar">
+			<input message="tns:PostTovarRequestMessage"/>
+			<output message="tns:PostTovarResponseMessage"/>
+		</operation>
+		<operation name="PostClientDefects">
+			<input message="tns:PostClientDefectsRequestMessage"/>
+			<output message="tns:PostClientDefectsResponseMessage"/>
+		</operation>
+		<operation name="PostClientDefect">
+			<input message="tns:PostClientDefectRequestMessage"/>
+			<output message="tns:PostClientDefectResponseMessage"/>
+		</operation>
+		<operation name="PostManagers">
+			<input message="tns:PostManagersRequestMessage"/>
+			<output message="tns:PostManagersResponseMessage"/>
 		</operation>
 		<operation name="PostManager">
 			<input message="tns:PostManagerRequestMessage"/>
 			<output message="tns:PostManagerResponseMessage"/>
+		</operation>
+		<operation name="PostOrders">
+			<input message="tns:PostOrdersRequestMessage"/>
+			<output message="tns:PostOrdersResponseMessage"/>
+		</operation>
+		<operation name="PostOrder">
+			<input message="tns:PostOrderRequestMessage"/>
+			<output message="tns:PostOrderResponseMessage"/>
+		</operation>
+		<operation name="PostRequests">
+			<input message="tns:PostRequestsRequestMessage"/>
+			<output message="tns:PostRequestsResponseMessage"/>
+		</operation>
+		<operation name="PostRequest">
+			<input message="tns:PostRequestRequestMessage"/>
+			<output message="tns:PostRequestResponseMessage"/>
+		</operation>
+		<operation name="PostSNs">
+			<input message="tns:PostSNsRequestMessage"/>
+			<output message="tns:PostSNsResponseMessage"/>
+		</operation>
+		<operation name="PostSN">
+			<input message="tns:PostSNRequestMessage"/>
+			<output message="tns:PostSNResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="ObmenCreationSoapBinding"
 			type="tns:ObmenCreationPortType">
 		<soapbind:binding style="document"
 				transport="http://schemas.xmlsoap.org/soap/http"/>
-		<operation name="PostOrders">
+		<operation name="PostClients">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrders"/>
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClients"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -791,29 +1153,9 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostRequests">
+		<operation name="PostClient">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequests"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostSN">
-			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSN"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostPartners">
-			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostPartners"/>
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClient"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -831,9 +1173,39 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostDefectClient">
+		<operation name="PostTovar">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostDefectClient"/>
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovar"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefects">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefects"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefect">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefect"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostManagers">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManagers"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -844,6 +1216,66 @@
 		<operation name="PostManager">
 			<soapbind:operation style="document"
 					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManager"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostOrders">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrders"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostOrder">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrder"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostRequests">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequests"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostRequest">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequest"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostSNs">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSNs"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostSN">
+			<soapbind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSN"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -856,9 +1288,9 @@
 			type="tns:ObmenCreationPortType">
 		<soap12bind:binding style="document"
 				transport="http://schemas.xmlsoap.org/soap/http"/>
-		<operation name="PostOrders">
+		<operation name="PostClients">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrders"/>
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClients"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -866,29 +1298,9 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostRequests">
+		<operation name="PostClient">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequests"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostSN">
-			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSN"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostPartners">
-			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostPartners"/>
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClient"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -906,9 +1318,39 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostDefectClient">
+		<operation name="PostTovar">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostDefectClient"/>
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovar"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefects">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefects"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefect">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefect"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostManagers">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManagers"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -919,6 +1361,66 @@
 		<operation name="PostManager">
 			<soap12bind:operation style="document"
 					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManager"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostOrders">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrders"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostOrder">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrder"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostRequests">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequests"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostRequest">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequest"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostSNs">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSNs"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostSN">
+			<soap12bind:operation style="document"
+					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSN"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>

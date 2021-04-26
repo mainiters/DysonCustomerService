@@ -28,7 +28,7 @@ namespace DysonCustomerService.EntityDataProviders
             res.ID_Pack = new Guid().ToString();
 
             // Данные Дефекты
-            res.DefectClient = new ДефектыСоСловКлиента[]
+            res.ClientDefect = new ДефектыСоСловКлиента[]
             {
                 new ДефектыСоСловКлиента()
                 {
