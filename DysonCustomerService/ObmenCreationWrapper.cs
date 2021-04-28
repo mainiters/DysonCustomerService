@@ -1,10 +1,13 @@
 ﻿using DysonCustomerService.EntityDataProviders;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Serialization;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
 
@@ -134,7 +137,15 @@ namespace DysonCustomerService
 
                     var dataProvider = GetEntityDataProvider(entityName, entityId);
 
-                    service.PostData(dataProvider.GetServiceMethodName() ?? methodName, dataProvider.GetEntityData(entityId));
+                    var data = dataProvider.GetEntityData(entityId);
+
+                    var str = Serialize<ПакетКонтрагентов>(data as ПакетКонтрагентов);
+
+                    Console.WriteLine(str);
+
+                    service.PostData(dataProvider.GetServiceMethodName() ?? methodName, data);
+
+
                 }
                 catch (ArgumentException e)
                 {
@@ -153,6 +164,28 @@ namespace DysonCustomerService
                         throw e;
                     }
                 }
+            }
+        }
+
+        public string Serialize<T>(T value)
+        {
+            if (value == null)
+            {
+                return string.Empty;
+            }
+            try
+            {
+                var xmlserializer = new XmlSerializer(typeof(T));
+                var stringWriter = new StringWriter();
+                using (var writer = XmlWriter.Create(stringWriter))
+                {
+                    xmlserializer.Serialize(writer, value);
+                    return stringWriter.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred", ex);
             }
         }
     }

@@ -717,7 +717,6 @@ public partial class ПакетКонтрагентов {
     private Контрагенты[] partnerField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -749,7 +748,7 @@ public partial class Контрагенты {
     
     private string iD_1СField;
     
-    private System.Nullable<bool> markDeletionField;
+    private bool markDeletionField;
     
     private bool legalField;
     
@@ -771,25 +770,25 @@ public partial class Контрагенты {
     
     private string emailField;
     
-    private System.Nullable<bool> fSSMSField;
+    private bool fSSMSField;
     
-    private System.Nullable<bool> fSEField;
+    private bool fSEField;
     
-    private System.Nullable<bool> fMEField;
+    private bool fMEField;
     
-    private System.Nullable<bool> fSCOField;
+    private bool fSCOField;
     
-    private System.Nullable<bool> fMCOField;
+    private bool fMCOField;
     
-    private System.Nullable<bool> fMSMSField;
+    private bool fMSMSField;
     
-    private System.Nullable<bool> fSRField;
+    private bool fSRField;
     
-    private System.Nullable<bool> fMRField;
+    private bool fMRField;
     
     private string iDDepersonalizedClientField;
     
-    private System.Nullable<bool> thereAreLKField;
+    private bool thereAreLKField;
     
     private string fIASField;
     
@@ -811,7 +810,7 @@ public partial class Контрагенты {
     
     private string emailYDField;
     
-    private System.Nullable<bool> pointSaleField;
+    private bool pointSaleField;
     
     private string dysonChannelCodeField;
     
@@ -828,8 +827,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> MarkDeletion {
+    public bool MarkDeletion {
         get {
             return this.markDeletionField;
         }
@@ -849,7 +847,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string INN {
         get {
             return this.iNNField;
@@ -860,7 +857,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string KPP {
         get {
             return this.kPPField;
@@ -871,7 +867,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PhoneNumber {
         get {
             return this.phoneNumberField;
@@ -882,7 +877,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Name {
         get {
             return this.nameField;
@@ -893,7 +887,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string LegalPhoneNumber {
         get {
             return this.legalPhoneNumberField;
@@ -904,7 +897,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FIO_F {
         get {
             return this.fIO_FField;
@@ -915,7 +907,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Name_F {
         get {
             return this.name_FField;
@@ -926,7 +917,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string MiddleName_F {
         get {
             return this.middleName_FField;
@@ -937,7 +927,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Email {
         get {
             return this.emailField;
@@ -948,8 +937,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FSSMS {
+    public bool FSSMS {
         get {
             return this.fSSMSField;
         }
@@ -959,8 +947,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FSE {
+    public bool FSE {
         get {
             return this.fSEField;
         }
@@ -970,8 +957,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FME {
+    public bool FME {
         get {
             return this.fMEField;
         }
@@ -981,8 +967,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FSCO {
+    public bool FSCO {
         get {
             return this.fSCOField;
         }
@@ -992,8 +977,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FMCO {
+    public bool FMCO {
         get {
             return this.fMCOField;
         }
@@ -1003,8 +987,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FMSMS {
+    public bool FMSMS {
         get {
             return this.fMSMSField;
         }
@@ -1014,8 +997,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FSR {
+    public bool FSR {
         get {
             return this.fSRField;
         }
@@ -1025,8 +1007,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> FMR {
+    public bool FMR {
         get {
             return this.fMRField;
         }
@@ -1036,7 +1017,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string IDDepersonalizedClient {
         get {
             return this.iDDepersonalizedClientField;
@@ -1047,8 +1027,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> ThereAreLK {
+    public bool ThereAreLK {
         get {
             return this.thereAreLKField;
         }
@@ -1058,7 +1037,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FIAS {
         get {
             return this.fIASField;
@@ -1069,7 +1047,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ObjectTypeList {
         get {
             return this.objectTypeListField;
@@ -1080,7 +1057,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FIOYO {
         get {
             return this.fIOYOField;
@@ -1091,7 +1067,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PostYO {
         get {
             return this.postYOField;
@@ -1102,7 +1077,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string MobTelYO {
         get {
             return this.mobTelYOField;
@@ -1113,7 +1087,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string EmailYO {
         get {
             return this.emailYOField;
@@ -1124,7 +1097,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FIOYD {
         get {
             return this.fIOYDField;
@@ -1135,7 +1107,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PostYD {
         get {
             return this.postYDField;
@@ -1146,7 +1117,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string MobTelYD {
         get {
             return this.mobTelYDField;
@@ -1157,7 +1127,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string EmailYD {
         get {
             return this.emailYDField;
@@ -1168,8 +1137,7 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> PointSale {
+    public bool PointSale {
         get {
             return this.pointSaleField;
         }
@@ -1179,7 +1147,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string DysonChannelCode {
         get {
             return this.dysonChannelCodeField;
@@ -1190,7 +1157,6 @@ public partial class Контрагенты {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string StatusClient {
         get {
             return this.statusClientField;
@@ -1221,7 +1187,7 @@ public partial class РегистрацияСерийныхНомеровКли�
     
     private string shopField;
     
-    private System.Nullable<System.DateTime> datePurchaseField;
+    private System.DateTime datePurchaseField;
     
     private string commentField;
     
@@ -1278,7 +1244,6 @@ public partial class РегистрацияСерийныхНомеровКли�
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Shop {
         get {
             return this.shopField;
@@ -1289,8 +1254,8 @@ public partial class РегистрацияСерийныхНомеровКли�
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(DataType="date", IsNullable=true)]
-    public System.Nullable<System.DateTime> DatePurchase {
+    [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+    public System.DateTime DatePurchase {
         get {
             return this.datePurchaseField;
         }
@@ -1333,7 +1298,6 @@ public partial class ПакетРегистрация {
     private РегистрацияСерийныхНомеровКлиентов[] regSNField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -1379,7 +1343,7 @@ public partial class ЗаявкаНаРемонт {
     
     private string snField;
     
-    private System.Nullable<System.DateTime> dateDepartureField;
+    private System.DateTime dateDepartureField;
     
     private string masterField;
     
@@ -1399,7 +1363,7 @@ public partial class ЗаявкаНаРемонт {
     
     private bool violationOperationField;
     
-    private System.Nullable<int> commentsResultRepairField;
+    private int commentsResultRepairField;
     
     private string feedbackClientField;
     
@@ -1494,8 +1458,7 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<System.DateTime> DateDeparture {
+    public System.DateTime DateDeparture {
         get {
             return this.dateDepartureField;
         }
@@ -1515,7 +1478,6 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Shop {
         get {
             return this.shopField;
@@ -1598,8 +1560,7 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<int> CommentsResultRepair {
+    public int CommentsResultRepair {
         get {
             return this.commentsResultRepairField;
         }
@@ -1609,7 +1570,6 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FeedbackClient {
         get {
             return this.feedbackClientField;
@@ -1620,7 +1580,7 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Defects", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("Defects")]
     public ЗаявкаНаРемонтDefects[] Defects {
         get {
             return this.defectsField;
@@ -1631,7 +1591,7 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("DefectsAccordingClient", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("DefectsAccordingClient")]
     public ЗаявкаНаРемонтDefectsAccordingClient[] DefectsAccordingClient {
         get {
             return this.defectsAccordingClientField;
@@ -1642,7 +1602,7 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Spares", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("Spares")]
     public ЗаявкаНаРемонтSpares[] Spares {
         get {
             return this.sparesField;
@@ -1653,7 +1613,7 @@ public partial class ЗаявкаНаРемонт {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Services", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("Services")]
     public ЗаявкаНаРемонтServices[] Services {
         get {
             return this.servicesField;
@@ -1917,7 +1877,6 @@ public partial class ПакетЗаявок {
     private ЗаявкаНаРемонт[] requestField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -1949,13 +1908,13 @@ public partial class ЗаказКлиента {
     
     private System.DateTime createDateField;
     
-    private System.Nullable<System.DateTime> date_Tk_LoadField;
+    private System.DateTime date_Tk_LoadField;
     
     private System.DateTime deliveryDateField;
     
-    private System.Nullable<int> timeDeliveryFromField;
+    private int timeDeliveryFromField;
     
-    private System.Nullable<int> timeDeliveryToField;
+    private int timeDeliveryToField;
     
     private System.DateTime tK_PlandateField;
     
@@ -1973,7 +1932,7 @@ public partial class ЗаказКлиента {
     
     private string tkField;
     
-    private System.Nullable<int> orderTypeField;
+    private int orderTypeField;
     
     private string payTypeField;
     
@@ -1983,9 +1942,9 @@ public partial class ЗаказКлиента {
     
     private int payTransactionField;
     
-    private System.Nullable<System.DateTime> dataReleaseHField;
+    private System.DateTime dataReleaseHField;
     
-    private System.Nullable<System.DateTime> dataReleaseMField;
+    private System.DateTime dataReleaseMField;
     
     private string payTransactionODMField;
     
@@ -1995,13 +1954,13 @@ public partial class ЗаказКлиента {
     
     private string creditStatusField;
     
-    private System.Nullable<decimal> creditSummField;
+    private decimal creditSummField;
     
     private string paper_idField;
     
-    private System.Nullable<decimal> inCashField;
+    private decimal inCashField;
     
-    private System.Nullable<decimal> onLinePaidField;
+    private decimal onLinePaidField;
     
     private string panTypeField;
     
@@ -2092,8 +2051,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<System.DateTime> Date_Tk_Load {
+    public System.DateTime Date_Tk_Load {
         get {
             return this.date_Tk_LoadField;
         }
@@ -2114,8 +2072,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<int> TimeDeliveryFrom {
+    public int TimeDeliveryFrom {
         get {
             return this.timeDeliveryFromField;
         }
@@ -2125,8 +2082,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<int> TimeDeliveryTo {
+    public int TimeDeliveryTo {
         get {
             return this.timeDeliveryToField;
         }
@@ -2168,7 +2124,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string orderID {
         get {
             return this.orderIDField;
@@ -2219,8 +2174,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<int> OrderType {
+    public int OrderType {
         get {
             return this.orderTypeField;
         }
@@ -2270,8 +2224,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<System.DateTime> DataReleaseH {
+    public System.DateTime DataReleaseH {
         get {
             return this.dataReleaseHField;
         }
@@ -2281,8 +2234,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<System.DateTime> DataReleaseM {
+    public System.DateTime DataReleaseM {
         get {
             return this.dataReleaseMField;
         }
@@ -2322,7 +2274,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string CreditStatus {
         get {
             return this.creditStatusField;
@@ -2333,8 +2284,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> CreditSumm {
+    public decimal CreditSumm {
         get {
             return this.creditSummField;
         }
@@ -2344,7 +2294,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string paper_id {
         get {
             return this.paper_idField;
@@ -2355,8 +2304,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> InCash {
+    public decimal InCash {
         get {
             return this.inCashField;
         }
@@ -2366,8 +2314,7 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> OnLinePaid {
+    public decimal OnLinePaid {
         get {
             return this.onLinePaidField;
         }
@@ -2377,7 +2324,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PanType {
         get {
             return this.panTypeField;
@@ -2428,7 +2374,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ManagerPhone {
         get {
             return this.managerPhoneField;
@@ -2459,7 +2404,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Region {
         get {
             return this.regionField;
@@ -2470,7 +2414,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Locality {
         get {
             return this.localityField;
@@ -2481,7 +2424,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Street {
         get {
             return this.streetField;
@@ -2572,7 +2514,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string SOCR_Region {
         get {
             return this.sOCR_RegionField;
@@ -2583,7 +2524,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string SOCR_Locality {
         get {
             return this.sOCR_LocalityField;
@@ -2594,7 +2534,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string SOCR_City {
         get {
             return this.sOCR_CityField;
@@ -2605,7 +2544,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string SOCR_Street {
         get {
             return this.sOCR_StreetField;
@@ -2616,7 +2554,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string SOCR_Area {
         get {
             return this.sOCR_AreaField;
@@ -2657,7 +2594,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string DistanceFromMKAD {
         get {
             return this.distanceFromMKADField;
@@ -2668,7 +2604,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Area {
         get {
             return this.areaField;
@@ -2679,7 +2614,6 @@ public partial class ЗаказКлиента {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string NumberDeparture {
         get {
             return this.numberDepartureField;
@@ -2934,7 +2868,6 @@ public partial class ПакетЗаказов {
     private ЗаказКлиента[] orderField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -3002,7 +2935,6 @@ public partial class ПакетПользователи {
     private Пользователи[] userField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -3070,7 +3002,6 @@ public partial class ПакетДефектыКлиента {
     private ДефектыСоСловКлиента[] clientDefectField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -3100,7 +3031,7 @@ public partial class ПакетДефектыКлиента {
 [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
 public partial class Номенклатура {
     
-    private System.Nullable<bool> trcMarkDeletionField;
+    private bool trcMarkDeletionField;
     
     private string codeField;
     
@@ -3114,7 +3045,7 @@ public partial class Номенклатура {
     
     private string unitIDField;
     
-    private System.Nullable<decimal> weightField;
+    private decimal weightField;
     
     private string deviceTypeField;
     
@@ -3124,7 +3055,7 @@ public partial class Номенклатура {
     
     private string guaranteeField;
     
-    private System.Nullable<bool> personalizationField;
+    private bool personalizationField;
     
     private string productSubcategoryField;
     
@@ -3140,71 +3071,70 @@ public partial class Номенклатура {
     
     private string productModelField;
     
-    private System.Nullable<int> numberOfAirFlowRatesField;
+    private int numberOfAirFlowRatesField;
     
-    private System.Nullable<decimal> packingLengthField;
+    private decimal packingLengthField;
     
-    private System.Nullable<decimal> packingWidthField;
+    private decimal packingWidthField;
     
-    private System.Nullable<decimal> packingHeightField;
+    private decimal packingHeightField;
     
-    private System.Nullable<decimal> packingVolumeField;
+    private decimal packingVolumeField;
     
-    private System.Nullable<decimal> assemblyWeightField;
+    private decimal assemblyWeightField;
     
-    private System.Nullable<decimal> productGrossWeightInPackagingField;
+    private decimal productGrossWeightInPackagingField;
     
-    private System.Nullable<decimal> optimalVisitingAreaField;
+    private decimal optimalVisitingAreaField;
     
-    private System.Nullable<decimal> productPowerConsumptionField;
+    private decimal productPowerConsumptionField;
     
-    private System.Nullable<decimal> minTemperatureField;
+    private decimal minTemperatureField;
     
-    private System.Nullable<decimal> maxTemperatureField;
+    private decimal maxTemperatureField;
     
     private string heatingElemenTypeField;
     
     private string airHumidificationTypeField;
     
-    private System.Nullable<decimal> maxWaterConsumptionField;
+    private decimal maxWaterConsumptionField;
     
-    private System.Nullable<decimal> waterTankVolumeField;
+    private decimal waterTankVolumeField;
     
     private string issueYearField;
     
     private string nozzleField;
     
-    private System.Nullable<decimal> cableLengthMeterField;
+    private decimal cableLengthMeterField;
     
     private string filterTypesField;
     
-    private System.Nullable<decimal> suctionPowerTurboField;
+    private decimal suctionPowerTurboField;
     
-    private System.Nullable<decimal> suctionPowerAutoField;
+    private decimal suctionPowerAutoField;
     
-    private System.Nullable<decimal> suctionPowerEcoField;
+    private decimal suctionPowerEcoField;
     
-    private System.Nullable<decimal> containerVolumeField;
+    private decimal containerVolumeField;
     
     private string pipeTypeField;
     
-    private System.Nullable<decimal> noiseLevelWithPipeTurboField;
+    private decimal noiseLevelWithPipeTurboField;
     
-    private System.Nullable<decimal> noiseLevelWithPipeEcoField;
+    private decimal noiseLevelWithPipeEcoField;
     
-    private System.Nullable<decimal> noiseLevelWithoutPipeTurboField;
+    private decimal noiseLevelWithoutPipeTurboField;
     
-    private System.Nullable<decimal> noiseLevelWithoutPipeEcoField;
+    private decimal noiseLevelWithoutPipeEcoField;
     
     private string powerSourceField;
     
-    private System.Nullable<int> temperatureModeField;
+    private int temperatureModeField;
     
     private string additionalModeField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> TrcMarkDeletion {
+    public bool TrcMarkDeletion {
         get {
             return this.trcMarkDeletionField;
         }
@@ -3224,7 +3154,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string WorkName {
         get {
             return this.workNameField;
@@ -3235,7 +3164,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PrintName {
         get {
             return this.printNameField;
@@ -3246,7 +3174,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string TradeMark {
         get {
             return this.tradeMarkField;
@@ -3257,7 +3184,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Category {
         get {
             return this.categoryField;
@@ -3268,7 +3194,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string UnitID {
         get {
             return this.unitIDField;
@@ -3279,8 +3204,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> Weight {
+    public decimal Weight {
         get {
             return this.weightField;
         }
@@ -3290,7 +3214,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string DeviceType {
         get {
             return this.deviceTypeField;
@@ -3301,7 +3224,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Distribution {
         get {
             return this.distributionField;
@@ -3312,7 +3234,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string LifeTime {
         get {
             return this.lifeTimeField;
@@ -3323,7 +3244,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Guarantee {
         get {
             return this.guaranteeField;
@@ -3334,8 +3254,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<bool> Personalization {
+    public bool Personalization {
         get {
             return this.personalizationField;
         }
@@ -3345,7 +3264,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ProductSubcategory {
         get {
             return this.productSubcategoryField;
@@ -3356,7 +3274,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Type {
         get {
             return this.typeField;
@@ -3367,7 +3284,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Name {
         get {
             return this.nameField;
@@ -3378,7 +3294,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string OriginCountry {
         get {
             return this.originCountryField;
@@ -3389,7 +3304,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string AddressProduction {
         get {
             return this.addressProductionField;
@@ -3400,7 +3314,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ProductColor {
         get {
             return this.productColorField;
@@ -3411,7 +3324,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ProductModel {
         get {
             return this.productModelField;
@@ -3422,8 +3334,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<int> NumberOfAirFlowRates {
+    public int NumberOfAirFlowRates {
         get {
             return this.numberOfAirFlowRatesField;
         }
@@ -3433,8 +3344,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> PackingLength {
+    public decimal PackingLength {
         get {
             return this.packingLengthField;
         }
@@ -3444,8 +3354,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> PackingWidth {
+    public decimal PackingWidth {
         get {
             return this.packingWidthField;
         }
@@ -3455,8 +3364,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> PackingHeight {
+    public decimal PackingHeight {
         get {
             return this.packingHeightField;
         }
@@ -3466,8 +3374,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> PackingVolume {
+    public decimal PackingVolume {
         get {
             return this.packingVolumeField;
         }
@@ -3477,8 +3384,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> AssemblyWeight {
+    public decimal AssemblyWeight {
         get {
             return this.assemblyWeightField;
         }
@@ -3488,8 +3394,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> ProductGrossWeightInPackaging {
+    public decimal ProductGrossWeightInPackaging {
         get {
             return this.productGrossWeightInPackagingField;
         }
@@ -3499,8 +3404,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> OptimalVisitingArea {
+    public decimal OptimalVisitingArea {
         get {
             return this.optimalVisitingAreaField;
         }
@@ -3510,8 +3414,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> ProductPowerConsumption {
+    public decimal ProductPowerConsumption {
         get {
             return this.productPowerConsumptionField;
         }
@@ -3521,8 +3424,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> MinTemperature {
+    public decimal MinTemperature {
         get {
             return this.minTemperatureField;
         }
@@ -3532,8 +3434,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> MaxTemperature {
+    public decimal MaxTemperature {
         get {
             return this.maxTemperatureField;
         }
@@ -3543,7 +3444,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string HeatingElemenType {
         get {
             return this.heatingElemenTypeField;
@@ -3554,7 +3454,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string AirHumidificationType {
         get {
             return this.airHumidificationTypeField;
@@ -3565,8 +3464,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> MaxWaterConsumption {
+    public decimal MaxWaterConsumption {
         get {
             return this.maxWaterConsumptionField;
         }
@@ -3576,8 +3474,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> WaterTankVolume {
+    public decimal WaterTankVolume {
         get {
             return this.waterTankVolumeField;
         }
@@ -3587,7 +3484,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string IssueYear {
         get {
             return this.issueYearField;
@@ -3598,7 +3494,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string Nozzle {
         get {
             return this.nozzleField;
@@ -3609,8 +3504,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> CableLengthMeter {
+    public decimal CableLengthMeter {
         get {
             return this.cableLengthMeterField;
         }
@@ -3620,7 +3514,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string FilterTypes {
         get {
             return this.filterTypesField;
@@ -3631,8 +3524,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> SuctionPowerTurbo {
+    public decimal SuctionPowerTurbo {
         get {
             return this.suctionPowerTurboField;
         }
@@ -3642,8 +3534,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> SuctionPowerAuto {
+    public decimal SuctionPowerAuto {
         get {
             return this.suctionPowerAutoField;
         }
@@ -3653,8 +3544,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> SuctionPowerEco {
+    public decimal SuctionPowerEco {
         get {
             return this.suctionPowerEcoField;
         }
@@ -3664,8 +3554,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> ContainerVolume {
+    public decimal ContainerVolume {
         get {
             return this.containerVolumeField;
         }
@@ -3675,7 +3564,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PipeType {
         get {
             return this.pipeTypeField;
@@ -3686,8 +3574,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> NoiseLevelWithPipeTurbo {
+    public decimal NoiseLevelWithPipeTurbo {
         get {
             return this.noiseLevelWithPipeTurboField;
         }
@@ -3697,8 +3584,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> NoiseLevelWithPipeEco {
+    public decimal NoiseLevelWithPipeEco {
         get {
             return this.noiseLevelWithPipeEcoField;
         }
@@ -3708,8 +3594,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> NoiseLevelWithoutPipeTurbo {
+    public decimal NoiseLevelWithoutPipeTurbo {
         get {
             return this.noiseLevelWithoutPipeTurboField;
         }
@@ -3719,8 +3604,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<decimal> NoiseLevelWithoutPipeEco {
+    public decimal NoiseLevelWithoutPipeEco {
         get {
             return this.noiseLevelWithoutPipeEcoField;
         }
@@ -3730,7 +3614,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string PowerSource {
         get {
             return this.powerSourceField;
@@ -3741,8 +3624,7 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
-    public System.Nullable<int> TemperatureMode {
+    public int TemperatureMode {
         get {
             return this.temperatureModeField;
         }
@@ -3752,7 +3634,6 @@ public partial class Номенклатура {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string AdditionalMode {
         get {
             return this.additionalModeField;
@@ -3776,7 +3657,6 @@ public partial class ПакетНоменклатуры {
     private Номенклатура[] tovarField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -3813,7 +3693,6 @@ public partial class ПакетОтвета {
     private ПакетОтветаErrors[] errorsField;
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)]
     public string ID_Pack {
         get {
             return this.iD_PackField;
@@ -3834,7 +3713,7 @@ public partial class ПакетОтвета {
     }
     
     /// <remarks/>
-    [System.Xml.Serialization.XmlElementAttribute("Errors", IsNullable=true)]
+    [System.Xml.Serialization.XmlElementAttribute("Errors")]
     public ПакетОтветаErrors[] Errors {
         get {
             return this.errorsField;

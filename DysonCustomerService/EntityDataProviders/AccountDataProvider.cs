@@ -49,7 +49,7 @@ namespace DysonCustomerService.EntityDataProviders
                 .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
 
             // Данные Контрагента
-            res.Partner = new Контрагенты[]
+            res.Partner = new []
             {
                 new Контрагенты()
                 {
@@ -90,6 +90,10 @@ namespace DysonCustomerService.EntityDataProviders
                     .And("Address").IsEqual(Column.Parameter(address)) as Select;
 
             return select.ExecuteScalar<Guid>();
+        }
+        public override string GetServiceMethodName()
+        {
+            return "PostClients";
         }
     }
 }

@@ -70,7 +70,7 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override string GetServiceMethodName()
         {
-            return "PostPartners";
+            return "PostClients";
         }
 
         protected Guid GetOrderAddressData(Guid clientId, string address)

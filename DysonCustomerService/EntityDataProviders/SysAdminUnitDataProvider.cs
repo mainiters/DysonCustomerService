@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class SysAdminUnitDataProvider : BaseEntityDataProvider
     {
         public SysAdminUnitDataProvider(Guid Id, UserConnection UserConnection)
-            : base("SysAdminUnit", Id, UserConnection)
+            : base("Contact", Id, UserConnection)
         {
 
         }
@@ -23,17 +23,12 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетПользователи();
-
-            res.ID_Pack = new Guid().ToString();
+            var res = new Пользователи();
 
             // Данные Пользователей
-            res.User = new Пользователи[]
+            res = new Пользователи()
             {
-                new Пользователи()
-                {
-                    Name = this.EntityObject.GetTypedColumnValue<string>("Name")
-                }
+                Name = this.EntityObject.GetTypedColumnValue<string>("Name")
             };
 
             return res;
