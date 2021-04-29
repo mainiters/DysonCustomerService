@@ -19,7 +19,7 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            esq.AddColumn("TrcCustomerSegment.Name");
+            esq.AddColumn("TrcCustomerSegment.TrcCode");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -35,9 +35,9 @@ namespace DysonCustomerService.EntityDataProviders
         }
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетКонтрагентов();
+            var res = new Контрагенты();
 
-            res.ID_Pack = new Guid().ToString();
+            //res.ID_Pack = new Guid().ToString();
 
             var clientId = this.EntityObject.GetTypedColumnValue<Guid>("Id");
             var address = this.EntityObject.GetTypedColumnValue<string>("Address");
@@ -49,33 +49,43 @@ namespace DysonCustomerService.EntityDataProviders
                 .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
 
             // Данные Контрагента
-            res.Partner = new []
+            res = new Контрагенты()
             {
-                new Контрагенты()
-                {
-                    Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
-                    LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
-                    FIAS = fias,
-                    ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_Name"),
-                    INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
-                    KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),
-                    FIOYO = this.EntityObject.GetTypedColumnValue<string>("TrcMainContactFIO"),
-                    PostYO = this.EntityObject.GetTypedColumnValue<string>("TrcJobMainContact"),
-                    MobTelYO = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneMainContact"),
-                    EmailYO = this.EntityObject.GetTypedColumnValue<string>("TrcEmailMainContact"),
-                    FIOYD = this.EntityObject.GetTypedColumnValue<string>("TrcFIOAdditionalContact"),
-                    PostYD = this.EntityObject.GetTypedColumnValue<string>("TrcJobAdditionalContact"),
-                    MobTelYD = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneAdditionalContact"),
-                    EmailYD = this.EntityObject.GetTypedColumnValue<string>("TrcEmailAdditionalContact"),
-                    FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
-                    FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
-                    FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
-                    FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
-                    FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
-                    FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
-                    FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
-                    FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing")
-                }
+                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
+                LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
+                FIAS = fias,
+                ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_TrcCode"),
+                INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
+                KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),
+                FIOYO = this.EntityObject.GetTypedColumnValue<string>("TrcMainContactFIO"),
+                PostYO = this.EntityObject.GetTypedColumnValue<string>("TrcJobMainContact"),
+                MobTelYO = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneMainContact"),
+                EmailYO = this.EntityObject.GetTypedColumnValue<string>("TrcEmailMainContact"),
+                FIOYD = this.EntityObject.GetTypedColumnValue<string>("TrcFIOAdditionalContact"),
+                PostYD = this.EntityObject.GetTypedColumnValue<string>("TrcJobAdditionalContact"),
+                MobTelYD = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneAdditionalContact"),
+                EmailYD = this.EntityObject.GetTypedColumnValue<string>("TrcEmailAdditionalContact"),
+                FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
+                FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
+                FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
+                FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
+                FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
+                FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
+                FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
+                FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
+                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
+
+                Legal = true,
+                FIO_F = string.Empty,
+                MiddleName_F = string.Empty,
+                Name_F = string.Empty,
+                PhoneNumber = string.Empty,
+                DysonChannelCode = string.Empty,
+                StatusClient = string.Empty,
+
+                // Тянем из детали Средств связи с типом Email
+                Email = "12312312"
             };
 
             return res;
@@ -93,7 +103,7 @@ namespace DysonCustomerService.EntityDataProviders
         }
         public override string GetServiceMethodName()
         {
-            return "PostClients";
+            return "PostClient";
         }
     }
 }

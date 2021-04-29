@@ -19,6 +19,8 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
+            esq.AddColumn("TrcContactCategory.Name");
+
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "ContactAddress",
@@ -33,9 +35,9 @@ namespace DysonCustomerService.EntityDataProviders
         }
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетКонтрагентов();
+            var res = new Контрагенты();
 
-            res.ID_Pack = new Guid().ToString();
+            //res.ID_Pack = new Guid().ToString();
 
             var clientId = this.EntityObject.GetTypedColumnValue<Guid>("Id");
             var address = this.EntityObject.GetTypedColumnValue<string>("Address");
@@ -47,22 +49,42 @@ namespace DysonCustomerService.EntityDataProviders
                 .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
 
             // Данные Контактов
-            res.Partner = new []
+            res = new Контрагенты()
             {
-                new Контрагенты()
-                {
-                    Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
-                    LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
-                    FIAS = fias,
-                    FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
-                    FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
-                    FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
-                    FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
-                    FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
-                    FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
-                    FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
-                    FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing")
-                }
+                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
+                PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
+                FIAS = fias,
+                FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
+                FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
+                FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
+                FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
+                FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
+                FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
+                FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
+                FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
+                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CContactID"),
+
+                FIO_F = this.EntityObject.GetTypedColumnValue<string>("Surname"),
+                MiddleName_F = this.EntityObject.GetTypedColumnValue<string>("MiddleName"),
+                Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
+                StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
+                Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
+
+                Legal = false,
+                LegalPhoneNumber = string.Empty,
+                DysonChannelCode = string.Empty,
+                ObjectTypeList = string.Empty,
+                INN = string.Empty,
+                KPP = string.Empty,
+                FIOYO = string.Empty,
+                PostYO = string.Empty,
+                MobTelYO = string.Empty,
+                EmailYO = string.Empty,
+                FIOYD = string.Empty,
+                PostYD = string.Empty,
+                MobTelYD = string.Empty,
+                EmailYD = string.Empty
             };
 
             return res;
@@ -70,7 +92,7 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override string GetServiceMethodName()
         {
-            return "PostClients";
+            return "PostClient";
         }
 
         protected Guid GetOrderAddressData(Guid clientId, string address)

@@ -157,7 +157,7 @@ namespace DysonCustomerService
                     {
                         retryCount++;
 
-                        await Task.Delay(this.options.RetryDelay);
+                        //await Task.Delay(this.options.RetryDelay);
                     }
                     else
                     {
