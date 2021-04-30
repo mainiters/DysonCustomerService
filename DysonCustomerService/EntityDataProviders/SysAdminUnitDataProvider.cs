@@ -23,10 +23,8 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new Пользователи();
-
             // Данные Пользователей
-            res = new Пользователи()
+            var res = new Пользователи()
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name")
             };

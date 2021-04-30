@@ -23,17 +23,11 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетДефектыКлиента();
-
-            res.ID_Pack = new Guid().ToString();
-
             // Данные Дефекты
-            res.ClientDefect = new ДефектыСоСловКлиента[]
+            var res = new ДефектыСоСловКлиента()
             {
-                new ДефектыСоСловКлиента()
-                {
-                    Name = this.EntityObject.GetTypedColumnValue<string>("Name")
-                }
+                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion")
             };
 
             return res;

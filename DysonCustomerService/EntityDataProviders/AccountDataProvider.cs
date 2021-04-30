@@ -53,7 +53,7 @@ namespace DysonCustomerService.EntityDataProviders
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
-                FIAS = fias,
+                FIAS = fias ?? string.Empty,
                 ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_TrcCode"),
                 INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
                 KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),

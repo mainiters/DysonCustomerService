@@ -53,7 +53,7 @@ namespace DysonCustomerService.EntityDataProviders
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
-                FIAS = fias,
+                FIAS = fias ?? string.Empty,
                 FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
                 FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
                 FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),

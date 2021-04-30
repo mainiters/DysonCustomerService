@@ -143,9 +143,11 @@ namespace DysonCustomerService
 
                     Console.WriteLine(str);
 
-                    service.PostData(dataProvider.GetServiceMethodName() ?? methodName, data);
+                    var response = service.PostData(dataProvider.GetServiceMethodName() ?? methodName, data);
 
+                    Console.WriteLine(response);
 
+                    break;
                 }
                 catch (ArgumentException e)
                 {
