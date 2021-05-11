@@ -15,7 +15,7 @@ namespace DysonCustomerService
 {
     public class ObmenCreationWrapper
     {
-        protected ObmenCreation service { get; set; }
+        static protected ObmenCreation service { get; set; }
         protected ObmenCreationOptions options { get; set; }
         protected UserConnection userConnection { get; set; }
 
@@ -23,7 +23,10 @@ namespace DysonCustomerService
         {
             this.options = options;
 
-            this.service = new ObmenCreation();
+            if (service == null)
+            {
+                service = new ObmenCreation();
+            }
 
             service.Url = options.Url;
 
@@ -113,16 +116,19 @@ namespace DysonCustomerService
                 };
             }
 
-            InitService();
+            if (service == null)
+            {
+                InitService();
+            }
         }
 
         protected void InitService()
         {
-            this.service = new ObmenCreation();
+            service = new ObmenCreation();
 
-            this.service.Url = options.Url;
+            service.Url = options.Url;
 
-            this.service.Credentials = new NetworkCredential(options.Login, options.Password);
+            service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
 
         public async Task SendRequest(string methodName, Guid entityId)
@@ -145,6 +151,8 @@ namespace DysonCustomerService
 
                     var response = service.PostData(dataProvider.GetServiceMethodName() ?? methodName, data);
 
+                    dataProvider.ProcessResponse(response);
+
                     Console.WriteLine(response);
 
                     break;
@@ -155,11 +163,11 @@ namespace DysonCustomerService
                 }
                 catch (Exception e)
                 {
-                    if (this.options.RetryErrorCodes.Contains(e.Message) && retryCount < this.options.RetryLimit)
+                    if (false && this.options.RetryErrorCodes.Contains(e.Message) && retryCount < this.options.RetryLimit)
                     {
                         retryCount++;
 
-                        //await Task.Delay(this.options.RetryDelay);
+                        await Task.Delay(this.options.RetryDelay);
                     }
                     else
                     {

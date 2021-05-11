@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Terrasoft.Core;
+using Terrasoft.Core.DB;
 using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService.EntityDataProviders
@@ -14,6 +15,7 @@ namespace DysonCustomerService.EntityDataProviders
         public string FilterFieldName { get; set; }
         public EntityCollection EntityCollection { get; set; }
         public List<string> AdditionalColumns { get; set; }
+
     }
 
     public abstract class BaseEntityDataProvider
@@ -21,17 +23,19 @@ namespace DysonCustomerService.EntityDataProviders
         public UserConnection UserConnection { get; protected set; }
         public string EntitySchemaName { get; protected set; }
         public Guid EntityId { get; protected set; }
+        public string ExternalSystemId { get; set; }
 
         protected Entity EntityObject { get; set; }
         protected List<RelatedEntitiesData> RelatedEntitiesData { get; set; }
 
-        public BaseEntityDataProvider(string EntitySchemaName, Guid EntityId, UserConnection UserConnection)
+        public BaseEntityDataProvider(string EntitySchemaName, Guid EntityId, UserConnection UserConnection, string ExternalSystemId = null)
         {
             this.RelatedEntitiesData = new List<RelatedEntitiesData>();
 
             this.UserConnection = UserConnection;
             this.EntityId = EntityId;
             this.EntitySchemaName = EntitySchemaName;
+            this.ExternalSystemId = ExternalSystemId;
             this.Initialize();
         }
 
@@ -82,6 +86,26 @@ namespace DysonCustomerService.EntityDataProviders
         public virtual string GetServiceMethodName()
         {
             return null;
+        }
+
+        public virtual void ProcessResponse(object response)
+        {
+            if(response is ПакетОтвета)
+            {
+                this.UpdateEntityIdFromPackage(response as ПакетОтвета);
+            }
+        }
+
+        protected virtual void UpdateEntityIdFromPackage(ПакетОтвета response)
+        {
+            if(response != null && !string.IsNullOrWhiteSpace(response.ID_Pack) && !string.IsNullOrEmpty(this.ExternalSystemId))
+            {
+                var update = new Update(UserConnection, this.EntitySchemaName)
+                        .Set(this.ExternalSystemId, Column.Parameter(response.ID_Pack))
+                        .Where("Id").IsEqual(Column.Parameter(this.EntityId));
+
+                update.Execute();
+            }
         }
 
         protected virtual void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)

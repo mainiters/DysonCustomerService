@@ -12,7 +12,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class ContactDataProvider : BaseEntityDataProvider
     {
         public ContactDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Contact", Id, UserConnection)
+            : base("Contact", Id, UserConnection, "Trc1CContactID")
         {
 
         }

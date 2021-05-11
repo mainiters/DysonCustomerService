@@ -12,7 +12,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class AccountDataProvider : BaseEntityDataProvider
     {
         public AccountDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Account", Id, UserConnection)
+            : base("Account", Id, UserConnection, "Trc1CAccountID")
         {
 
         }
@@ -73,7 +73,7 @@ namespace DysonCustomerService.EntityDataProviders
                 FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
                 FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                 FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
-                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
+                //IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
 
                 Legal = true,
@@ -84,11 +84,21 @@ namespace DysonCustomerService.EntityDataProviders
                 DysonChannelCode = string.Empty,
                 StatusClient = string.Empty,
 
-                // Тянем из детали Средств связи с типом Email
-                Email = "12312312"
+                Email = this.GetEmail()
             };
 
             return res;
+        }
+
+        protected string GetEmail()
+        {
+            var select = new Terrasoft.Core.DB.Select(UserConnection)
+                    .Column("Number")
+                    .From("AccountCommunication")
+                    .Where("AccountId").IsEqual(Column.Parameter(this.EntityId))
+                    .And("Primary").IsEqual(Column.Const(true)) as Select;
+
+            return select.ExecuteScalar<string>();
         }
 
         protected Guid GetOrderAddressData(Guid clientId, string address)
