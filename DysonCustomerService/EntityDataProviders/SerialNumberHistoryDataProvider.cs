@@ -28,23 +28,16 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетРегистрация();
-
-            res.ID_Pack = new Guid().ToString();
-
             // Данные История серийных номеров
-            res.RegSN = new РегистрацияСерийныхНомеровКлиентов[]
+            var res = new РегистрацияСерийныхНомеровКлиентов
             {
-                new РегистрацияСерийныхНомеровКлиентов()
-                {
-                    SN = this.EntityObject.GetTypedColumnValue<string>("TrcSerialNumber_Name"),
-                    CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRegistrationDate"),
-                    Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Name"),
-                    TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_Name"),
-                    Shop = this.EntityObject.GetTypedColumnValue<string>("TrcRetailStore_Name"),
-                    DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),
-                    Comment = this.EntityObject.GetTypedColumnValue<string>("TrcComment")
-                }
+                SN = this.EntityObject.GetTypedColumnValue<string>("TrcSerialNumber_Name"),
+                CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRegistrationDate"),
+                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Name"),
+                TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_Name"),
+                Shop = this.EntityObject.GetTypedColumnValue<string>("TrcRetailStore_Name"),
+                DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),
+                Comment = this.EntityObject.GetTypedColumnValue<string>("TrcComment")
             };
 
             return res;

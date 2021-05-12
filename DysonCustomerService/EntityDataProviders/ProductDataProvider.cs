@@ -34,17 +34,9 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетНоменклатуры();
-
-            res.ID_Pack = new Guid().ToString();
-
-            // Данные Контрагента
-            res.Tovar = new Номенклатура[]
+            var res = new Номенклатура()
             {
-                new Номенклатура()
-                {
-                    //Article = this.EntityObject.GetTypedColumnValue<string>("Code")
-                }
+                //Article = this.EntityObject.GetTypedColumnValue<string>("Code")
             };
 
             return res;

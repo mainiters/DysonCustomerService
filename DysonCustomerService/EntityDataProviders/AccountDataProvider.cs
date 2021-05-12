@@ -20,6 +20,16 @@ namespace DysonCustomerService.EntityDataProviders
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
             esq.AddColumn("TrcCustomerSegment.TrcCode");
+            
+            esq.AddColumn("PrimaryContact.Email");
+            esq.AddColumn("PrimaryContact.Name");
+            esq.AddColumn("PrimaryContact.MobilePhone");
+            esq.AddColumn("PrimaryContact.JobTitle");
+
+            esq.AddColumn("TrcAdditionalContact.Email");
+            esq.AddColumn("TrcAdditionalContact.Name");
+            esq.AddColumn("TrcAdditionalContact.MobilePhone");
+            esq.AddColumn("TrcAdditionalContact.JobTitle");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -57,14 +67,17 @@ namespace DysonCustomerService.EntityDataProviders
                 ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_TrcCode"),
                 INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
                 KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),
-                FIOYO = this.EntityObject.GetTypedColumnValue<string>("TrcMainContactFIO"),
-                PostYO = this.EntityObject.GetTypedColumnValue<string>("TrcJobMainContact"),
-                MobTelYO = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneMainContact"),
-                EmailYO = this.EntityObject.GetTypedColumnValue<string>("TrcEmailMainContact"),
-                FIOYD = this.EntityObject.GetTypedColumnValue<string>("TrcFIOAdditionalContact"),
-                PostYD = this.EntityObject.GetTypedColumnValue<string>("TrcJobAdditionalContact"),
-                MobTelYD = this.EntityObject.GetTypedColumnValue<string>("TrcMobilePhoneAdditionalContact"),
-                EmailYD = this.EntityObject.GetTypedColumnValue<string>("TrcEmailAdditionalContact"),
+                
+                FIOYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_Name"),
+                PostYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_JobTitle"),
+                MobTelYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_MobilePhone"),
+                EmailYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_Email"),
+
+                FIOYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_Name"),
+                PostYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_JobTitle"),
+                MobTelYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_MobilePhone"),
+                EmailYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_Email"),
+
                 FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
                 FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
                 FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
@@ -73,7 +86,7 @@ namespace DysonCustomerService.EntityDataProviders
                 FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
                 FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                 FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
-                //IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
+                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
 
                 Legal = true,

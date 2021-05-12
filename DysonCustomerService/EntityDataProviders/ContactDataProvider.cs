@@ -52,7 +52,7 @@ namespace DysonCustomerService.EntityDataProviders
             res = new Контрагенты()
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
-                PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
+                PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("MobilePhone"),
                 FIAS = fias ?? string.Empty,
                 FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
                 FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
@@ -70,6 +70,7 @@ namespace DysonCustomerService.EntityDataProviders
                 Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
                 StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
                 Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
+
 
                 Legal = false,
                 LegalPhoneNumber = string.Empty,

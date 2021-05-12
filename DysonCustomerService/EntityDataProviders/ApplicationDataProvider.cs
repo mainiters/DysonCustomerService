@@ -18,18 +18,18 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            esq.AddColumn("TrcOrderState.Name");
-            esq.AddColumn("TrcServiceCenter.Name");
+            esq.AddColumn("TrcServiceCenter.TrcName");
             esq.AddColumn("TrcRepairWarehouse.TrcCode");
             esq.AddColumn("TrcRepairType.Name");
             esq.AddColumn("TrcProduct.Code");
-            esq.AddColumn("SerialNumberHistory.Name");
-            esq.AddColumn("Engineer.Name");
-            esq.AddColumn("TrcWarrantyType.Name");
+            esq.AddColumn("TrcSerialNumberHistory.TrcName");
+            esq.AddColumn("TrcEngineer.Name");
+            esq.AddColumn("TrcWarrantyType.TrcCode");
             esq.AddColumn("TrcShop.TrcCode");
+            esq.AddColumn("TrcServiceOption.Name");
 
-            esq.AddColumn("Account.Trc1CAccountID");
-            esq.AddColumn("Contact.Trc1CContactID");
+            esq.AddColumn("TrcAccount.Trc1CAccountID");
+            esq.AddColumn("TrcContact.Trc1CContactID");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -71,39 +71,31 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
-            var res = new ПакетЗаявок();
-
-            res.ID_Pack = new Guid().ToString();
-
-            string AccountId = this.EntityObject.GetTypedColumnValue<string>("Account_Trc1CAccountID");
-            string ContactId = this.EntityObject.GetTypedColumnValue<string>("Contact_Trc1CContactID");
+            string AccountId = this.EntityObject.GetTypedColumnValue<string>("TrcAccount_Trc1CAccountID");
+            string ContactId = this.EntityObject.GetTypedColumnValue<string>("TrcContact_Trc1CContactID");
 
             // Данные заказа
-            res.Request = new ЗаявкаНаРемонт[]
+            var res = new ЗаявкаНаРемонт
             {
-                new ЗаявкаНаРемонт()
-                {
-                    ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
-                    DocumentNumber = this.EntityObject.GetTypedColumnValue<string>("TrcNumber"),
-                    CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCreationDate"),
-                    Organization = this.EntityObject.GetTypedColumnValue<string>("TrcServiceCenter_Name"),
-                    WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcRepairWarehouse_TrcCode"),
-                    ServiceOption = this.EntityObject.GetTypedColumnValue<string>("TrcServiceOption"),
-                    TypeRepair = this.EntityObject.GetTypedColumnValue<string>("TrcRepairType_Name"),
-                    Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Code"),
-                    SN = this.EntityObject.GetTypedColumnValue<string>("SerialNumberHistory_Name"),
-                    DateDeparture = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDepartureDate"),
-                    Master = this.EntityObject.GetTypedColumnValue<string>("Engineer_Name"),
-                    DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),
-                    TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_Name"),
-                    RenewalWarranty = this.EntityObject.GetTypedColumnValue<bool>("TrcIsWarrantyRenewed"),
-                    ActualDateRepairExecution = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRepairDate"),
-                    InformationClient = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalInformation"),
-                    InternalComment = this.EntityObject.GetTypedColumnValue<string>("TrcInternalComment"),
-                    ViolationOperation  = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation"),
-                    Shop = this.EntityObject.GetTypedColumnValue<string>("TrcShop_TrcCode")
-                    
-                }
+                ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
+                DocumentNumber = this.EntityObject.GetTypedColumnValue<string>("TrcNumber"),
+                CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCreationDate"),
+                Organization = this.EntityObject.GetTypedColumnValue<string>("TrcServiceCenter_TrcName"),
+                WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcRepairWarehouse_TrcCode"),
+                ServiceOption = this.EntityObject.GetTypedColumnValue<string>("TrcServiceOption_Name"),
+                TypeRepair = this.EntityObject.GetTypedColumnValue<string>("TrcRepairType_Name"),
+                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Code"),
+                SN = this.EntityObject.GetTypedColumnValue<string>("TrcSerialNumberHistory_TrcName"),
+                DateDeparture = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDepartureDate"),
+                Master = this.EntityObject.GetTypedColumnValue<string>("TrcEngineer_Name"),
+                DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),
+                TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_TrcCode"),
+                RenewalWarranty = this.EntityObject.GetTypedColumnValue<bool>("TrcIsWarrantyRenewed"),
+                ActualDateRepairExecution = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRepairDate"),
+                InformationClient = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalInformation"),
+                InternalComment = this.EntityObject.GetTypedColumnValue<string>("TrcInternalComment"),
+                ViolationOperation = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation"),
+                Shop = this.EntityObject.GetTypedColumnValue<string>("TrcShop_TrcCode")
             };
 
             if (this.RelatedEntitiesData.Count > 0)
@@ -119,7 +111,7 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.Request.First().Defects = expertOpinions.ToArray();
+                res.Defects = expertOpinions.ToArray();
 
                 // Дефекты со слов клиента
                 var clientDefects = new List<ЗаявкаНаРемонтDefectsAccordingClient>();
@@ -132,7 +124,7 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.Request.First().DefectsAccordingClient = clientDefects.ToArray();
+                res.DefectsAccordingClient = clientDefects.ToArray();
 
                 // Запчасти
                 var spareParts = new List<ЗаявкаНаРемонтSpares>();
@@ -150,12 +142,12 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.Request.First().Spares = spareParts.ToArray();
+                res.Spares = spareParts.ToArray();
 
                 // Услуги
                 var services = new List<ЗаявкаНаРемонтServices>();
 
-                foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "TrcSparePart").First().EntityCollection)
+                foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "TrcService").First().EntityCollection)
                 {
                     services.Add(new ЗаявкаНаРемонтServices()
                     {
@@ -168,7 +160,7 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.Request.First().Services = services.ToArray();
+                res.Services = services.ToArray();
             }
 
             return res;
