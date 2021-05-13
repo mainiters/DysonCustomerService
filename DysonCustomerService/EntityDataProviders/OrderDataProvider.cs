@@ -25,19 +25,24 @@ namespace DysonCustomerService.EntityDataProviders
                 AdditionalColumns = new List<string>()
                 {
                     "Product.Code",
-                    "PriceList.TrcCode"
+                    "PriceList.TrcCode",
+                    "TrcSalesSource.TrcCode",
+                    "TrcSerialNumber.TrcSerialNumber.Name",
                 }
             });
 
             esq.AddColumn("TrcOrderState.Name");
             esq.AddColumn("TrcOrcerPaymentWay.Name");
-            esq.AddColumn("TrcDeliveryCompany.Name");
+            esq.AddColumn("TrcDeliveryCompany.TrcCode");
             esq.AddColumn("Owner.Name");
             esq.AddColumn("TrcOrganization.Name");
-            esq.AddColumn("TrcWarehouseForShippingOrder.Name");
+            esq.AddColumn("TrcWarehouseForShippingOrder.TrcCode");
 
             esq.AddColumn("Account.Trc1CAccountID");
             esq.AddColumn("Contact.Trc1CContactID");
+
+            esq.AddColumn("TrcASCAndKC.TrcCode");
+            esq.AddColumn("TrcOrganization.Trc1CAccountID");
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -47,10 +52,25 @@ namespace DysonCustomerService.EntityDataProviders
             string AccountId = this.EntityObject.GetTypedColumnValue<string>("Account_Trc1CAccountID");
             string ContactId = this.EntityObject.GetTypedColumnValue<string>("Contact_Trc1CContactID");
 
+            string AscAndKcCode = this.EntityObject.GetTypedColumnValue<string>("TrcASCAndKC_TrcCode");
+            string OrganizationCode = this.EntityObject.GetTypedColumnValue<string>("TrcOrganization_Trc1CAccountID");
+
             var clientEntityName = string.IsNullOrEmpty(AccountId) ? "Contact" : "Account";
 
             var addresEntity = this.GetAddressData(clientEntityName, this.EntityObject.GetTypedColumnValue<Guid>(clientEntityName + "Id"), this.EntityObject.GetTypedColumnValue<string>("DeliveryAddress"));
 
+            decimal DiscountAmount = 0;
+
+            if (this.RelatedEntitiesData.Count > 0)
+            {
+                var orderProducts = new List<ЗаказКлиентаTovars>();
+
+                foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection)
+                {
+                    DiscountAmount += item.GetTypedColumnValue<decimal>("DiscountAmount");
+                }
+            }
+    
             // Данные заказа
             var res = new ЗаказКлиента()
             {
@@ -66,7 +86,7 @@ namespace DysonCustomerService.EntityDataProviders
                 orderIdPublic = int.Parse(new string(this.EntityObject.GetTypedColumnValue<string>("Number").Where(c => char.IsDigit(c)).ToArray())),
                 OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Name"),
                 TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
-                TK = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryCompany_Name"),
+                TK = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryCompany_TrcCode"),
                 PayType = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
                 LogisticComment = this.EntityObject.GetTypedColumnValue<string>("TrcTransportDepartmentComment"),
                 OrderSumRUB = this.EntityObject.GetTypedColumnValue<decimal>("Amount"),
@@ -83,10 +103,10 @@ namespace DysonCustomerService.EntityDataProviders
                 email = this.EntityObject.GetTypedColumnValue<string>("TrcClientEmail"),
                 CourierInfo = this.EntityObject.GetTypedColumnValue<string>("Comment"),
                 ShipDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcShipmentDate"),
-                Organization = this.EntityObject.GetTypedColumnValue<string>("TrcOrganization_Name"),
-                WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_Name"),
+                Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
+                WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_TrcCode"),
                 CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
-                FIAS = this.EntityObject.GetTypedColumnValue<string>("DeliveryAddress"),
+                FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),
                 Metro = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcMetroStation"),
                 House = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcHouse"),
                 Building = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcBuilding"),
@@ -97,8 +117,38 @@ namespace DysonCustomerService.EntityDataProviders
                 Intercom = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcIntercom"),
                 City = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("City_Name"),
                 Area = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcArea_Name"),
-                Lat = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("GPSE"),
-                Lon = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("GPSN")
+                Lat = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcGPSE"),
+                Lon = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcGPSN"),
+                kladr = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcKladrCode"),
+                Region = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("Region_Name"),
+                Street = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcStreet"),
+                Locality = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
+
+                CreditStatus = string.Empty,
+                CreditSumm = 0,
+                paper_id = string.Empty,
+                InCash = 0,
+                OnLinePaid =0,
+                PanType = string.Empty,
+                Date_Tk_Load = new DateTime(),
+                DistanceFromMKAD = string.Empty,
+
+                DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 ? 
+                                    this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection.First().GetTypedColumnValue<string>("TrcSalesSource_TrcCode") :
+                                    string.Empty,
+                
+                NumberDeparture = string.Empty,
+                OrderType = 0,
+                PayDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDateHoldingClientsFunds"),
+
+                PromoSum = DiscountAmount,
+                
+                SOCR_Area = string.Empty,
+                SOCR_City = string.Empty,
+                SOCR_Locality = string.Empty,
+                SOCR_Region = string.Empty,
+                SOCR_Street = string.Empty
+                
             };
 
             // Деталь продуктов
@@ -118,7 +168,8 @@ namespace DysonCustomerService.EntityDataProviders
                         ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
                         PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode"),
                         NDS = this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT"),
-                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TrcVATrate")
+                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TrcVATrate"),
+                        SN = item.GetTypedColumnValue<string>("TrcSerialNumber_TrcSerialNumber_Name")
                     });
                 }
 
@@ -143,6 +194,8 @@ namespace DysonCustomerService.EntityDataProviders
 
             esq.AddColumn("City.Name");
             esq.AddColumn("TrcArea.Name");
+            esq.AddColumn("TrcSettlement.Name");
+            esq.AddColumn("Region.Name");
 
             esq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, mainSchemaName, clientId));
             esq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, "Address", address));

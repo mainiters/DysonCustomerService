@@ -18,7 +18,12 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            esq.AddColumn("TrcCustomerSegment.Name");
+            esq.AddColumn("TrcAdditionalMode.Name");
+            esq.AddColumn("AirHumidificationType.Name");
+            esq.AddColumn("Category.Name");
+            esq.AddColumn("TrcDeviceType.Name");
+            esq.AddColumn("TrcDistribution.Name");
+            esq.AddColumn("TrcGuarantee.Name");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -36,7 +41,20 @@ namespace DysonCustomerService.EntityDataProviders
         {
             var res = new Номенклатура()
             {
-                //Article = this.EntityObject.GetTypedColumnValue<string>("Code")
+                AdditionalMode = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalMode_Name"),
+                AddressProduction = this.EntityObject.GetTypedColumnValue<string>("TrcAddressProduction"),
+                AirHumidificationType = this.EntityObject.GetTypedColumnValue<string>("TrcAirHumidificationType_Name"),
+                AssemblyWeight = this.EntityObject.GetTypedColumnValue<decimal>("TrcAssemblyWeight"),
+                CableLengthMeter = this.EntityObject.GetTypedColumnValue<decimal>("TrcCableLengthMeter"),
+                Category = this.EntityObject.GetTypedColumnValue<string>("Category_Name"),
+                Code = this.EntityObject.GetTypedColumnValue<string>("Code"),
+                ContainerVolume = this.EntityObject.GetTypedColumnValue<decimal>("TrcContainerVolume"),
+                DeviceType = this.EntityObject.GetTypedColumnValue<string>("TrcDeviceType_Name"),
+                Distribution = this.EntityObject.GetTypedColumnValue<string>("TrcDistribution_Name"),
+                Guarantee = this.EntityObject.GetTypedColumnValue<string>("TrcGuarantee_Name"),
+                HeatingElemenType = this.EntityObject.GetTypedColumnValue<string>("TrcHeatingElemenType_Name"),
+
+                FilterTypes = string.Empty,
             };
 
             return res;
