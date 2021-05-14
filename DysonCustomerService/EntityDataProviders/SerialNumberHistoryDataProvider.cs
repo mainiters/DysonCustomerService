@@ -19,25 +19,33 @@ namespace DysonCustomerService.EntityDataProviders
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
             esq.AddColumn("TrcSerialNumber.Name");
-            esq.AddColumn("TrcProduct.Name");
-            esq.AddColumn("TrcWarrantyType.Name");
-            esq.AddColumn("TrcRetailStore.Name");
-            
+            esq.AddColumn("TrcProduct.Code");
+            esq.AddColumn("TrcWarrantyType.TrcCode");
+            esq.AddColumn("TrcRetailStore.TrcCode");
+            esq.AddColumn("TrcAccount.Trc1CAccountID");
+            esq.AddColumn("TrcContact.Trc1CContactID");
+
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
 
         public override object GetEntityData(Guid EntityId)
         {
+            string AccountId = this.EntityObject.GetTypedColumnValue<string>("TrcAccount_Trc1CAccountID");
+            string ContactId = this.EntityObject.GetTypedColumnValue<string>("TrcContact_Trc1CContactID");
+
             // Данные История серийных номеров
             var res = new РегистрацияСерийныхНомеровКлиентов
             {
+                ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
+
                 SN = this.EntityObject.GetTypedColumnValue<string>("TrcSerialNumber_Name"),
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRegistrationDate"),
-                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Name"),
-                TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_Name"),
-                Shop = this.EntityObject.GetTypedColumnValue<string>("TrcRetailStore_Name"),
+                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Code"),
+                TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_TrcCode"),
+                Shop = this.EntityObject.GetTypedColumnValue<string>("TrcRetailStore_TrcCode"),
                 DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),
-                Comment = this.EntityObject.GetTypedColumnValue<string>("TrcComment")
+                Comment = this.EntityObject.GetTypedColumnValue<string>("TrcComment"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion")
             };
 
             return res;

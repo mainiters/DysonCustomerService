@@ -19,20 +19,21 @@ namespace DysonCustomerService.EntityDataProviders
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
             esq.AddColumn("TrcAdditionalMode.Name");
-            esq.AddColumn("AirHumidificationType.Name");
+            esq.AddColumn("TrcAirHumidificationType.Name");
             esq.AddColumn("Category.Name");
             esq.AddColumn("TrcDeviceType.Name");
             esq.AddColumn("TrcDistribution.Name");
             esq.AddColumn("TrcGuarantee.Name");
-
-            relatedEntitiesData.Add(new RelatedEntitiesData()
-            {
-                Name = "AccountAddress",
-                AdditionalColumns = new List<string>()
-                {
-
-                }
-            });
+            esq.AddColumn("TrcHeatingElemenType.Name");
+            esq.AddColumn("TrcLifeTime.Name");
+            esq.AddColumn("TrcOriginCountry.Name");
+            esq.AddColumn("TrcPipeType.Name");
+            esq.AddColumn("TrcPowerSource.Name");
+            esq.AddColumn("TrcProductModel.Name");
+            esq.AddColumn("TrcProductSubcategory.Name");
+            esq.AddColumn("TradeMark.Name");
+            esq.AddColumn("Type.Name");
+            esq.AddColumn("Unit.Name");
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -53,8 +54,47 @@ namespace DysonCustomerService.EntityDataProviders
                 Distribution = this.EntityObject.GetTypedColumnValue<string>("TrcDistribution_Name"),
                 Guarantee = this.EntityObject.GetTypedColumnValue<string>("TrcGuarantee_Name"),
                 HeatingElemenType = this.EntityObject.GetTypedColumnValue<string>("TrcHeatingElemenType_Name"),
+                IssueYear = this.EntityObject.GetTypedColumnValue<string>("TrcIssueYear"),
+                LifeTime = this.EntityObject.GetTypedColumnValue<string>("TrcLifeTime_Name"),
+                MaxTemperature = this.EntityObject.GetTypedColumnValue<decimal>("TrcMaxTemperature"),
+                MaxWaterConsumption = this.EntityObject.GetTypedColumnValue<decimal>("TrcMaxWaterConsumption"),
+                MinTemperature = this.EntityObject.GetTypedColumnValue<decimal>("TrcMinTemperature"),
+                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
+                NoiseLevelWithoutPipeEco = this.EntityObject.GetTypedColumnValue<decimal>("TrcNoiseLevelWithoutPipeEco"),
+                NoiseLevelWithoutPipeTurbo = this.EntityObject.GetTypedColumnValue<decimal>("TrcNoiseLevelWithoutPipeTurbo"),
+                NoiseLevelWithPipeEco = this.EntityObject.GetTypedColumnValue<decimal>("TrcNoiseLevelWithPipeEco"),
+                NoiseLevelWithPipeTurbo = this.EntityObject.GetTypedColumnValue<decimal>("TrcNoiseLevelWithPipeTurbo"),
+                NumberOfAirFlowRates = this.EntityObject.GetTypedColumnValue<int>("TrcNumberOfAirFlowRates"),
+                OptimalVisitingArea = this.EntityObject.GetTypedColumnValue<decimal>("TrcOptimalVisitingArea"),
+                OriginCountry = this.EntityObject.GetTypedColumnValue<string>("TrcOriginCountry_Name"),
+                PackingHeight = this.EntityObject.GetTypedColumnValue<decimal>("TrcPackingHeight"),
+                PackingLength = this.EntityObject.GetTypedColumnValue<decimal>("TrcPackingLength"),
+                PackingVolume = this.EntityObject.GetTypedColumnValue<decimal>("TrcPackingVolume"),
+                PackingWidth = this.EntityObject.GetTypedColumnValue<decimal>("TrcPackingWidth"),
+                Personalization = this.EntityObject.GetTypedColumnValue<bool>("TrcPersonalization"),
+                PipeType = this.EntityObject.GetTypedColumnValue<string>("TrcPipeType_Name"),
+                PowerSource = this.EntityObject.GetTypedColumnValue<string>("TrcPowerSource_Name"),
+                PrintName = this.EntityObject.GetTypedColumnValue<string>("TrcPrintName"),
+                ProductColor = this.EntityObject.GetTypedColumnValue<string>("TrcProductColor"),
+                ProductGrossWeightInPackaging = this.EntityObject.GetTypedColumnValue<decimal>("TrcProductGrossWeightInPackaging"),
+                ProductModel = this.EntityObject.GetTypedColumnValue<string>("TrcProductModel_Name"),
+                ProductPowerConsumption = this.EntityObject.GetTypedColumnValue<decimal>("TrcProductPowerConsumption"),
+                ProductSubcategory = this.EntityObject.GetTypedColumnValue<string>("TrcProductSubcategory_Name"),
+                SuctionPowerAuto = this.EntityObject.GetTypedColumnValue<decimal>("TrcSuctionPowerAuto"),
+                SuctionPowerEco = this.EntityObject.GetTypedColumnValue<decimal>("TrcSuctionPowerEco"),
+                SuctionPowerTurbo = this.EntityObject.GetTypedColumnValue<decimal>("TrcSuctionPowerTurbo"),
+                TemperatureMode = this.EntityObject.GetTypedColumnValue<int>("TrcTemperatureMode"),
+                TradeMark = this.EntityObject.GetTypedColumnValue<string>("TradeMark_Name"),
+                TrcMarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                Type = this.EntityObject.GetTypedColumnValue<string>("Type_Name"),
+                UnitID = this.EntityObject.GetTypedColumnValue<string>("Unit_Name"),
+                WaterTankVolume = this.EntityObject.GetTypedColumnValue<decimal>("TrcWaterTankVolume"),
+                Weight = this.EntityObject.GetTypedColumnValue<decimal>("TrcWeight"),
+                WorkName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkName"),
 
                 FilterTypes = string.Empty,
+                Nozzle = string.Empty,
+                
             };
 
             return res;
