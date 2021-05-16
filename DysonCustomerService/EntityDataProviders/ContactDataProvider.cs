@@ -37,8 +37,6 @@ namespace DysonCustomerService.EntityDataProviders
         {
             var res = new Контрагенты();
 
-            //res.ID_Pack = new Guid().ToString();
-
             var clientId = this.EntityObject.GetTypedColumnValue<Guid>("Id");
             var address = this.EntityObject.GetTypedColumnValue<string>("Address");
 

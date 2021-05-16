@@ -40,6 +40,10 @@ namespace DysonCustomerService.EntityDataProviders
 
         public override object GetEntityData(Guid EntityId)
         {
+            var NozzleClumnNames = this.EntityObject.Schema.Columns.Where(e => e.Name.ToUpper().Contains("NOZZLE"));
+            var NozzleList = NozzleClumnNames.Where(e => this.EntityObject.GetTypedColumnValue<bool>(e)).ToList();
+            var NozzleString = string.Join("; ", NozzleList);
+
             var res = new Номенклатура()
             {
                 AdditionalMode = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalMode_Name"),
@@ -93,8 +97,7 @@ namespace DysonCustomerService.EntityDataProviders
                 WorkName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkName"),
 
                 FilterTypes = string.Empty,
-                Nozzle = string.Empty,
-                
+                Nozzle = NozzleString
             };
 
             return res;

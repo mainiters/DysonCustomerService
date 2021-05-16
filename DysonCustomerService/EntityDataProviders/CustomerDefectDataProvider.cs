@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class CustomerDefectDataProvider : BaseEntityDataProvider
     {
         public CustomerDefectDataProvider(Guid Id, UserConnection UserConnection)
-            : base("TrcCustomerDefect", Id, UserConnection)
+            : base("TrcCustomerDefect", Id, UserConnection, "TrcCode")
         {
 
         }

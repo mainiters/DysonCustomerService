@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class SysAdminUnitDataProvider : BaseEntityDataProvider
     {
         public SysAdminUnitDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Contact", Id, UserConnection)
+            : base("Contact", Id, UserConnection, "Trc1CContactID")
         {
 
         }
