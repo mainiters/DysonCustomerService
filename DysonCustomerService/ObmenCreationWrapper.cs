@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -131,9 +132,12 @@ namespace DysonCustomerService
             service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
 
-        public async Task SendRequest(string methodName, Guid entityId)
+        public void SendRequest(string methodName, Guid entityId, out string requestStr, out string responseStr)
         {
             var retryCount = 0;
+
+            requestStr = string.Empty;
+            responseStr = string.Empty;
 
             while (true)
             {
@@ -145,15 +149,13 @@ namespace DysonCustomerService
 
                     var data = dataProvider.GetEntityData(entityId);
 
-                    var str = Serialize<ПакетКонтрагентов>(data as ПакетКонтрагентов);
-
-                    Console.WriteLine(str);
+                    requestStr = GetSerializedData(data);
 
                     var response = service.PostData(dataProvider.GetServiceMethodName() ?? methodName, data);
 
-                    dataProvider.ProcessResponse(response);
+                    responseStr = GetSerializedData(response);
 
-                    Console.WriteLine(response);
+                    dataProvider.ProcessResponse(response);
 
                     break;
                 }
@@ -167,7 +169,7 @@ namespace DysonCustomerService
                     {
                         retryCount++;
 
-                        await Task.Delay(this.options.RetryDelay);
+                        Thread.Sleep(this.options.RetryDelay);
                     }
                     else
                     {
@@ -177,26 +179,12 @@ namespace DysonCustomerService
             }
         }
 
-        public string Serialize<T>(T value)
+        protected string GetSerializedData(object data)
         {
-            if (value == null)
-            {
-                return string.Empty;
-            }
-            try
-            {
-                var xmlserializer = new XmlSerializer(typeof(T));
-                var stringWriter = new StringWriter();
-                using (var writer = XmlWriter.Create(stringWriter))
-                {
-                    xmlserializer.Serialize(writer, value);
-                    return stringWriter.ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("An error occurred", ex);
-            }
+            var serxml = new System.Xml.Serialization.XmlSerializer(data.GetType());
+            var ms = new MemoryStream();
+            serxml.Serialize(ms, data);
+            return Encoding.UTF8.GetString(ms.ToArray());
         }
     }
 }

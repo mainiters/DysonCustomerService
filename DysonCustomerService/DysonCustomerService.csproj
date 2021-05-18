@@ -222,6 +222,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EntityDataProviders\SerialNumberHistoryDataProvider.cs" />
     <Compile Include="EntityDataProviders\SysAdminUnitDataProvider.cs" />
+    <Compile Include="SoapMessageLogger.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
