@@ -17,6 +17,8 @@
 				elementFormDefault="qualified">
 			<xs:complexType name="ДефектыСоСловКлиента">
 				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
 					<xs:element name="Name"
@@ -356,8 +358,6 @@
 							type="xs:string"/>
 					<xs:element name="ThereAreLK"
 							type="xs:boolean"/>
-					<xs:element name="FIAS"
-							type="xs:string"/>
 					<xs:element name="ObjectTypeList"
 							type="xs:string"/>
 					<xs:element name="FIOYO"
@@ -382,13 +382,19 @@
 							type="xs:string"/>
 					<xs:element name="StatusClient"
 							type="xs:string"/>
+					<xs:element name="AddressFact"
+							type="xs:string"/>
+					<xs:element name="AddressLegal"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Номенклатура">
 				<xs:sequence>
-					<xs:element name="TrcMarkDeletion"
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="Code"
+					<xs:element name="Article"
 							type="xs:string"/>
 					<xs:element name="WorkName"
 							type="xs:string"/>
@@ -587,6 +593,8 @@
 			</xs:complexType>
 			<xs:complexType name="Пользователи">
 				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
 					<xs:element name="Name"

@@ -37,7 +37,8 @@ namespace DysonCustomerService.EntityDataProviders
                 AdditionalColumns = new List<string>()
                 {
                     "TrcFiasCode",
-                    "Primary"
+                    "Primary",
+                    "AddressType"
                 }
             });
 
@@ -54,20 +55,26 @@ namespace DysonCustomerService.EntityDataProviders
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
-            var fias = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
-                .First().EntityCollection.Where(e => e.GetTypedColumnValue<bool>("Primary"))
-                .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
+            var addressLegal = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
+                .First().EntityCollection.Where(e => e.GetTypedColumnValue<Guid>("AddressTypeId") == Guid.Parse("770bf68c-4b6e-df11-b988-001d60e938c6"))
+                .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
+
+            var addressFact = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
+                .First().EntityCollection.Where(e => e.GetTypedColumnValue<Guid>("AddressTypeId") == Guid.Parse("780bf68c-4b6e-df11-b988-001d60e938c6"))
+                .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
 
             // Данные Контрагента
             res = new Контрагенты()
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
-                FIAS = fias ?? string.Empty,
                 ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_TrcCode"),
                 INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
                 KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),
-                
+
+                AddressFact = addressFact,
+                AddressLegal = addressLegal,
+
                 FIOYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_Name"),
                 PostYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_JobTitle"),
                 MobTelYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_MobilePhone"),
@@ -88,7 +95,7 @@ namespace DysonCustomerService.EntityDataProviders
                 FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
                 IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
-
+                
                 Legal = true,
                 FIO_F = string.Empty,
                 MiddleName_F = string.Empty,
@@ -96,6 +103,10 @@ namespace DysonCustomerService.EntityDataProviders
                 PhoneNumber = string.Empty,
                 DysonChannelCode = string.Empty,
                 StatusClient = string.Empty,
+
+                ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsRegisteredOnSite"),
+                PointSale = this.EntityObject.GetTypedColumnValue<bool>("TrcPointSale"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
 
                 Email = this.GetEmail()
             };

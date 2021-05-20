@@ -26,7 +26,9 @@ namespace DysonCustomerService.EntityDataProviders
             // Данные Пользователей
             var res = new Пользователи()
             {
-                Name = this.EntityObject.GetTypedColumnValue<string>("Name")
+                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CContactID"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion")
             };
 
             return res;

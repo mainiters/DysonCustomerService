@@ -31,7 +31,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcAccount.Trc1CAccountID");
             esq.AddColumn("TrcContact.Trc1CContactID");
 
-            esq.AddColumn("TrcASCAndKC.TrcCode");
+            esq.AddColumn("TrcServiceCenter.TrcCode");
             esq.AddColumn("TrcOrganization.Trc1CAccountID");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
@@ -60,7 +60,7 @@ namespace DysonCustomerService.EntityDataProviders
                 FilterFieldName = "TrcRequest",
                 AdditionalColumns = new List<string>()
                 {
-                    "TrcProduct.Code"
+                    "TrcProduct.Trc1CProductID"
                 }
             });
 
@@ -70,7 +70,7 @@ namespace DysonCustomerService.EntityDataProviders
                 FilterFieldName = "TrcRequest",
                 AdditionalColumns = new List<string>()
                 {
-                    "TrcRequestService.Code"
+                    "TrcRequestService.Trc1CProductID"
                 }
             });
             
@@ -83,7 +83,7 @@ namespace DysonCustomerService.EntityDataProviders
             string AccountId = this.EntityObject.GetTypedColumnValue<string>("TrcAccount_Trc1CAccountID");
             string ContactId = this.EntityObject.GetTypedColumnValue<string>("TrcContact_Trc1CContactID");
 
-            string AscAndKcCode = this.EntityObject.GetTypedColumnValue<string>("TrcASCAndKC_TrcCode");
+            string AscAndKcCode = this.EntityObject.GetTypedColumnValue<string>("TrcServiceCenter_TrcCode");
             string OrganizationCode = this.EntityObject.GetTypedColumnValue<string>("TrcOrganization_Trc1CAccountID");
 
             // Данные заказа
@@ -108,7 +108,7 @@ namespace DysonCustomerService.EntityDataProviders
                 InternalComment = this.EntityObject.GetTypedColumnValue<string>("TrcInternalComment"),
                 ViolationOperation = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation"),
                 Shop = this.EntityObject.GetTypedColumnValue<string>("TrcShop_TrcCode"),
-
+                
                 CommentsResultRepair = 0,
                 FeedbackClient = string.Empty
             };
@@ -135,7 +135,7 @@ namespace DysonCustomerService.EntityDataProviders
                 {
                     clientDefects.Add(new ЗаявкаНаРемонтDefectsAccordingClient()
                     {
-                        DefectAccordingClient = item.GetTypedColumnValue<string>("TrcDefect_Name")
+                        DefectAccordingClient = item.GetTypedColumnValue<string>("TrcDefect_TrcCode")
                     });
                 }
 
@@ -148,7 +148,7 @@ namespace DysonCustomerService.EntityDataProviders
                 {
                     spareParts.Add(new ЗаявкаНаРемонтSpares()
                     {
-                        Spare = item.GetTypedColumnValue<string>("TrcProduct_Code"),
+                        Spare = item.GetTypedColumnValue<string>("TrcProduct_Trc1CProductID"),
                         Required = item.GetTypedColumnValue<int>("TrcQuantity"),
                         Availability = item.GetTypedColumnValue<int>("TrcAvailability"),
                         Price = item.GetTypedColumnValue<decimal>("TrcPrice"),
@@ -166,7 +166,7 @@ namespace DysonCustomerService.EntityDataProviders
                 {
                     services.Add(new ЗаявкаНаРемонтServices()
                     {
-                        Service = item.GetTypedColumnValue<string>("TrcRequestService_Code"),
+                        Service = item.GetTypedColumnValue<string>("TrcRequestService_Trc1CProductID"),
                         Kol = item.GetTypedColumnValue<int>("TrcQuantity"),
                         Amount = item.GetTypedColumnValue<decimal>("TrcCost"),
                         Paid = item.GetTypedColumnValue<bool>("TrcPaidService"),

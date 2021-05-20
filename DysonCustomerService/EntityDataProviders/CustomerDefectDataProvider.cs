@@ -27,7 +27,8 @@ namespace DysonCustomerService.EntityDataProviders
             var res = new ДефектыСоСловКлиента()
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
-                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion")
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcCode")
             };
 
             return res;

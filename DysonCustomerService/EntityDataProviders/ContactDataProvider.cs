@@ -42,16 +42,15 @@ namespace DysonCustomerService.EntityDataProviders
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
-            var fias = RelatedEntitiesData.Where(e => e.Name == "ContactAddress")
+            var addressFact = RelatedEntitiesData.Where(e => e.Name == "ContactAddress")
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<bool>("Primary"))
-                .FirstOrDefault()?.GetTypedColumnValue<string>("TrcFiasCode");
+                .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
 
             // Данные Контактов
             res = new Контрагенты()
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("MobilePhone"),
-                FIAS = fias ?? string.Empty,
                 FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
                 FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
                 FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
@@ -63,13 +62,19 @@ namespace DysonCustomerService.EntityDataProviders
                 IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CContactID"),
 
+                AddressFact = addressFact,
+                AddressLegal = string.Empty,
+                
                 FIO_F = this.EntityObject.GetTypedColumnValue<string>("Surname"),
                 MiddleName_F = this.EntityObject.GetTypedColumnValue<string>("MiddleName"),
                 Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
                 StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
                 Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
 
-
+                ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsRegisteredOnSite"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                
+                PointSale = false,
                 Legal = false,
                 LegalPhoneNumber = string.Empty,
                 DysonChannelCode = string.Empty,

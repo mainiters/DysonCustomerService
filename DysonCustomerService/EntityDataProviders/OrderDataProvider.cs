@@ -24,7 +24,7 @@ namespace DysonCustomerService.EntityDataProviders
                 Name = "OrderProduct",
                 AdditionalColumns = new List<string>()
                 {
-                    "Product.Code",
+                    "Product.Trc1CProductID",
                     "PriceList.TrcCode",
                     "TrcSalesSource.TrcCode",
                     "TrcSerialNumber.TrcSerialNumber.Name",
@@ -34,7 +34,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcOrderState.Name");
             esq.AddColumn("TrcOrcerPaymentWay.Name");
             esq.AddColumn("TrcDeliveryCompany.TrcCode");
-            esq.AddColumn("Owner.Name");
+            esq.AddColumn("Owner.Trc1CContactID");
             esq.AddColumn("TrcOrganization.Name");
             esq.AddColumn("TrcWarehouseForShippingOrder.TrcCode");
 
@@ -98,7 +98,7 @@ namespace DysonCustomerService.EntityDataProviders
                 //PayDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPaymentDate"),
                 DeliveryCost = this.EntityObject.GetTypedColumnValue<decimal>("TrcDeliveryCost"),
                 Comment = this.EntityObject.GetTypedColumnValue<string>("TrcCommentFrom1C"),
-                Manager = this.EntityObject.GetTypedColumnValue<string>("Owner_Name"),
+                Manager = this.EntityObject.GetTypedColumnValue<string>("Owner_Trc1CContactID"),
                 ManagerPhone = this.EntityObject.GetTypedColumnValue<string>("ContactNumber"),
                 email = this.EntityObject.GetTypedColumnValue<string>("TrcClientEmail"),
                 CourierInfo = this.EntityObject.GetTypedColumnValue<string>("Comment"),
@@ -147,7 +147,7 @@ namespace DysonCustomerService.EntityDataProviders
                 SOCR_City = string.Empty,
                 SOCR_Locality = string.Empty,
                 SOCR_Region = string.Empty,
-                SOCR_Street = string.Empty
+                SOCR_Street = string.Empty,
                 
             };
 
@@ -160,15 +160,15 @@ namespace DysonCustomerService.EntityDataProviders
                 {
                     orderProducts.Add(new ЗаказКлиентаTovars()
                     {
-                        TovarCod = item.GetTypedColumnValue<string>("Product_Code"),
+                        TovarCod = item.GetTypedColumnValue<string>("Product_Trc1CProductID"),
                         Kol = item.GetTypedColumnValue<decimal>("Quantity"),
                         TovarSum = item.GetTypedColumnValue<decimal>("TotalAmount"),
                         RRC = item.GetTypedColumnValue<decimal>("Price"),
                         ProductsCanceled = item.GetTypedColumnValue<bool>("TrcProductsCanceled"),
                         ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
                         PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode"),
-                        NDS = this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT"),
-                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TrcVATrate"),
+                        NDS = !string.IsNullOrEmpty(AccountId) ? this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT") : 0,
+                        NDS_S = !string.IsNullOrEmpty(AccountId) ? this.EntityObject.GetTypedColumnValue<int>("TrcVATrate") : 0,
                         SN = item.GetTypedColumnValue<string>("TrcSerialNumber_TrcSerialNumber_Name")
                     });
                 }

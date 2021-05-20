@@ -52,7 +52,7 @@ namespace DysonCustomerService.EntityDataProviders
                 AssemblyWeight = this.EntityObject.GetTypedColumnValue<decimal>("TrcAssemblyWeight"),
                 CableLengthMeter = this.EntityObject.GetTypedColumnValue<decimal>("TrcCableLengthMeter"),
                 Category = this.EntityObject.GetTypedColumnValue<string>("Category_Name"),
-                Code = this.EntityObject.GetTypedColumnValue<string>("Code"),
+                Article = this.EntityObject.GetTypedColumnValue<string>("Code"),
                 ContainerVolume = this.EntityObject.GetTypedColumnValue<decimal>("TrcContainerVolume"),
                 DeviceType = this.EntityObject.GetTypedColumnValue<string>("TrcDeviceType_Name"),
                 Distribution = this.EntityObject.GetTypedColumnValue<string>("TrcDistribution_Name"),
@@ -89,13 +89,13 @@ namespace DysonCustomerService.EntityDataProviders
                 SuctionPowerTurbo = this.EntityObject.GetTypedColumnValue<decimal>("TrcSuctionPowerTurbo"),
                 TemperatureMode = this.EntityObject.GetTypedColumnValue<int>("TrcTemperatureMode"),
                 TradeMark = this.EntityObject.GetTypedColumnValue<string>("TradeMark_Name"),
-                TrcMarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
                 Type = this.EntityObject.GetTypedColumnValue<string>("Type_Name"),
                 UnitID = this.EntityObject.GetTypedColumnValue<string>("Unit_Name"),
                 WaterTankVolume = this.EntityObject.GetTypedColumnValue<decimal>("TrcWaterTankVolume"),
                 Weight = this.EntityObject.GetTypedColumnValue<decimal>("TrcWeight"),
                 WorkName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkName"),
-
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CProductID"),
                 FilterTypes = string.Empty,
                 Nozzle = NozzleString
             };
