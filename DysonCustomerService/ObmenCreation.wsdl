@@ -27,8 +27,12 @@
 			</xs:complexType>
 			<xs:complexType name="ЗаказКлиента">
 				<xs:sequence>
+					<xs:element name="Number"
+							type="xs:string"/>
 					<xs:element name="CreateDate"
 							type="xs:dateTime"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
 					<xs:element name="Date_Tk_Load"
 							type="xs:dateTime"/>
 					<xs:element name="deliveryDate"
@@ -198,10 +202,12 @@
 			</xs:complexType>
 			<xs:complexType name="ЗаявкаНаРемонт">
 				<xs:sequence>
+					<xs:element name="Number"
+							type="xs:string"/>
 					<xs:element name="CreateDate"
 							type="xs:dateTime"/>
-					<xs:element name="DocumentNumber"
-							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
 					<xs:element name="Organization"
 							type="xs:string"/>
 					<xs:element name="WarehouseCode"
@@ -603,12 +609,14 @@
 			</xs:complexType>
 			<xs:complexType name="РегистрацияСерийныхНомеровКлиентов">
 				<xs:sequence>
+					<xs:element name="Number"
+							type="xs:string"/>
+					<xs:element name="CreateDate"
+							type="xs:dateTime"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
 					<xs:element name="SN"
 							type="xs:string"/>
-					<xs:element name="CreateDate"
-							type="xs:dateTime"/>
 					<xs:element name="Article"
 							type="xs:string"/>
 					<xs:element name="TypeGuarantee"

@@ -63,6 +63,16 @@ namespace DysonCustomerService.EntityDataProviders
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<Guid>("AddressTypeId") == Guid.Parse("780bf68c-4b6e-df11-b988-001d60e938c6"))
                 .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
 
+            if (string.IsNullOrEmpty(addressLegal))
+            {
+                addressLegal = string.Empty;
+            }
+
+            if (string.IsNullOrEmpty(addressFact))
+            {
+                addressFact = string.Empty;
+            }
+
             // Данные Контрагента
             res = new Контрагенты()
             {

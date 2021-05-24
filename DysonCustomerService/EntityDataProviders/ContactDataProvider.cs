@@ -46,6 +46,11 @@ namespace DysonCustomerService.EntityDataProviders
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<bool>("Primary"))
                 .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
 
+            if(string.IsNullOrEmpty(addressFact))
+            {
+                addressFact = string.Empty;
+            }
+
             // Данные Контактов
             res = new Контрагенты()
             {

@@ -102,8 +102,6 @@ namespace DysonCustomerService {
         /// <remarks/>
         public event PostSNCompletedEventHandler PostSNCompleted;
 
-        /// <remarks/>
-
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovars", RequestNamespace = "http://31.13.35.34/dyson_share_111", ResponseNamespace = "http://31.13.35.34/dyson_share_111", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public object PostData(string methodName, object data)
@@ -112,6 +110,7 @@ namespace DysonCustomerService {
             return results[0];
         }
 
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://31.13.35.34/dyson_share_111#ObmenCreation:PostClients", RequestNamespace="http://31.13.35.34/dyson_share_111", ResponseNamespace="http://31.13.35.34/dyson_share_111", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClients(ПакетКонтрагентов Pack) {
@@ -1188,11 +1187,13 @@ namespace DysonCustomerService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
     public partial class РегистрацияСерийныхНомеровКлиентов {
         
+        private string numberField;
+        
+        private System.DateTime createDateField;
+        
         private bool markDeletionField;
         
         private string snField;
-        
-        private System.DateTime createDateField;
         
         private string articleField;
         
@@ -1205,6 +1206,26 @@ namespace DysonCustomerService {
         private string commentField;
         
         private string iD_СlientField;
+        
+        /// <remarks/>
+        public string Number {
+            get {
+                return this.numberField;
+            }
+            set {
+                this.numberField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
         
         /// <remarks/>
         public bool MarkDeletion {
@@ -1223,16 +1244,6 @@ namespace DysonCustomerService {
             }
             set {
                 this.snField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
             }
         }
         
@@ -1340,9 +1351,11 @@ namespace DysonCustomerService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
     public partial class ЗаявкаНаРемонт {
         
+        private string numberField;
+        
         private System.DateTime createDateField;
         
-        private string documentNumberField;
+        private bool markDeletionField;
         
         private string organizationField;
         
@@ -1391,6 +1404,16 @@ namespace DysonCustomerService {
         private string iD_СlientField;
         
         /// <remarks/>
+        public string Number {
+            get {
+                return this.numberField;
+            }
+            set {
+                this.numberField = value;
+            }
+        }
+        
+        /// <remarks/>
         public System.DateTime CreateDate {
             get {
                 return this.createDateField;
@@ -1401,12 +1424,12 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string DocumentNumber {
+        public bool MarkDeletion {
             get {
-                return this.documentNumberField;
+                return this.markDeletionField;
             }
             set {
-                this.documentNumberField = value;
+                this.markDeletionField = value;
             }
         }
         
@@ -1919,7 +1942,11 @@ namespace DysonCustomerService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
     public partial class ЗаказКлиента {
         
+        private string numberField;
+        
         private System.DateTime createDateField;
+        
+        private bool markDeletionField;
         
         private System.DateTime date_Tk_LoadField;
         
@@ -2054,12 +2081,32 @@ namespace DysonCustomerService {
         private ЗаказКлиентаTovars[] tovarsField;
         
         /// <remarks/>
+        public string Number {
+            get {
+                return this.numberField;
+            }
+            set {
+                this.numberField = value;
+            }
+        }
+        
+        /// <remarks/>
         public System.DateTime CreateDate {
             get {
                 return this.createDateField;
             }
             set {
                 this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
             }
         }
         

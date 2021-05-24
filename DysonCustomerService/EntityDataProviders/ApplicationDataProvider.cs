@@ -90,7 +90,7 @@ namespace DysonCustomerService.EntityDataProviders
             var res = new ЗаявкаНаРемонт
             {
                 ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
-                DocumentNumber = this.EntityObject.GetTypedColumnValue<string>("TrcNumber"),
+                Number = this.EntityObject.GetTypedColumnValue<string>("TrcNumber"),
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCreationDate"),
                 Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcRepairWarehouse_TrcCode"),

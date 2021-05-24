@@ -149,11 +149,11 @@ namespace DysonCustomerService
 
                     var data = dataProvider.GetEntityData(entityId);
 
-                    requestStr = GetSerializedData(data);
+                    requestStr = ToXml(data);
 
                     var response = service.PostData(dataProvider.GetServiceMethodName() ?? methodName, data);
 
-                    responseStr = GetSerializedData(response);
+                    responseStr = ToXml(response);
 
                     dataProvider.ProcessResponse(response);
 
@@ -179,11 +179,44 @@ namespace DysonCustomerService
             }
         }
 
+        protected string ToXml(object data)
+        {
+            var removingNs = " xmlns=\"http://31.13.35.34/dyson_share_111\"";
+
+            var settings = new XmlWriterSettings
+            {
+                Indent = true,
+                OmitXmlDeclaration = true
+            };
+            var ns = new XmlSerializerNamespaces(new[] { XmlQualifiedName.Empty });
+
+            using (var stream = new StringWriter())
+            using (var writer = XmlWriter.Create(stream, settings))
+            {
+                var serializer = new XmlSerializer(data.GetType());
+                serializer.Serialize(writer, data, ns);
+                var res = stream.ToString();
+
+                int index = res.IndexOf(removingNs);
+
+                while (index > 0)
+                {
+                    res = res.Remove(index, removingNs.Length);
+                    index = res.IndexOf(removingNs);
+                }
+
+                return res;
+            }
+        }
+
         protected string GetSerializedData(object data)
         {
+            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
+            ns.Add("", "");
+
             var serxml = new System.Xml.Serialization.XmlSerializer(data.GetType());
             var ms = new MemoryStream();
-            serxml.Serialize(ms, data);
+            serxml.Serialize(ms, data, ns);
             return Encoding.UTF8.GetString(ms.ToArray());
         }
     }

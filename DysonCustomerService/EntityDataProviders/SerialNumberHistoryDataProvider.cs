@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class SerialNumberHistoryDataProvider : BaseEntityDataProvider
     {
         public SerialNumberHistoryDataProvider(Guid Id, UserConnection UserConnection)
-            : base("TrcSerialNumberHistory", Id, UserConnection)
+            : base("TrcSerialNumberHistory", Id, UserConnection, "TrcNumber")
         {
 
         }
@@ -45,7 +45,8 @@ namespace DysonCustomerService.EntityDataProviders
                 Shop = this.EntityObject.GetTypedColumnValue<string>("TrcRetailStore_TrcCode"),
                 DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),
                 Comment = this.EntityObject.GetTypedColumnValue<string>("TrcComment"),
-                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion")
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                Number = this.EntityObject.GetTypedColumnValue<string>("TrcNumber")
             };
 
             return res;

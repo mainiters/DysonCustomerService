@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class ProductDataProvider : BaseEntityDataProvider
     {
         public ProductDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Product", Id, UserConnection)
+            : base("Product", Id, UserConnection, "Trc1CProductID")
         {
 
         }
@@ -33,7 +33,8 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcProductSubcategory.Name");
             esq.AddColumn("TradeMark.Name");
             esq.AddColumn("Type.Name");
-            esq.AddColumn("Unit.Name");
+            esq.AddColumn("TrcProductColor.Name");
+            esq.AddColumn("Unit.Name"); 
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -79,7 +80,7 @@ namespace DysonCustomerService.EntityDataProviders
                 PipeType = this.EntityObject.GetTypedColumnValue<string>("TrcPipeType_Name"),
                 PowerSource = this.EntityObject.GetTypedColumnValue<string>("TrcPowerSource_Name"),
                 PrintName = this.EntityObject.GetTypedColumnValue<string>("TrcPrintName"),
-                ProductColor = this.EntityObject.GetTypedColumnValue<string>("TrcProductColor"),
+                ProductColor = this.EntityObject.GetTypedColumnValue<string>("TrcProductColor_Name"),
                 ProductGrossWeightInPackaging = this.EntityObject.GetTypedColumnValue<decimal>("TrcProductGrossWeightInPackaging"),
                 ProductModel = this.EntityObject.GetTypedColumnValue<string>("TrcProductModel_Name"),
                 ProductPowerConsumption = this.EntityObject.GetTypedColumnValue<decimal>("TrcProductPowerConsumption"),
