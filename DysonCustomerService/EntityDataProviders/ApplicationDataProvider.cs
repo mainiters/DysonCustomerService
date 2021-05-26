@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class ApplicationDataProvider : BaseEntityDataProvider
     {
         public ApplicationDataProvider(Guid Id, UserConnection UserConnection)
-            : base("TrcApplication", Id, UserConnection)
+            : base("TrcApplication", Id, UserConnection, "Trc1CApplicationID")
         {
 
         }
@@ -90,7 +90,7 @@ namespace DysonCustomerService.EntityDataProviders
             var res = new ЗаявкаНаРемонт
             {
                 ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
-                Number = this.EntityObject.GetTypedColumnValue<string>("TrcNumber"),
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CApplicationID"),
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCreationDate"),
                 Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcRepairWarehouse_TrcCode"),

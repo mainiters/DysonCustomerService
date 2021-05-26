@@ -12,7 +12,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class OrderDataProvider : BaseEntityDataProvider
     {
         public OrderDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Order", Id, UserConnection)
+            : base("Order", Id, UserConnection, "TrcOrderCode1C")
         {
 
         }
@@ -70,11 +70,12 @@ namespace DysonCustomerService.EntityDataProviders
                     DiscountAmount += item.GetTypedColumnValue<decimal>("DiscountAmount");
                 }
             }
-    
+
             // Данные заказа
             var res = new ЗаказКлиента()
             {
                 ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcOrderCode1C"),
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("CreatedOn"),
                 deliveryDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDesiredDeliveryDate"),
                 TimeDeliveryFrom = this.EntityObject.GetTypedColumnValue<int>("TrcDeliveryFromTime"),
@@ -106,6 +107,7 @@ namespace DysonCustomerService.EntityDataProviders
                 Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_TrcCode"),
                 CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
+
                 FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),
                 Metro = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcMetroStation"),
                 House = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcHouse"),
@@ -117,8 +119,8 @@ namespace DysonCustomerService.EntityDataProviders
                 Intercom = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcIntercom"),
                 City = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("City_Name"),
                 Area = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcArea_Name"),
-                Lat = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcGPSE"),
-                Lon = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcGPSN"),
+                Lat = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>(string.IsNullOrEmpty(AccountId) ? "TrcGPSE" : "GPSE"),
+                Lon = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>(string.IsNullOrEmpty(AccountId) ? "TrcGPSN" : "GPSN"),
                 kladr = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcKladrCode"),
                 Region = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("Region_Name"),
                 Street = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcStreet"),
@@ -139,7 +141,6 @@ namespace DysonCustomerService.EntityDataProviders
                 
                 NumberDeparture = string.Empty,
                 OrderType = 0,
-                PayDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDateHoldingClientsFunds"),
 
                 PromoSum = DiscountAmount,
                 

@@ -27,7 +27,7 @@
 			</xs:complexType>
 			<xs:complexType name="ЗаказКлиента">
 				<xs:sequence>
-					<xs:element name="Number"
+					<xs:element name="ID_1С"
 							type="xs:string"/>
 					<xs:element name="CreateDate"
 							type="xs:dateTime"/>
@@ -74,8 +74,6 @@
 					<xs:element name="PayTransactionODM"
 							type="xs:string"/>
 					<xs:element name="DataCheckM"
-							type="xs:dateTime"/>
-					<xs:element name="PayDate"
 							type="xs:dateTime"/>
 					<xs:element name="CreditStatus"
 							type="xs:string"/>
@@ -202,7 +200,7 @@
 			</xs:complexType>
 			<xs:complexType name="ЗаявкаНаРемонт">
 				<xs:sequence>
-					<xs:element name="Number"
+					<xs:element name="ID_1С"
 							type="xs:string"/>
 					<xs:element name="CreateDate"
 							type="xs:dateTime"/>
@@ -609,7 +607,7 @@
 			</xs:complexType>
 			<xs:complexType name="РегистрацияСерийныхНомеровКлиентов">
 				<xs:sequence>
-					<xs:element name="Number"
+					<xs:element name="ID_1С"
 							type="xs:string"/>
 					<xs:element name="CreateDate"
 							type="xs:dateTime"/>

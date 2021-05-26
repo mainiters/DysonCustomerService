@@ -1187,7 +1187,7 @@ namespace DysonCustomerService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
     public partial class РегистрацияСерийныхНомеровКлиентов {
         
-        private string numberField;
+        private string iD_1СField;
         
         private System.DateTime createDateField;
         
@@ -1208,12 +1208,12 @@ namespace DysonCustomerService {
         private string iD_СlientField;
         
         /// <remarks/>
-        public string Number {
+        public string ID_1С {
             get {
-                return this.numberField;
+                return this.iD_1СField;
             }
             set {
-                this.numberField = value;
+                this.iD_1СField = value;
             }
         }
         
@@ -1351,7 +1351,7 @@ namespace DysonCustomerService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
     public partial class ЗаявкаНаРемонт {
         
-        private string numberField;
+        private string iD_1СField;
         
         private System.DateTime createDateField;
         
@@ -1404,12 +1404,12 @@ namespace DysonCustomerService {
         private string iD_СlientField;
         
         /// <remarks/>
-        public string Number {
+        public string ID_1С {
             get {
-                return this.numberField;
+                return this.iD_1СField;
             }
             set {
-                this.numberField = value;
+                this.iD_1СField = value;
             }
         }
         
@@ -1942,7 +1942,7 @@ namespace DysonCustomerService {
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://31.13.35.34/dyson_share_111")]
     public partial class ЗаказКлиента {
         
-        private string numberField;
+        private string iD_1СField;
         
         private System.DateTime createDateField;
         
@@ -1989,8 +1989,6 @@ namespace DysonCustomerService {
         private string payTransactionODMField;
         
         private System.DateTime dataCheckMField;
-        
-        private System.DateTime payDateField;
         
         private string creditStatusField;
         
@@ -2081,12 +2079,12 @@ namespace DysonCustomerService {
         private ЗаказКлиентаTovars[] tovarsField;
         
         /// <remarks/>
-        public string Number {
+        public string ID_1С {
             get {
-                return this.numberField;
+                return this.iD_1СField;
             }
             set {
-                this.numberField = value;
+                this.iD_1СField = value;
             }
         }
         
@@ -2320,16 +2318,6 @@ namespace DysonCustomerService {
             }
             set {
                 this.dataCheckMField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime PayDate {
-            get {
-                return this.payDateField;
-            }
-            set {
-                this.payDateField = value;
             }
         }
         
