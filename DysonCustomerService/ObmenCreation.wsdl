@@ -33,10 +33,6 @@
 							type="xs:dateTime"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="Date_Tk_Load"
-							type="xs:dateTime"/>
-					<xs:element name="deliveryDate"
-							type="xs:date"/>
 					<xs:element name="TimeDeliveryFrom"
 							type="xs:int"/>
 					<xs:element name="TimeDeliveryTo"
@@ -66,7 +62,7 @@
 					<xs:element name="OrderSumRUB"
 							type="xs:decimal"/>
 					<xs:element name="PayTransaction"
-							type="xs:int"/>
+							type="xs:string"/>
 					<xs:element name="DataReleaseH"
 							type="xs:dateTime"/>
 					<xs:element name="DataReleaseM"
@@ -159,7 +155,7 @@
 							type="xs:string"/>
 					<xs:element name="CommentTK"
 							type="xs:string"/>
-					<xs:element name="ID_Сlient"
+					<xs:element name="Account"
 							type="xs:string"/>
 					<xs:element name="Tovars"
 							maxOccurs="unbounded">
@@ -196,17 +192,21 @@
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
+					<xs:element name="StatusTK"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="ЗаявкаНаРемонт">
 				<xs:sequence>
 					<xs:element name="ID_1С"
 							type="xs:string"/>
-					<xs:element name="CreateDate"
-							type="xs:dateTime"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
+					<xs:element name="CreateDate"
+							type="xs:dateTime"/>
 					<xs:element name="Organization"
+							type="xs:string"/>
+					<xs:element name="Account"
 							type="xs:string"/>
 					<xs:element name="WarehouseCode"
 							type="xs:string"/>
@@ -239,10 +239,26 @@
 					<xs:element name="ViolationOperation"
 							type="xs:boolean"/>
 					<xs:element name="CommentsResultRepair"
-							type="xs:int"/>
-					<xs:element name="FeedbackClient"
 							type="xs:string"/>
-					<xs:element name="Defects"
+					<xs:element name="InterviewStatus"
+							type="xs:string"/>
+					<xs:element name="CustomerNote"
+							type="xs:string"/>
+					<xs:element name="NPSServiceIndex"
+							type="xs:int"/>
+					<xs:element name="ServiceDescription"
+							type="xs:string"/>
+					<xs:element name="NPSProductIndex"
+							type="xs:int"/>
+					<xs:element name="ProductDescription"
+							type="xs:string"/>
+					<xs:element name="RequestStatus"
+							type="xs:string"/>
+					<xs:element name="RequestFailureReason"
+							type="xs:string"/>
+					<xs:element name="ReplacementEquipmentRequired"
+							type="xs:boolean"/>
+					<xs:element name="RequestOpinion"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -251,16 +267,16 @@
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="DefectsAccordingClient"
+					<xs:element name="ClientDefect"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
-							<xs:attribute name="DefectAccordingClient"
+							<xs:attribute name="DefectsAccordingClient"
 									type="xs:string"
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="Spares"
+					<xs:element name="SparePart"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -284,14 +300,10 @@
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="Services"
+					<xs:element name="Service"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
-							<xs:sequence>
-								<xs:element name="Master"
-										type="xs:string"/>
-							</xs:sequence>
 							<xs:attribute name="Service"
 									type="xs:string"
 									use="required"/>
@@ -312,8 +324,6 @@
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="ID_Сlient"
-							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Контрагенты">

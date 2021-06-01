@@ -28,6 +28,7 @@ namespace DysonCustomerService.EntityDataProviders
                     "PriceList.TrcCode",
                     "TrcSalesSource.TrcCode",
                     "TrcSerialNumber.TrcSerialNumber.Name",
+                    "TrcStatusTK.Description"
                 }
             });
 
@@ -74,16 +75,15 @@ namespace DysonCustomerService.EntityDataProviders
             // Данные заказа
             var res = new ЗаказКлиента()
             {
-                ID_Сlient = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
+                Account = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcOrderCode1C"),
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("CreatedOn"),
-                deliveryDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDesiredDeliveryDate"),
                 TimeDeliveryFrom = this.EntityObject.GetTypedColumnValue<int>("TrcDeliveryFromTime"),
                 TimeDeliveryTo = this.EntityObject.GetTypedColumnValue<int>("TrcDeliveryToTime"),
                 TK_Plandate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDeliveryDate"),
                 completeDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcActualDeliveryDate"),
                 modifyDate = this.EntityObject.GetTypedColumnValue<DateTime>("ModifiedOn"),
-                orderID = this.EntityObject.GetTypedColumnValue<string>("Number"),
+                orderID = string.Empty,
                 orderIdPublic = int.Parse(new string(this.EntityObject.GetTypedColumnValue<string>("Number").Where(c => char.IsDigit(c)).ToArray())),
                 OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Name"),
                 TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
@@ -91,7 +91,7 @@ namespace DysonCustomerService.EntityDataProviders
                 PayType = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
                 LogisticComment = this.EntityObject.GetTypedColumnValue<string>("TrcTransportDepartmentComment"),
                 OrderSumRUB = this.EntityObject.GetTypedColumnValue<decimal>("Amount"),
-                PayTransaction = this.EntityObject.GetTypedColumnValue<int>("TrcTransactionCodePayU"),
+                PayTransaction = this.EntityObject.GetTypedColumnValue<string>("TrcTransactionCodePayU"),
                 DataReleaseH = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDateHoldingClientsFunds"),
                 DataReleaseM = this.EntityObject.GetTypedColumnValue<DateTime>("TrcActualWriteOffClientsFunds"),
                 PayTransactionODM = this.EntityObject.GetTypedColumnValue<string>("TrcTransactionsCodeOrangeData"),
@@ -107,6 +107,8 @@ namespace DysonCustomerService.EntityDataProviders
                 Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_TrcCode"),
                 CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                StatusTK = this.EntityObject.GetTypedColumnValue<string>("TrcStatusTK_Description"),
 
                 FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),
                 Metro = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcMetroStation"),
@@ -132,7 +134,6 @@ namespace DysonCustomerService.EntityDataProviders
                 InCash = 0,
                 OnLinePaid =0,
                 PanType = string.Empty,
-                Date_Tk_Load = new DateTime(),
                 DistanceFromMKAD = string.Empty,
 
                 DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 ? 
@@ -168,8 +169,8 @@ namespace DysonCustomerService.EntityDataProviders
                         ProductsCanceled = item.GetTypedColumnValue<bool>("TrcProductsCanceled"),
                         ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
                         PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode"),
-                        NDS = !string.IsNullOrEmpty(AccountId) ? this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT") : 0,
-                        NDS_S = !string.IsNullOrEmpty(AccountId) ? this.EntityObject.GetTypedColumnValue<int>("TrcVATrate") : 0,
+                        NDS = this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT"),
+                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TrcVATrate"),
                         SN = item.GetTypedColumnValue<string>("TrcSerialNumber_TrcSerialNumber_Name")
                     });
                 }

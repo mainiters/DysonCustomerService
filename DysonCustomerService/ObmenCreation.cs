@@ -1353,11 +1353,13 @@ namespace DysonCustomerService {
         
         private string iD_1СField;
         
-        private System.DateTime createDateField;
-        
         private bool markDeletionField;
         
+        private System.DateTime createDateField;
+        
         private string organizationField;
+        
+        private string accountField;
         
         private string warehouseCodeField;
         
@@ -1389,19 +1391,33 @@ namespace DysonCustomerService {
         
         private bool violationOperationField;
         
-        private int commentsResultRepairField;
+        private string commentsResultRepairField;
         
-        private string feedbackClientField;
+        private string interviewStatusField;
         
-        private ЗаявкаНаРемонтDefects[] defectsField;
+        private string customerNoteField;
         
-        private ЗаявкаНаРемонтDefectsAccordingClient[] defectsAccordingClientField;
+        private int nPSServiceIndexField;
         
-        private ЗаявкаНаРемонтSpares[] sparesField;
+        private string serviceDescriptionField;
         
-        private ЗаявкаНаРемонтServices[] servicesField;
+        private int nPSProductIndexField;
         
-        private string iD_СlientField;
+        private string productDescriptionField;
+        
+        private string requestStatusField;
+        
+        private string requestFailureReasonField;
+        
+        private bool replacementEquipmentRequiredField;
+        
+        private ЗаявкаНаРемонтRequestOpinion[] requestOpinionField;
+        
+        private ЗаявкаНаРемонтClientDefect[] clientDefectField;
+        
+        private ЗаявкаНаРемонтSparePart[] sparePartField;
+        
+        private ЗаявкаНаРемонтService[] serviceField;
         
         /// <remarks/>
         public string ID_1С {
@@ -1410,16 +1426,6 @@ namespace DysonCustomerService {
             }
             set {
                 this.iD_1СField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
             }
         }
         
@@ -1434,12 +1440,32 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
         public string Organization {
             get {
                 return this.organizationField;
             }
             set {
                 this.organizationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Account {
+            get {
+                return this.accountField;
+            }
+            set {
+                this.accountField = value;
             }
         }
         
@@ -1596,7 +1622,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public int CommentsResultRepair {
+        public string CommentsResultRepair {
             get {
                 return this.commentsResultRepairField;
             }
@@ -1606,66 +1632,136 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string FeedbackClient {
+        public string InterviewStatus {
             get {
-                return this.feedbackClientField;
+                return this.interviewStatusField;
             }
             set {
-                this.feedbackClientField = value;
+                this.interviewStatusField = value;
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Defects")]
-        public ЗаявкаНаРемонтDefects[] Defects {
+        public string CustomerNote {
             get {
-                return this.defectsField;
+                return this.customerNoteField;
             }
             set {
-                this.defectsField = value;
+                this.customerNoteField = value;
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DefectsAccordingClient")]
-        public ЗаявкаНаРемонтDefectsAccordingClient[] DefectsAccordingClient {
+        public int NPSServiceIndex {
             get {
-                return this.defectsAccordingClientField;
+                return this.nPSServiceIndexField;
             }
             set {
-                this.defectsAccordingClientField = value;
+                this.nPSServiceIndexField = value;
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Spares")]
-        public ЗаявкаНаРемонтSpares[] Spares {
+        public string ServiceDescription {
             get {
-                return this.sparesField;
+                return this.serviceDescriptionField;
             }
             set {
-                this.sparesField = value;
+                this.serviceDescriptionField = value;
             }
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Services")]
-        public ЗаявкаНаРемонтServices[] Services {
+        public int NPSProductIndex {
             get {
-                return this.servicesField;
+                return this.nPSProductIndexField;
             }
             set {
-                this.servicesField = value;
+                this.nPSProductIndexField = value;
             }
         }
         
         /// <remarks/>
-        public string ID_Сlient {
+        public string ProductDescription {
             get {
-                return this.iD_СlientField;
+                return this.productDescriptionField;
             }
             set {
-                this.iD_СlientField = value;
+                this.productDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RequestStatus {
+            get {
+                return this.requestStatusField;
+            }
+            set {
+                this.requestStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RequestFailureReason {
+            get {
+                return this.requestFailureReasonField;
+            }
+            set {
+                this.requestFailureReasonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ReplacementEquipmentRequired {
+            get {
+                return this.replacementEquipmentRequiredField;
+            }
+            set {
+                this.replacementEquipmentRequiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("RequestOpinion")]
+        public ЗаявкаНаРемонтRequestOpinion[] RequestOpinion {
+            get {
+                return this.requestOpinionField;
+            }
+            set {
+                this.requestOpinionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ClientDefect")]
+        public ЗаявкаНаРемонтClientDefect[] ClientDefect {
+            get {
+                return this.clientDefectField;
+            }
+            set {
+                this.clientDefectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("SparePart")]
+        public ЗаявкаНаРемонтSparePart[] SparePart {
+            get {
+                return this.sparePartField;
+            }
+            set {
+                this.sparePartField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Service")]
+        public ЗаявкаНаРемонтService[] Service {
+            get {
+                return this.serviceField;
+            }
+            set {
+                this.serviceField = value;
             }
         }
     }
@@ -1676,7 +1772,7 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://31.13.35.34/dyson_share_111")]
-    public partial class ЗаявкаНаРемонтDefects {
+    public partial class ЗаявкаНаРемонтRequestOpinion {
         
         private string defectField;
         
@@ -1698,18 +1794,18 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://31.13.35.34/dyson_share_111")]
-    public partial class ЗаявкаНаРемонтDefectsAccordingClient {
+    public partial class ЗаявкаНаРемонтClientDefect {
         
-        private string defectAccordingClientField;
+        private string defectsAccordingClientField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string DefectAccordingClient {
+        public string DefectsAccordingClient {
             get {
-                return this.defectAccordingClientField;
+                return this.defectsAccordingClientField;
             }
             set {
-                this.defectAccordingClientField = value;
+                this.defectsAccordingClientField = value;
             }
         }
     }
@@ -1720,7 +1816,7 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://31.13.35.34/dyson_share_111")]
-    public partial class ЗаявкаНаРемонтSpares {
+    public partial class ЗаявкаНаРемонтSparePart {
         
         private string spareField;
         
@@ -1807,9 +1903,7 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://31.13.35.34/dyson_share_111")]
-    public partial class ЗаявкаНаРемонтServices {
-        
-        private string masterField;
+    public partial class ЗаявкаНаРемонтService {
         
         private string serviceField;
         
@@ -1822,16 +1916,6 @@ namespace DysonCustomerService {
         private string contentField;
         
         private decimal priceField;
-        
-        /// <remarks/>
-        public string Master {
-            get {
-                return this.masterField;
-            }
-            set {
-                this.masterField = value;
-            }
-        }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -1948,10 +2032,6 @@ namespace DysonCustomerService {
         
         private bool markDeletionField;
         
-        private System.DateTime date_Tk_LoadField;
-        
-        private System.DateTime deliveryDateField;
-        
         private int timeDeliveryFromField;
         
         private int timeDeliveryToField;
@@ -1980,7 +2060,7 @@ namespace DysonCustomerService {
         
         private decimal orderSumRUBField;
         
-        private int payTransactionField;
+        private string payTransactionField;
         
         private System.DateTime dataReleaseHField;
         
@@ -2074,9 +2154,11 @@ namespace DysonCustomerService {
         
         private string commentTKField;
         
-        private string iD_СlientField;
+        private string accountField;
         
         private ЗаказКлиентаTovars[] tovarsField;
+        
+        private string statusTKField;
         
         /// <remarks/>
         public string ID_1С {
@@ -2105,27 +2187,6 @@ namespace DysonCustomerService {
             }
             set {
                 this.markDeletionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime Date_Tk_Load {
-            get {
-                return this.date_Tk_LoadField;
-            }
-            set {
-                this.date_Tk_LoadField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
-        public System.DateTime deliveryDate {
-            get {
-                return this.deliveryDateField;
-            }
-            set {
-                this.deliveryDateField = value;
             }
         }
         
@@ -2272,7 +2333,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public int PayTransaction {
+        public string PayTransaction {
             get {
                 return this.payTransactionField;
             }
@@ -2743,12 +2804,12 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string ID_Сlient {
+        public string Account {
             get {
-                return this.iD_СlientField;
+                return this.accountField;
             }
             set {
-                this.iD_СlientField = value;
+                this.accountField = value;
             }
         }
         
@@ -2760,6 +2821,16 @@ namespace DysonCustomerService {
             }
             set {
                 this.tovarsField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string StatusTK {
+            get {
+                return this.statusTKField;
+            }
+            set {
+                this.statusTKField = value;
             }
         }
     }
