@@ -110,14 +110,24 @@ namespace DysonCustomerService.EntityDataProviders
                 ViolationOperation = this.EntityObject.GetTypedColumnValue<bool>("TrcViolationOfExploitation"),
                 Shop = this.EntityObject.GetTypedColumnValue<string>("TrcShop_TrcCode"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
-                CommentsResultRepair = this.EntityObject.GetTypedColumnValue<string>("TrcResultComment")
+                CommentsResultRepair = this.EntityObject.GetTypedColumnValue<string>("TrcResultComment"),
+                InterviewStatus = this.EntityObject.GetTypedColumnValue<string>("TrcInterviewStatus")
             };
+
+            // Деталь Заключение специалиста
+            var expertOpinions = new List<ЗаявкаНаРемонтRequestOpinion>();
+
+            // Дефекты со слов клиента
+            var clientDefects = new List<ЗаявкаНаРемонтClientDefect>();
+
+            // Запчасти
+            var spareParts = new List<ЗаявкаНаРемонтSparePart>();
+
+            // Услуги
+            var services = new List<ЗаявкаНаРемонтService>();
 
             if (this.RelatedEntitiesData.Count > 0)
             {
-                // Деталь Заключение специалиста
-                var expertOpinions = new List<ЗаявкаНаРемонтRequestOpinion>();
-
                 foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "TrcExpertOpinion").First().EntityCollection)
                 {
                     expertOpinions.Add(new ЗаявкаНаРемонтRequestOpinion()
@@ -126,11 +136,6 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.RequestOpinion = expertOpinions.ToArray();
-
-                // Дефекты со слов клиента
-                var clientDefects = new List<ЗаявкаНаРемонтClientDefect>();
-
                 foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "TrcClientDefectDetail").First().EntityCollection)
                 {
                     clientDefects.Add(new ЗаявкаНаРемонтClientDefect()
@@ -138,11 +143,6 @@ namespace DysonCustomerService.EntityDataProviders
                         DefectsAccordingClient = item.GetTypedColumnValue<string>("TrcDefect_TrcCode")
                     });
                 }
-
-                res.ClientDefect = clientDefects.ToArray();
-
-                // Запчасти
-                var spareParts = new List<ЗаявкаНаРемонтSparePart>();
 
                 foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "TrcSparePart").First().EntityCollection)
                 {
@@ -157,11 +157,6 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.SparePart = spareParts.ToArray();
-
-                // Услуги
-                var services = new List<ЗаявкаНаРемонтService>();
-
                 foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "TrcService").First().EntityCollection)
                 {
                     services.Add(new ЗаявкаНаРемонтService()
@@ -175,8 +170,12 @@ namespace DysonCustomerService.EntityDataProviders
                     });
                 }
 
-                res.Service = services.ToArray();
             }
+
+            res.RequestOpinion = expertOpinions.ToArray();
+            res.ClientDefect = clientDefects.ToArray();
+            res.SparePart = spareParts.ToArray();
+            res.Service = services.ToArray();
 
             return res;
         }

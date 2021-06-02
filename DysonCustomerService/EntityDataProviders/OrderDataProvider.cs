@@ -64,8 +64,6 @@ namespace DysonCustomerService.EntityDataProviders
 
             if (this.RelatedEntitiesData.Count > 0)
             {
-                var orderProducts = new List<ЗаказКлиентаTovars>();
-
                 foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection)
                 {
                     DiscountAmount += item.GetTypedColumnValue<decimal>("DiscountAmount");
@@ -154,10 +152,10 @@ namespace DysonCustomerService.EntityDataProviders
             };
 
             // Деталь продуктов
+            var orderProducts = new List<ЗаказКлиентаTovars>();
+
             if (this.RelatedEntitiesData.Count > 0)
             {
-                var orderProducts = new List<ЗаказКлиентаTovars>();
-
                 foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection)
                 {
                     orderProducts.Add(new ЗаказКлиентаTovars()
@@ -174,9 +172,9 @@ namespace DysonCustomerService.EntityDataProviders
                         SN = item.GetTypedColumnValue<string>("TrcSerialNumber_TrcSerialNumber_Name")
                     });
                 }
-
-                res.Tovars = orderProducts.ToArray();
             }
+
+            res.Tovars = orderProducts.ToArray();
 
             return res;
         }
