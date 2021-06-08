@@ -34,15 +34,15 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TradeMark.Name");
             esq.AddColumn("Type.Name");
             esq.AddColumn("TrcProductColor.Name");
-            esq.AddColumn("Unit.Name"); 
-
+            esq.AddColumn("Unit.Name");
+            esq.AddColumn("TrcFilterType.Name");
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
 
         public override object GetEntityData(Guid EntityId)
         {
             var NozzleClumnNames = this.EntityObject.Schema.Columns.Where(e => e.Name.ToUpper().Contains("NOZZLE"));
-            var NozzleList = NozzleClumnNames.Where(e => this.EntityObject.GetTypedColumnValue<bool>(e)).ToList();
+            var NozzleList = NozzleClumnNames.Where(e => this.EntityObject.GetTypedColumnValue<bool>(e)).Select(e => e.Caption.Value).ToList();
             var NozzleString = string.Join("; ", NozzleList);
 
             var res = new Номенклатура()
@@ -97,7 +97,7 @@ namespace DysonCustomerService.EntityDataProviders
                 Weight = this.EntityObject.GetTypedColumnValue<decimal>("TrcWeight"),
                 WorkName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkName"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CProductID"),
-                FilterTypes = string.Empty,
+                FilterTypes = this.EntityObject.GetTypedColumnValue<string>("TrcFilterType_Name"),
                 Nozzle = NozzleString
             };
 

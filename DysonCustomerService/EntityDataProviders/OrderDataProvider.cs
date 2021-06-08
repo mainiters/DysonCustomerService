@@ -147,8 +147,7 @@ namespace DysonCustomerService.EntityDataProviders
                 SOCR_City = string.Empty,
                 SOCR_Locality = string.Empty,
                 SOCR_Region = string.Empty,
-                SOCR_Street = string.Empty,
-                
+                SOCR_Street = string.Empty
             };
 
             // Деталь продуктов
