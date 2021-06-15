@@ -27,12 +27,11 @@ namespace DysonCustomerService.EntityDataProviders
                     "Product.Trc1CProductID",
                     "PriceList.TrcCode",
                     "TrcSalesSource.TrcCode",
-                    "TrcSerialNumber.TrcSerialNumber.Name",
-                    "TrcStatusTK.Description"
+                    "TrcSerialNumber.TrcSerialNumber.Name"
                 }
             });
 
-            esq.AddColumn("TrcOrderState.Name");
+            esq.AddColumn("TrcOrderState.Description");
             esq.AddColumn("TrcOrcerPaymentWay.Name");
             esq.AddColumn("TrcDeliveryCompany.TrcCode");
             esq.AddColumn("Owner.Trc1CContactID");
@@ -44,6 +43,7 @@ namespace DysonCustomerService.EntityDataProviders
 
             esq.AddColumn("TrcASCAndKC.TrcCode");
             esq.AddColumn("TrcOrganization.Trc1CAccountID");
+            esq.AddColumn("TrcStatusTK.Description");
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -83,7 +83,7 @@ namespace DysonCustomerService.EntityDataProviders
                 modifyDate = this.EntityObject.GetTypedColumnValue<DateTime>("ModifiedOn"),
                 orderID = string.Empty,
                 orderIdPublic = int.Parse(new string(this.EntityObject.GetTypedColumnValue<string>("Number").Where(c => char.IsDigit(c)).ToArray())),
-                OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Name"),
+                OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Description"),
                 TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
                 TK = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryCompany_TrcCode"),
                 PayType = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),

@@ -108,8 +108,9 @@ namespace DysonCustomerService {
         {
             object[] results = this.Invoke(methodName, new object[] { data });
             return results[0];
-        }
 
+        }
+        
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://31.13.35.34/dyson_share_111#ObmenCreation:PostClients", RequestNamespace="http://31.13.35.34/dyson_share_111", ResponseNamespace="http://31.13.35.34/dyson_share_111", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
