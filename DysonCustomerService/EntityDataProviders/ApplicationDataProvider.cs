@@ -24,7 +24,6 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcProduct.Code");
             esq.AddColumn("TrcSerialNumberHistory.TrcSerialNumber.Name");
             esq.AddColumn("TrcEngineer.Name");
-            esq.AddColumn("TrcEngineer.Trc1CContactID");
             esq.AddColumn("TrcWarrantyType.TrcCode");
             esq.AddColumn("TrcShop.TrcCode");
             esq.AddColumn("TrcServiceOption.Name");
@@ -35,7 +34,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcServiceCenter.TrcCode");
             esq.AddColumn("TrcOrganization.Trc1CAccountID");
             esq.AddColumn("TrcRequestFailureReason.Name");
-            esq.AddColumn("TrcRequestStatus.Name");
+            esq.AddColumn("TrcRequestStatus.Description");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -121,7 +120,7 @@ namespace DysonCustomerService.EntityDataProviders
                 ProductDescription = this.EntityObject.GetTypedColumnValue<string>("TrcProductDescription"),
                 ReplacementEquipmentRequired = this.EntityObject.GetTypedColumnValue<bool>("TrcReplacementEquipmentRequired"),
                 RequestFailureReason = this.EntityObject.GetTypedColumnValue<string>("TrcRequestFailureReason_Name"),
-                RequestStatus = this.EntityObject.GetTypedColumnValue<string>("TrcRequestStatus_Name"),
+                RequestStatus = this.EntityObject.GetTypedColumnValue<string>("TrcRequestStatus_Description"),
                 ServiceDescription = this.EntityObject.GetTypedColumnValue<string>("TrcServiceDescription")
             };
 

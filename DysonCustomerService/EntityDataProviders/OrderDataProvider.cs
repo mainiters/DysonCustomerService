@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terrasoft.Core;
-using Terrasoft.Core.DB;
 using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService.EntityDataProviders
@@ -31,6 +28,7 @@ namespace DysonCustomerService.EntityDataProviders
                 }
             });
 
+            esq.AddColumn("TrcOrderState.Id");
             esq.AddColumn("TrcOrderState.Description");
             esq.AddColumn("TrcOrcerPaymentWay.Name");
             esq.AddColumn("TrcDeliveryCompany.TrcCode");
@@ -83,7 +81,11 @@ namespace DysonCustomerService.EntityDataProviders
                 modifyDate = this.EntityObject.GetTypedColumnValue<DateTime>("ModifiedOn"),
                 orderID = string.Empty,
                 orderIdPublic = int.Parse(new string(this.EntityObject.GetTypedColumnValue<string>("Number").Where(c => char.IsDigit(c)).ToArray())),
-                OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Description"),
+                
+                OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Id").ToUpper() != "32B5554A-8975-475D-BAA0-E8B47F1B9973" || true
+                    ? this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Description") 
+                    : "ОтмененКлиентом",
+
                 TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
                 TK = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryCompany_TrcCode"),
                 PayType = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
@@ -130,19 +132,19 @@ namespace DysonCustomerService.EntityDataProviders
                 CreditSumm = 0,
                 paper_id = string.Empty,
                 InCash = 0,
-                OnLinePaid =0,
+                OnLinePaid = 0,
                 PanType = string.Empty,
                 DistanceFromMKAD = string.Empty,
 
-                DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 ? 
+                DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 ?
                                     this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection.First().GetTypedColumnValue<string>("TrcSalesSource_TrcCode") :
                                     string.Empty,
-                
+
                 NumberDeparture = string.Empty,
                 OrderType = 0,
 
                 PromoSum = DiscountAmount,
-                
+
                 SOCR_Area = string.Empty,
                 SOCR_City = string.Empty,
                 SOCR_Locality = string.Empty,
