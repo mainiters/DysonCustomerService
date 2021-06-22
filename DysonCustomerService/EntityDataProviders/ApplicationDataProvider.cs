@@ -34,7 +34,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcServiceCenter.TrcCode");
             esq.AddColumn("TrcOrganization.Trc1CAccountID");
             esq.AddColumn("TrcRequestFailureReason.Name");
-            esq.AddColumn("TrcRequestStatus.Description");
+            esq.AddColumn("TrcRequestStatus1C.Description");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -88,7 +88,7 @@ namespace DysonCustomerService.EntityDataProviders
             string AscAndKcCode = this.EntityObject.GetTypedColumnValue<string>("TrcServiceCenter_TrcCode");
             string OrganizationCode = this.EntityObject.GetTypedColumnValue<string>("TrcOrganization_Trc1CAccountID");
 
-            // Данные заказа
+            // Данные заявки
             var res = new ЗаявкаНаРемонт
             {
                 Account = string.IsNullOrEmpty(AccountId) ? ContactId : AccountId,
@@ -120,7 +120,7 @@ namespace DysonCustomerService.EntityDataProviders
                 ProductDescription = this.EntityObject.GetTypedColumnValue<string>("TrcProductDescription"),
                 ReplacementEquipmentRequired = this.EntityObject.GetTypedColumnValue<bool>("TrcReplacementEquipmentRequired"),
                 RequestFailureReason = this.EntityObject.GetTypedColumnValue<string>("TrcRequestFailureReason_Name"),
-                RequestStatus = this.EntityObject.GetTypedColumnValue<string>("TrcRequestStatus_Description"),
+                RequestStatus = this.EntityObject.GetTypedColumnValue<string>("TrcRequestStatus1C_Description"),
                 ServiceDescription = this.EntityObject.GetTypedColumnValue<string>("TrcServiceDescription")
             };
 
