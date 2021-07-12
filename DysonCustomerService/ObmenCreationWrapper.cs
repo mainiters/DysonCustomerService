@@ -181,7 +181,8 @@ namespace DysonCustomerService
 
         protected string ToXml(object data)
         {
-            var removingNs = " xmlns=\"http://31.13.35.34/dyson_share_111\"";
+
+            var removingNs = " xmlns=\"http://crm1ctest.dyson.ru\"";
 
             var settings = new XmlWriterSettings
             {

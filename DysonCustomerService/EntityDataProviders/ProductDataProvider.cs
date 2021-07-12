@@ -36,6 +36,9 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcProductColor.Name");
             esq.AddColumn("Unit.Name");
             esq.AddColumn("TrcFilterType.Name");
+           // esq.AddColumn("Category.TrcCode");
+            //esq.AddColumn("Type.TrcCode");
+            //esq.AddColumn("TrcDeviceType.TrcCode");
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
 
@@ -98,7 +101,10 @@ namespace DysonCustomerService.EntityDataProviders
                 WorkName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkName"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CProductID"),
                 FilterTypes = this.EntityObject.GetTypedColumnValue<string>("TrcFilterType_Name"),
-                Nozzle = NozzleString
+                Nozzle = NozzleString,
+                //Category_1C = this.EntityObject.GetTypedColumnValue<string>("Category_TrcCode"),
+                //DeviceType_1C = this.EntityObject.GetTypedColumnValue<string>("TrcDeviceType_TrcCode"),
+                //TypeOfItem_1C = this.EntityObject.GetTypedColumnValue<string>("Type_TrcCode")
             };
 
             return res;

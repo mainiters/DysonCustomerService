@@ -2,17 +2,17 @@
 <definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
 		xmlns:soap12bind="http://schemas.xmlsoap.org/wsdl/soap12/"
 		xmlns:soapbind="http://schemas.xmlsoap.org/wsdl/soap/"
-		xmlns:tns="http://31.13.35.34/dyson_share_111"
+		xmlns:tns="http://crm1ctest.dyson.ru"
 		xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
 		xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
 		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-		xmlns:xsd1="http://31.13.35.34/dyson_share_111"
+		xmlns:xsd1="http://crm1ctest.dyson.ru"
 		name="ObmenCreation"
-		targetNamespace="http://31.13.35.34/dyson_share_111">
+		targetNamespace="http://crm1ctest.dyson.ru">
 	<types>
 		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-				xmlns:xs1="http://31.13.35.34/dyson_share_111"
-				targetNamespace="http://31.13.35.34/dyson_share_111"
+				xmlns:xs1="http://crm1ctest.dyson.ru"
+				targetNamespace="http://crm1ctest.dyson.ru"
 				attributeFormDefault="unqualified"
 				elementFormDefault="qualified">
 			<xs:complexType name="ДефектыСоСловКлиента">
@@ -605,6 +605,15 @@
 							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="ПакетФизическиеЛица">
+				<xs:sequence>
+					<xs:element name="ID_Pack"
+							type="xs:string"/>
+					<xs:element name="User"
+							type="tns:ФизическиеЛица"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Пользователи">
 				<xs:sequence>
 					<xs:element name="ID_1С"
@@ -636,6 +645,22 @@
 					<xs:element name="Comment"
 							type="xs:string"/>
 					<xs:element name="ID_Сlient"
+							type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ФизическиеЛица">
+				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
+					<xs:element name="FIO"
+							type="xs:string"/>
+					<xs:element name="SEX"
+							type="xs:string"/>
+					<xs:element name="Email"
+							type="xs:string"/>
+					<xs:element name="TEL"
 							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -863,6 +888,38 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="PostFLs">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетФизическиеЛица"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostFLsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostFL">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ФизическиеЛица"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostFLResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
 		</xs:schema>
 	</types>
 	<message name="PostClientsRequestMessage">
@@ -977,6 +1034,22 @@
 		<part name="parameters"
 				element="tns:PostSNResponse"/>
 	</message>
+	<message name="PostFLsRequestMessage">
+		<part name="parameters"
+				element="tns:PostFLs"/>
+	</message>
+	<message name="PostFLsResponseMessage">
+		<part name="parameters"
+				element="tns:PostFLsResponse"/>
+	</message>
+	<message name="PostFLRequestMessage">
+		<part name="parameters"
+				element="tns:PostFL"/>
+	</message>
+	<message name="PostFLResponseMessage">
+		<part name="parameters"
+				element="tns:PostFLResponse"/>
+	</message>
 	<portType name="ObmenCreationPortType">
 		<operation name="PostClients">
 			<input message="tns:PostClientsRequestMessage"/>
@@ -1034,6 +1107,14 @@
 			<input message="tns:PostSNRequestMessage"/>
 			<output message="tns:PostSNResponseMessage"/>
 		</operation>
+		<operation name="PostFLs">
+			<input message="tns:PostFLsRequestMessage"/>
+			<output message="tns:PostFLsResponseMessage"/>
+		</operation>
+		<operation name="PostFL">
+			<input message="tns:PostFLRequestMessage"/>
+			<output message="tns:PostFLResponseMessage"/>
+		</operation>
 	</portType>
 	<binding name="ObmenCreationSoapBinding"
 			type="tns:ObmenCreationPortType">
@@ -1041,7 +1122,7 @@
 				transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="PostClients">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClients"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClients"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1051,7 +1132,7 @@
 		</operation>
 		<operation name="PostClient">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClient"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClient"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1061,7 +1142,7 @@
 		</operation>
 		<operation name="PostTovars">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovars"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovars"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1071,7 +1152,7 @@
 		</operation>
 		<operation name="PostTovar">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovar"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovar"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1081,7 +1162,7 @@
 		</operation>
 		<operation name="PostClientDefects">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefects"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1091,7 +1172,7 @@
 		</operation>
 		<operation name="PostClientDefect">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefect"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1101,7 +1182,7 @@
 		</operation>
 		<operation name="PostManagers">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManagers"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManagers"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1111,7 +1192,7 @@
 		</operation>
 		<operation name="PostManager">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManager"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManager"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1121,7 +1202,7 @@
 		</operation>
 		<operation name="PostOrders">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrders"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrders"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1131,7 +1212,7 @@
 		</operation>
 		<operation name="PostOrder">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrder"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrder"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1141,7 +1222,7 @@
 		</operation>
 		<operation name="PostRequests">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequests"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostRequests"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1151,7 +1232,7 @@
 		</operation>
 		<operation name="PostRequest">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequest"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostRequest"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1161,7 +1242,7 @@
 		</operation>
 		<operation name="PostSNs">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSNs"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSNs"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1171,7 +1252,27 @@
 		</operation>
 		<operation name="PostSN">
 			<soapbind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSN"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSN"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostFLs">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFLs"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostFL">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFL"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1186,7 +1287,7 @@
 				transport="http://schemas.xmlsoap.org/soap/http"/>
 		<operation name="PostClients">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClients"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClients"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1196,7 +1297,7 @@
 		</operation>
 		<operation name="PostClient">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClient"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClient"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1206,7 +1307,7 @@
 		</operation>
 		<operation name="PostTovars">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovars"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovars"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1216,7 +1317,7 @@
 		</operation>
 		<operation name="PostTovar">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostTovar"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovar"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1226,7 +1327,7 @@
 		</operation>
 		<operation name="PostClientDefects">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefects"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1236,7 +1337,7 @@
 		</operation>
 		<operation name="PostClientDefect">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostClientDefect"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1246,7 +1347,7 @@
 		</operation>
 		<operation name="PostManagers">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManagers"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManagers"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1256,7 +1357,7 @@
 		</operation>
 		<operation name="PostManager">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostManager"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManager"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1266,7 +1367,7 @@
 		</operation>
 		<operation name="PostOrders">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrders"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrders"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1276,7 +1377,7 @@
 		</operation>
 		<operation name="PostOrder">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostOrder"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrder"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1286,7 +1387,7 @@
 		</operation>
 		<operation name="PostRequests">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequests"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostRequests"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1296,7 +1397,7 @@
 		</operation>
 		<operation name="PostRequest">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostRequest"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostRequest"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1306,7 +1407,7 @@
 		</operation>
 		<operation name="PostSNs">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSNs"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSNs"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1316,7 +1417,27 @@
 		</operation>
 		<operation name="PostSN">
 			<soap12bind:operation style="document"
-					soapAction="http://31.13.35.34/dyson_share_111#ObmenCreation:PostSN"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSN"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostFLs">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFLs"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostFL">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFL"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1332,11 +1453,11 @@
 				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
 						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
-			<soapbind:address location="http://31.13.35.34/dyson_share_111/ws/ObmenCreation.1cws"/>
+			<soapbind:address location="https://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
 		</port>
 		<port name="ObmenCreationSoap12"
 				binding="tns:ObmenCreationSoap12Binding">
-			<soap12bind:address location="http://31.13.35.34/dyson_share_111/ws/ObmenCreation.1cws"/>
+			<soap12bind:address location="https://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
 		</port>
 	</service>
 </definitions>
