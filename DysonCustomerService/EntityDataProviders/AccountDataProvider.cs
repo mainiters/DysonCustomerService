@@ -130,6 +130,7 @@ namespace DysonCustomerService.EntityDataProviders
                     .Column("Number")
                     .From("AccountCommunication")
                     .Where("AccountId").IsEqual(Column.Parameter(this.EntityId))
+                    .And("CommunicationTypeId").IsEqual(Column.Parameter("EE1C85C3-CFCB-DF11-9B2A-001D60E938C6"))
                     .And("Primary").IsEqual(Column.Const(true)) as Select;
 
             return select.ExecuteScalar<string>();
