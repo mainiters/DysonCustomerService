@@ -20,13 +20,13 @@ namespace DysonCustomerService.EntityDataProviders
         {
             esq.AddColumn("TrcServiceCenter.TrcName");
             esq.AddColumn("TrcRepairWarehouse.TrcCode");
-            esq.AddColumn("TrcRepairType.Name");
-            esq.AddColumn("TrcProduct.Code");
+            esq.AddColumn("TrcRepairType.Description");
+            esq.AddColumn("TrcProduct.Trc1CProductID");
             esq.AddColumn("TrcSerialNumberHistory.TrcSerialNumber.Name");
             esq.AddColumn("TrcEngineer.Name");
             esq.AddColumn("TrcWarrantyType.TrcCode");
             esq.AddColumn("TrcShop.TrcCode");
-            esq.AddColumn("TrcServiceOption.Name");
+            esq.AddColumn("TrcServiceOption.Description");
 
             esq.AddColumn("TrcAccount.Trc1CAccountID");
             esq.AddColumn("TrcContact.Trc1CContactID");
@@ -96,9 +96,9 @@ namespace DysonCustomerService.EntityDataProviders
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcCreationDate"),
                 Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcRepairWarehouse_TrcCode"),
-                ServiceOption = this.EntityObject.GetTypedColumnValue<string>("TrcServiceOption_Name"),
-                TypeRepair = this.EntityObject.GetTypedColumnValue<string>("TrcRepairType_Name"),
-                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Code"),
+                ServiceOption = this.EntityObject.GetTypedColumnValue<string>("TrcServiceOption_Description"),
+                TypeRepair = this.EntityObject.GetTypedColumnValue<string>("TrcRepairType_Description"),
+                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Trc1CProductID"),
                 SN = this.EntityObject.GetTypedColumnValue<string>("TrcSerialNumberHistory_TrcSerialNumber_Name"),
                 DateDeparture = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDepartureDate"),
                 Master = string.IsNullOrEmpty(this.EntityObject.GetTypedColumnValue<string>("TrcEngineer_Name")) ? string.Empty : this.EntityObject.GetTypedColumnValue<string>("TrcEngineer_Name"),

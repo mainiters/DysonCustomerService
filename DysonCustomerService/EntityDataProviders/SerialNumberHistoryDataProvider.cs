@@ -19,7 +19,7 @@ namespace DysonCustomerService.EntityDataProviders
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
             esq.AddColumn("TrcSerialNumber.Name");
-            esq.AddColumn("TrcProduct.Code");
+            esq.AddColumn("TrcProduct.Trc1CProductID");
             esq.AddColumn("TrcWarrantyType.TrcCode");
             esq.AddColumn("TrcRetailStore.TrcCode");
             esq.AddColumn("TrcAccount.Trc1CAccountID");
@@ -40,7 +40,7 @@ namespace DysonCustomerService.EntityDataProviders
 
                 SN = this.EntityObject.GetTypedColumnValue<string>("TrcSerialNumber_Name"),
                 CreateDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcRegistrationDate"),
-                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Code"),
+                Article = this.EntityObject.GetTypedColumnValue<string>("TrcProduct_Trc1CProductID"),
                 TypeGuarantee = this.EntityObject.GetTypedColumnValue<string>("TrcWarrantyType_TrcCode"),
                 Shop = this.EntityObject.GetTypedColumnValue<string>("TrcRetailStore_TrcCode"),
                 DatePurchase = this.EntityObject.GetTypedColumnValue<DateTime>("TrcPurchaseDate"),

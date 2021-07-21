@@ -112,7 +112,7 @@ namespace DysonCustomerService {
         /// <remarks/>
         public event PostFLCompletedEventHandler PostFLCompleted;
 
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovars", RequestNamespace = "http://crm1ctest.dyson.ru", ResponseNamespace = "http://crm1ctest.dyson.ru", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovars", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public object PostData(string methodName, object data)
         {
@@ -121,7 +121,7 @@ namespace DysonCustomerService {
 
         }
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClients", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClients", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClients(ПакетКонтрагентов Pack) {
             object[] results = this.Invoke("PostClients", new object[] {
@@ -163,7 +163,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClient", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClient", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClient(Контрагенты Object) {
             object[] results = this.Invoke("PostClient", new object[] {
@@ -205,7 +205,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovars", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovars", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostTovars(ПакетНоменклатуры Pack) {
             object[] results = this.Invoke("PostTovars", new object[] {
@@ -247,7 +247,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovar", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovar", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostTovar(Номенклатура Object) {
             object[] results = this.Invoke("PostTovar", new object[] {
@@ -289,7 +289,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClientDefects(ПакетДефектыКлиента Pack) {
             object[] results = this.Invoke("PostClientDefects", new object[] {
@@ -331,7 +331,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClientDefect(ДефектыСоСловКлиента Object) {
             object[] results = this.Invoke("PostClientDefect", new object[] {
@@ -373,7 +373,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostManagers", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostManagers", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostManagers(ПакетПользователи Pack) {
             object[] results = this.Invoke("PostManagers", new object[] {
@@ -415,7 +415,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostManager", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostManager", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostManager(Пользователи Object) {
             object[] results = this.Invoke("PostManager", new object[] {
@@ -457,7 +457,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostOrders", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostOrders", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostOrders(ПакетЗаказов Pack) {
             object[] results = this.Invoke("PostOrders", new object[] {
@@ -499,7 +499,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostOrder", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostOrder", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostOrder(ЗаказКлиента Object) {
             object[] results = this.Invoke("PostOrder", new object[] {
@@ -541,7 +541,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostRequests", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostRequests", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostRequests(ПакетЗаявок Pack) {
             object[] results = this.Invoke("PostRequests", new object[] {
@@ -583,7 +583,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostRequest", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostRequest", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostRequest(ЗаявкаНаРемонт Object) {
             object[] results = this.Invoke("PostRequest", new object[] {
@@ -625,7 +625,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSNs", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSNs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostSNs(ПакетРегистрация Pack) {
             object[] results = this.Invoke("PostSNs", new object[] {
@@ -667,7 +667,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSN", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSN", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostSN(РегистрацияСерийныхНомеровКлиентов Object) {
             object[] results = this.Invoke("PostSN", new object[] {
@@ -709,7 +709,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostFLs", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostFLs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostFLs(ПакетФизическиеЛица Pack) {
             object[] results = this.Invoke("PostFLs", new object[] {
@@ -751,7 +751,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostFL", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostFL", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostFL(ФизическиеЛица Object) {
             object[] results = this.Invoke("PostFL", new object[] {
