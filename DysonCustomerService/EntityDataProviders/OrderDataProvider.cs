@@ -136,7 +136,8 @@ namespace DysonCustomerService.EntityDataProviders
                 PanType = string.Empty,
                 DistanceFromMKAD = string.Empty,
 
-                DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 ?
+                DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 &&
+                                    this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection.Count() > 0 ?
                                     this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection.First().GetTypedColumnValue<string>("TrcSalesSource_TrcCode") :
                                     string.Empty,
 
