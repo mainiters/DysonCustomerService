@@ -237,6 +237,7 @@
     <Compile Include="EntityDataProviders\BaseEntityDataProvider.cs" />
     <Compile Include="EntityDataProviders\ContactDataProvider.cs" />
     <Compile Include="EntityDataProviders\CustomerDefectDataProvider.cs" />
+    <Compile Include="EntityDataProviders\EmployeeDataProvider.cs" />
     <Compile Include="EntityDataProviders\ProductCategoryDataProvider.cs" />
     <Compile Include="EntityDataProviders\ProductTypeDataProvider.cs" />
     <Compile Include="EntityDataProviders\TrcDeviceTypeDataProvider.cs" />

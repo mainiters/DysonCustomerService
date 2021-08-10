@@ -83,6 +83,8 @@ namespace DysonCustomerService
                     return new TrcProductSubcategoryDataProvider(EntityId, this.userConnection);
                 case "TrcDeviceType":
                     return new TrcDeviceTypeDataProvider(EntityId, this.userConnection);
+                case "Employee":
+                    return new EmployeeDataProvider(EntityId, this.userConnection);
             }
 
             throw new ArgumentException($"No DataProvider was found by EntityName {EntityName}");
