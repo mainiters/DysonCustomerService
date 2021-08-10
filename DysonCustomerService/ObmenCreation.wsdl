@@ -15,6 +15,36 @@
 				targetNamespace="http://crm1ctest.dyson.ru"
 				attributeFormDefault="unqualified"
 				elementFormDefault="qualified">
+			<xs:complexType name="ISU_ИсточникиПродаж">
+				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
+					<xs:element name="Name"
+							type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ВидыНоменклатурыCRM">
+				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
+					<xs:element name="Name"
+							type="xs:string"/>
+					<xs:element name="Сategories"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:attribute name="Сategorie"
+									type="xs:string"
+									use="required"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="ДефектыСоСловКлиента">
 				<xs:sequence>
 					<xs:element name="ID_1С"
@@ -29,10 +59,14 @@
 				<xs:sequence>
 					<xs:element name="ID_1С"
 							type="xs:string"/>
-					<xs:element name="CreateDate"
-							type="xs:dateTime"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
+					<xs:element name="CreateDate"
+							type="xs:dateTime"/>
+					<xs:element name="Date_Tk_Load"
+							type="xs:dateTime"/>
+					<xs:element name="deliveryDate"
+							type="xs:date"/>
 					<xs:element name="TimeDeliveryFrom"
 							type="xs:int"/>
 					<xs:element name="TimeDeliveryTo"
@@ -41,26 +75,20 @@
 							type="xs:date"/>
 					<xs:element name="completeDate"
 							type="xs:date"/>
-					<xs:element name="modifyDate"
-							type="xs:dateTime"/>
-					<xs:element name="orderID"
-							type="xs:string"/>
 					<xs:element name="orderIdPublic"
 							type="xs:int"/>
+					<xs:element name="orderID"
+							type="xs:string"/>
 					<xs:element name="OrderStatus"
 							type="xs:string"/>
 					<xs:element name="TK_Track"
 							type="xs:string"/>
 					<xs:element name="TK"
 							type="xs:string"/>
-					<xs:element name="OrderType"
-							type="xs:int"/>
-					<xs:element name="PayType"
+					<xs:element name="Payment"
 							type="xs:string"/>
 					<xs:element name="LogisticComment"
 							type="xs:string"/>
-					<xs:element name="OrderSumRUB"
-							type="xs:decimal"/>
 					<xs:element name="PayTransaction"
 							type="xs:string"/>
 					<xs:element name="DataReleaseH"
@@ -71,27 +99,25 @@
 							type="xs:string"/>
 					<xs:element name="DataCheckM"
 							type="xs:dateTime"/>
-					<xs:element name="CreditStatus"
+					<xs:element name="PayTransacrionOD"
 							type="xs:string"/>
-					<xs:element name="CreditSumm"
-							type="xs:decimal"/>
-					<xs:element name="paper_id"
+					<xs:element name="DataPayChekOD"
+							type="xs:dateTime"/>
+					<xs:element name="RetTrasactionOD"
 							type="xs:string"/>
-					<xs:element name="InCash"
-							type="xs:decimal"/>
-					<xs:element name="OnLinePaid"
-							type="xs:decimal"/>
-					<xs:element name="PanType"
-							type="xs:string"/>
+					<xs:element name="DataRetCheckOD"
+							type="xs:dateTime"/>
+					<xs:element name="NewPrPay"
+							type="xs:boolean"/>
 					<xs:element name="DeliveryCost"
-							type="xs:decimal"/>
-					<xs:element name="PromoSum"
 							type="xs:decimal"/>
 					<xs:element name="Comment"
 							type="xs:string"/>
 					<xs:element name="Manager"
 							type="xs:string"/>
-					<xs:element name="ManagerPhone"
+					<xs:element name="Account"
+							type="xs:string"/>
+					<xs:element name="PhoneNumber"
 							type="xs:string"/>
 					<xs:element name="email"
 							type="xs:string"/>
@@ -102,10 +128,6 @@
 					<xs:element name="Locality"
 							type="xs:string"/>
 					<xs:element name="Street"
-							type="xs:string"/>
-					<xs:element name="kladr"
-							type="xs:string"/>
-					<xs:element name="FIAS"
 							type="xs:string"/>
 					<xs:element name="Metro"
 							type="xs:string"/>
@@ -119,16 +141,6 @@
 							type="xs:string"/>
 					<xs:element name="Entrance"
 							type="xs:string"/>
-					<xs:element name="SOCR_Region"
-							type="xs:string"/>
-					<xs:element name="SOCR_Locality"
-							type="xs:string"/>
-					<xs:element name="SOCR_City"
-							type="xs:string"/>
-					<xs:element name="SOCR_Street"
-							type="xs:string"/>
-					<xs:element name="SOCR_Area"
-							type="xs:string"/>
 					<xs:element name="FLOOR"
 							type="xs:string"/>
 					<xs:element name="Intercom"
@@ -139,23 +151,23 @@
 							type="xs:string"/>
 					<xs:element name="Area"
 							type="xs:string"/>
-					<xs:element name="NumberDeparture"
-							type="xs:string"/>
 					<xs:element name="Lat"
 							type="xs:string"/>
 					<xs:element name="Lon"
+							type="xs:string"/>
+					<xs:element name="FIAS"
 							type="xs:string"/>
 					<xs:element name="ShipDate"
 							type="xs:date"/>
 					<xs:element name="DysonChannelCode"
 							type="xs:string"/>
-					<xs:element name="Organization"
-							type="xs:string"/>
 					<xs:element name="WarehouseCode"
 							type="xs:string"/>
-					<xs:element name="CommentTK"
+					<xs:element name="Organization"
 							type="xs:string"/>
-					<xs:element name="Account"
+					<xs:element name="SalesChannel"
+							type="xs:string"/>
+					<xs:element name="CreateSystem"
 							type="xs:string"/>
 					<xs:element name="Tovars"
 							maxOccurs="unbounded">
@@ -187,13 +199,23 @@
 							<xs:attribute name="ReasonCancellation"
 									type="xs:string"
 									use="required"/>
+							<xs:attribute name="Personalization"
+									type="xs:boolean"
+									use="required"/>
+							<xs:attribute name="FoilColor"
+									type="xs:string"
+									use="required"/>
+							<xs:attribute name="Initials"
+									type="xs:string"
+									use="required"/>
 							<xs:attribute name="PROMOCODE"
+									type="xs:string"
+									use="required"/>
+							<xs:attribute name="Bundle"
 									type="xs:string"
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
-					<xs:element name="StatusTK"
-							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="ЗаявкаНаРемонт">
@@ -326,53 +348,131 @@
 					</xs:element>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="Категории">
+				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
+					<xs:element name="Name"
+							type="xs:string"/>
+					<xs:element name="Description"
+							type="xs:string"/>
+					<xs:element name="EquipCode"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:attribute name="EquipmentCode"
+									type="xs:string"
+									use="required"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="КодОборудования">
+				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
+					<xs:element name="Name"
+							type="xs:string"/>
+					<xs:element name="Description"
+							type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="Контрагенты">
 				<xs:sequence>
 					<xs:element name="ID_1С"
 							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="Legal"
-							type="xs:boolean"/>
-					<xs:element name="INN"
+					<xs:element name="Name"
 							type="xs:string"/>
-					<xs:element name="KPP"
+					<xs:element name="Surname"
+							type="xs:string"/>
+					<xs:element name="Patronymic"
+							type="xs:string"/>
+					<xs:element name="TypeLE"
 							type="xs:string"/>
 					<xs:element name="PhoneNumber"
 							type="xs:string"/>
-					<xs:element name="Name"
-							type="xs:string"/>
-					<xs:element name="LegalPhoneNumber"
-							type="xs:string"/>
-					<xs:element name="FIO_F"
-							type="xs:string"/>
-					<xs:element name="Name_F"
-							type="xs:string"/>
-					<xs:element name="MiddleName_F"
-							type="xs:string"/>
 					<xs:element name="Email"
 							type="xs:string"/>
+					<xs:element name="FSR"
+							type="xs:boolean"/>
 					<xs:element name="FSSMS"
 							type="xs:boolean"/>
 					<xs:element name="FSE"
 							type="xs:boolean"/>
-					<xs:element name="FME"
-							type="xs:boolean"/>
 					<xs:element name="FSCO"
-							type="xs:boolean"/>
-					<xs:element name="FMCO"
-							type="xs:boolean"/>
-					<xs:element name="FMSMS"
-							type="xs:boolean"/>
-					<xs:element name="FSR"
 							type="xs:boolean"/>
 					<xs:element name="FMR"
 							type="xs:boolean"/>
+					<xs:element name="FMSMS"
+							type="xs:boolean"/>
+					<xs:element name="FME"
+							type="xs:boolean"/>
+					<xs:element name="FMCO"
+							type="xs:boolean"/>
+					<xs:element name="OPTINsent"
+							type="xs:dateTime"/>
 					<xs:element name="IDDepersonalizedClient"
 							type="xs:string"/>
 					<xs:element name="ThereAreLK"
 							type="xs:boolean"/>
+					<xs:element name="StatusClient"
+							type="xs:string"/>
+					<xs:element name="AddressFact"
+							type="xs:string"/>
+					<xs:element name="FIAS"
+							type="xs:string"/>
+					<xs:element name="Region"
+							type="xs:string"/>
+					<xs:element name="Locality"
+							type="xs:string"/>
+					<xs:element name="Street"
+							type="xs:string"/>
+					<xs:element name="Metro"
+							type="xs:string"/>
+					<xs:element name="House"
+							type="xs:string"/>
+					<xs:element name="Building"
+							type="xs:string"/>
+					<xs:element name="Korp"
+							type="xs:string"/>
+					<xs:element name="Flat"
+							type="xs:string"/>
+					<xs:element name="Entrance"
+							type="xs:string"/>
+					<xs:element name="FLOOR"
+							type="xs:string"/>
+					<xs:element name="Intercom"
+							type="xs:string"/>
+					<xs:element name="City"
+							type="xs:string"/>
+					<xs:element name="Area"
+							type="xs:string"/>
+					<xs:element name="Lat"
+							type="xs:string"/>
+					<xs:element name="Lon"
+							type="xs:string"/>
+					<xs:element name="NameL"
+							type="xs:string"/>
+					<xs:element name="FullName"
+							type="xs:string"/>
+					<xs:element name="LegalPhoneNumber"
+							type="xs:string"/>
+					<xs:element name="FSRL"
+							type="xs:boolean"/>
+					<xs:element name="FMRL"
+							type="xs:boolean"/>
 					<xs:element name="ObjectTypeList"
+							type="xs:string"/>
+					<xs:element name="INN"
+							type="xs:string"/>
+					<xs:element name="KPP"
 							type="xs:string"/>
 					<xs:element name="FIOYO"
 							type="xs:string"/>
@@ -392,14 +492,57 @@
 							type="xs:string"/>
 					<xs:element name="PointSale"
 							type="xs:boolean"/>
-					<xs:element name="DysonChannelCode"
-							type="xs:string"/>
-					<xs:element name="StatusClient"
-							type="xs:string"/>
-					<xs:element name="AddressFact"
-							type="xs:string"/>
+					<xs:element name="HeadCP"
+							type="xs:boolean"/>
 					<xs:element name="AddressLegal"
 							type="xs:string"/>
+					<xs:element name="FIASL"
+							type="xs:string"/>
+					<xs:element name="RegionL"
+							type="xs:string"/>
+					<xs:element name="LocalityL"
+							type="xs:string"/>
+					<xs:element name="StreetL"
+							type="xs:string"/>
+					<xs:element name="MetroL"
+							type="xs:string"/>
+					<xs:element name="HouseL"
+							type="xs:string"/>
+					<xs:element name="BuildingL"
+							type="xs:string"/>
+					<xs:element name="KorpL"
+							type="xs:string"/>
+					<xs:element name="FlatL"
+							type="xs:string"/>
+					<xs:element name="EntranceL"
+							type="xs:string"/>
+					<xs:element name="FLOORL"
+							type="xs:string"/>
+					<xs:element name="IntercomL"
+							type="xs:string"/>
+					<xs:element name="CityL"
+							type="xs:string"/>
+					<xs:element name="AreaL"
+							type="xs:string"/>
+					<xs:element name="LatL"
+							type="xs:string"/>
+					<xs:element name="LonL"
+							type="xs:string"/>
+					<xs:element name="Billinginfo"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="BIK"
+										type="xs:string"/>
+								<xs:element name="Currency"
+										type="xs:string"/>
+								<xs:element name="AccountNumber"
+										type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Номенклатура">
@@ -408,106 +551,57 @@
 							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="Article"
-							type="xs:string"/>
 					<xs:element name="WorkName"
 							type="xs:string"/>
 					<xs:element name="PrintName"
 							type="xs:string"/>
+					<xs:element name="Article"
+							type="xs:string"/>
 					<xs:element name="TradeMark"
 							type="xs:string"/>
-					<xs:element name="Category"
+					<xs:element name="CRM_Category"
+							type="xs:string"/>
+					<xs:element name="CRM_DeviceType"
+							type="xs:string"/>
+					<xs:element name="CRM_TypeItem"
+							type="xs:string"/>
+					<xs:element name="ProductSubcategory"
 							type="xs:string"/>
 					<xs:element name="UnitID"
 							type="xs:string"/>
-					<xs:element name="Weight"
+					<xs:element name="WeightNet"
 							type="xs:decimal"/>
-					<xs:element name="DeviceType"
-							type="xs:string"/>
-					<xs:element name="Distribution"
-							type="xs:string"/>
-					<xs:element name="LifeTime"
-							type="xs:string"/>
-					<xs:element name="Guarantee"
-							type="xs:string"/>
-					<xs:element name="Personalization"
+					<xs:element name="Height"
+							type="xs:decimal"/>
+					<xs:element name="Width"
+							type="xs:decimal"/>
+					<xs:element name="Length"
+							type="xs:decimal"/>
+					<xs:element name="Volume"
+							type="xs:decimal"/>
+					<xs:element name="WeightGross"
+							type="xs:decimal"/>
+					<xs:element name="Bundle"
 							type="xs:boolean"/>
-					<xs:element name="ProductSubcategory"
+					<xs:element name="BundleCode"
 							type="xs:string"/>
-					<xs:element name="Type"
-							type="xs:string"/>
-					<xs:element name="Name"
-							type="xs:string"/>
-					<xs:element name="OriginCountry"
-							type="xs:string"/>
-					<xs:element name="AddressProduction"
-							type="xs:string"/>
-					<xs:element name="ProductColor"
-							type="xs:string"/>
-					<xs:element name="ProductModel"
-							type="xs:string"/>
-					<xs:element name="NumberOfAirFlowRates"
-							type="xs:int"/>
-					<xs:element name="PackingLength"
-							type="xs:decimal"/>
-					<xs:element name="PackingWidth"
-							type="xs:decimal"/>
-					<xs:element name="PackingHeight"
-							type="xs:decimal"/>
-					<xs:element name="PackingVolume"
-							type="xs:decimal"/>
-					<xs:element name="AssemblyWeight"
-							type="xs:decimal"/>
-					<xs:element name="ProductGrossWeightInPackaging"
-							type="xs:decimal"/>
-					<xs:element name="OptimalVisitingArea"
-							type="xs:decimal"/>
-					<xs:element name="ProductPowerConsumption"
-							type="xs:decimal"/>
-					<xs:element name="MinTemperature"
-							type="xs:decimal"/>
-					<xs:element name="MaxTemperature"
-							type="xs:decimal"/>
-					<xs:element name="HeatingElemenType"
-							type="xs:string"/>
-					<xs:element name="AirHumidificationType"
-							type="xs:string"/>
-					<xs:element name="MaxWaterConsumption"
-							type="xs:decimal"/>
-					<xs:element name="WaterTankVolume"
-							type="xs:decimal"/>
-					<xs:element name="IssueYear"
-							type="xs:string"/>
-					<xs:element name="Nozzle"
-							type="xs:string"/>
-					<xs:element name="CableLengthMeter"
-							type="xs:decimal"/>
-					<xs:element name="FilterTypes"
-							type="xs:string"/>
-					<xs:element name="SuctionPowerTurbo"
-							type="xs:decimal"/>
-					<xs:element name="SuctionPowerAuto"
-							type="xs:decimal"/>
-					<xs:element name="SuctionPowerEco"
-							type="xs:decimal"/>
-					<xs:element name="ContainerVolume"
-							type="xs:decimal"/>
-					<xs:element name="PipeType"
-							type="xs:string"/>
-					<xs:element name="NoiseLevelWithPipeTurbo"
-							type="xs:decimal"/>
-					<xs:element name="NoiseLevelWithPipeEco"
-							type="xs:decimal"/>
-					<xs:element name="NoiseLevelWithoutPipeTurbo"
-							type="xs:decimal"/>
-					<xs:element name="NoiseLevelWithoutPipeEco"
-							type="xs:decimal"/>
-					<xs:element name="PowerSource"
-							type="xs:string"/>
-					<xs:element name="TemperatureMode"
-							type="xs:int"/>
-					<xs:element name="AdditionalMode"
-							type="xs:string"/>
+					<xs:element name="BundleDate"
+							type="xs:dateTime"/>
+					<xs:element name="BundleSet"
+							nillable="true"
+							minOccurs="0"
+							maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="TovarCod"
+										type="xs:string"/>
+								<xs:element name="Kol"
+										type="xs:decimal"/>
+								<xs:element name="PartBundlePrice"
+										type="xs:decimal"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Ответ">
@@ -519,6 +613,24 @@
 					<xs:element name="Errors"
 							type="xs:string"
 							minOccurs="0"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ПакетISU_ИсточникиПродаж">
+				<xs:sequence>
+					<xs:element name="ID_Pack"
+							type="xs:string"/>
+					<xs:element name="SaleSource"
+							type="tns:ISU_ИсточникиПродаж"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ПакетВидыНоменклатурыCRM">
+				<xs:sequence>
+					<xs:element name="ID_Pack"
+							type="xs:string"/>
+					<xs:element name="ProductCategory"
+							type="tns:ВидыНоменклатурыCRM"
 							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -546,6 +658,24 @@
 							type="xs:string"/>
 					<xs:element name="Request"
 							type="tns:ЗаявкаНаРемонт"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ПакетКатегории">
+				<xs:sequence>
+					<xs:element name="ID_Pack"
+							type="xs:string"/>
+					<xs:element name="ProductType"
+							type="tns:Категории"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="ПакетКодОборудования">
+				<xs:sequence>
+					<xs:element name="ID_Pack"
+							type="xs:string"/>
+					<xs:element name="ProductSubcategory"
+							type="tns:КодОборудования"
 							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -605,6 +735,15 @@
 							maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="ПакетТипыУстройств">
+				<xs:sequence>
+					<xs:element name="ID_Pack"
+							type="xs:string"/>
+					<xs:element name="DeviceType"
+							type="tns:ТипыУстройств"
+							maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="ПакетФизическиеЛица">
 				<xs:sequence>
 					<xs:element name="ID_Pack"
@@ -648,13 +787,25 @@
 							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
+			<xs:complexType name="ТипыУстройств">
+				<xs:sequence>
+					<xs:element name="ID_1С"
+							type="xs:string"/>
+					<xs:element name="MarkDeletion"
+							type="xs:boolean"/>
+					<xs:element name="Name"
+							type="xs:string"/>
+					<xs:element name="EquipmentCode"
+							type="xs:string"/>
+				</xs:sequence>
+			</xs:complexType>
 			<xs:complexType name="ФизическиеЛица">
 				<xs:sequence>
 					<xs:element name="ID_1С"
 							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="FIO"
+					<xs:element name="Name"
 							type="xs:string"/>
 					<xs:element name="SEX"
 							type="xs:string"/>
@@ -664,127 +815,15 @@
 							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
-			<xs:element name="PostClients">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетКонтрагентов"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostClientsResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostClient">
+			<xs:element name="PostOrder">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Object"
-								type="tns:Контрагенты"/>
+								type="tns:ЗаказКлиента"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostClientResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostTovars">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетНоменклатуры"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostTovarsResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostTovar">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Object"
-								type="tns:Номенклатура"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostTovarResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostClientDefects">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетДефектыКлиента"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostClientDefectsResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostClientDefect">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Object"
-								type="tns:ДефектыСоСловКлиента"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostClientDefectResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostManagers">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетПользователи"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostManagersResponse">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="return"
-								type="tns:ПакетОтвета"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostManager">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="Object"
-								type="tns:Пользователи"/>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="PostManagerResponse">
+			<xs:element name="PostOrderResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return"
@@ -808,15 +847,223 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostOrder">
+			<xs:element name="PostSaleSource">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="Object"
-								type="tns:ЗаказКлиента"/>
+								type="tns:ISU_ИсточникиПродаж"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostOrderResponse">
+			<xs:element name="PostSaleSourceResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostSaleSources">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетISU_ИсточникиПродаж"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostSaleSourcesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostContact">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:Контрагенты"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostContactResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostContacts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетКонтрагентов"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostContactsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostAccount">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:Контрагенты"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostAccountResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostAccounts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетКонтрагентов"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostAccountsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostEmployee">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ФизическиеЛица"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostEmployeeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostEmployees">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетФизическиеЛица"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostEmployeesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProduct">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:Номенклатура"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProducts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетНоменклатуры"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefect">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ДефектыСоСловКлиента"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefectResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefects">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетДефектыКлиента"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostClientDefectsResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostManager">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:Пользователи"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostManagerResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostManagers">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетПользователи"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostManagersResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return"
@@ -888,15 +1135,15 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostFLs">
+			<xs:element name="PostProductType">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Pack"
-								type="tns:ПакетФизическиеЛица"/>
+						<xs:element name="Object"
+								type="tns:Категории"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostFLsResponse">
+			<xs:element name="PostProductTypeResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return"
@@ -904,15 +1151,111 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostFL">
+			<xs:element name="PostProductTypes">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="Object"
-								type="tns:ФизическиеЛица"/>
+						<xs:element name="Pack"
+								type="tns:ПакетКатегории"/>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="PostFLResponse">
+			<xs:element name="PostProductTypesResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductSubcategorys">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетКодОборудования"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductSubcategorysResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductSubcategory">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:КодОборудования"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductSubcategoryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductCategorys">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетВидыНоменклатурыCRM"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductCategorysResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductCategory">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ВидыНоменклатурыCRM"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostProductCategoryResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostDeviceType">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Object"
+								type="tns:ТипыУстройств"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostDeviceTypeResponse">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="return"
+								type="tns:ПакетОтвета"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostDeviceTypes">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Pack"
+								type="tns:ПакетТипыУстройств"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostDeviceTypesResponse">
 				<xs:complexType>
 					<xs:sequence>
 						<xs:element name="return"
@@ -922,69 +1265,13 @@
 			</xs:element>
 		</xs:schema>
 	</types>
-	<message name="PostClientsRequestMessage">
+	<message name="PostOrderRequestMessage">
 		<part name="parameters"
-				element="tns:PostClients"/>
+				element="tns:PostOrder"/>
 	</message>
-	<message name="PostClientsResponseMessage">
+	<message name="PostOrderResponseMessage">
 		<part name="parameters"
-				element="tns:PostClientsResponse"/>
-	</message>
-	<message name="PostClientRequestMessage">
-		<part name="parameters"
-				element="tns:PostClient"/>
-	</message>
-	<message name="PostClientResponseMessage">
-		<part name="parameters"
-				element="tns:PostClientResponse"/>
-	</message>
-	<message name="PostTovarsRequestMessage">
-		<part name="parameters"
-				element="tns:PostTovars"/>
-	</message>
-	<message name="PostTovarsResponseMessage">
-		<part name="parameters"
-				element="tns:PostTovarsResponse"/>
-	</message>
-	<message name="PostTovarRequestMessage">
-		<part name="parameters"
-				element="tns:PostTovar"/>
-	</message>
-	<message name="PostTovarResponseMessage">
-		<part name="parameters"
-				element="tns:PostTovarResponse"/>
-	</message>
-	<message name="PostClientDefectsRequestMessage">
-		<part name="parameters"
-				element="tns:PostClientDefects"/>
-	</message>
-	<message name="PostClientDefectsResponseMessage">
-		<part name="parameters"
-				element="tns:PostClientDefectsResponse"/>
-	</message>
-	<message name="PostClientDefectRequestMessage">
-		<part name="parameters"
-				element="tns:PostClientDefect"/>
-	</message>
-	<message name="PostClientDefectResponseMessage">
-		<part name="parameters"
-				element="tns:PostClientDefectResponse"/>
-	</message>
-	<message name="PostManagersRequestMessage">
-		<part name="parameters"
-				element="tns:PostManagers"/>
-	</message>
-	<message name="PostManagersResponseMessage">
-		<part name="parameters"
-				element="tns:PostManagersResponse"/>
-	</message>
-	<message name="PostManagerRequestMessage">
-		<part name="parameters"
-				element="tns:PostManager"/>
-	</message>
-	<message name="PostManagerResponseMessage">
-		<part name="parameters"
-				element="tns:PostManagerResponse"/>
+				element="tns:PostOrderResponse"/>
 	</message>
 	<message name="PostOrdersRequestMessage">
 		<part name="parameters"
@@ -994,13 +1281,117 @@
 		<part name="parameters"
 				element="tns:PostOrdersResponse"/>
 	</message>
-	<message name="PostOrderRequestMessage">
+	<message name="PostSaleSourceRequestMessage">
 		<part name="parameters"
-				element="tns:PostOrder"/>
+				element="tns:PostSaleSource"/>
 	</message>
-	<message name="PostOrderResponseMessage">
+	<message name="PostSaleSourceResponseMessage">
 		<part name="parameters"
-				element="tns:PostOrderResponse"/>
+				element="tns:PostSaleSourceResponse"/>
+	</message>
+	<message name="PostSaleSourcesRequestMessage">
+		<part name="parameters"
+				element="tns:PostSaleSources"/>
+	</message>
+	<message name="PostSaleSourcesResponseMessage">
+		<part name="parameters"
+				element="tns:PostSaleSourcesResponse"/>
+	</message>
+	<message name="PostContactRequestMessage">
+		<part name="parameters"
+				element="tns:PostContact"/>
+	</message>
+	<message name="PostContactResponseMessage">
+		<part name="parameters"
+				element="tns:PostContactResponse"/>
+	</message>
+	<message name="PostContactsRequestMessage">
+		<part name="parameters"
+				element="tns:PostContacts"/>
+	</message>
+	<message name="PostContactsResponseMessage">
+		<part name="parameters"
+				element="tns:PostContactsResponse"/>
+	</message>
+	<message name="PostAccountRequestMessage">
+		<part name="parameters"
+				element="tns:PostAccount"/>
+	</message>
+	<message name="PostAccountResponseMessage">
+		<part name="parameters"
+				element="tns:PostAccountResponse"/>
+	</message>
+	<message name="PostAccountsRequestMessage">
+		<part name="parameters"
+				element="tns:PostAccounts"/>
+	</message>
+	<message name="PostAccountsResponseMessage">
+		<part name="parameters"
+				element="tns:PostAccountsResponse"/>
+	</message>
+	<message name="PostEmployeeRequestMessage">
+		<part name="parameters"
+				element="tns:PostEmployee"/>
+	</message>
+	<message name="PostEmployeeResponseMessage">
+		<part name="parameters"
+				element="tns:PostEmployeeResponse"/>
+	</message>
+	<message name="PostEmployeesRequestMessage">
+		<part name="parameters"
+				element="tns:PostEmployees"/>
+	</message>
+	<message name="PostEmployeesResponseMessage">
+		<part name="parameters"
+				element="tns:PostEmployeesResponse"/>
+	</message>
+	<message name="PostProductRequestMessage">
+		<part name="parameters"
+				element="tns:PostProduct"/>
+	</message>
+	<message name="PostProductResponseMessage">
+		<part name="parameters"
+				element="tns:PostProductResponse"/>
+	</message>
+	<message name="PostProductsRequestMessage">
+		<part name="parameters"
+				element="tns:PostProducts"/>
+	</message>
+	<message name="PostProductsResponseMessage">
+		<part name="parameters"
+				element="tns:PostProductsResponse"/>
+	</message>
+	<message name="PostClientDefectRequestMessage">
+		<part name="parameters"
+				element="tns:PostClientDefect"/>
+	</message>
+	<message name="PostClientDefectResponseMessage">
+		<part name="parameters"
+				element="tns:PostClientDefectResponse"/>
+	</message>
+	<message name="PostClientDefectsRequestMessage">
+		<part name="parameters"
+				element="tns:PostClientDefects"/>
+	</message>
+	<message name="PostClientDefectsResponseMessage">
+		<part name="parameters"
+				element="tns:PostClientDefectsResponse"/>
+	</message>
+	<message name="PostManagerRequestMessage">
+		<part name="parameters"
+				element="tns:PostManager"/>
+	</message>
+	<message name="PostManagerResponseMessage">
+		<part name="parameters"
+				element="tns:PostManagerResponse"/>
+	</message>
+	<message name="PostManagersRequestMessage">
+		<part name="parameters"
+				element="tns:PostManagers"/>
+	</message>
+	<message name="PostManagersResponseMessage">
+		<part name="parameters"
+				element="tns:PostManagersResponse"/>
 	</message>
 	<message name="PostRequestsRequestMessage">
 		<part name="parameters"
@@ -1034,62 +1425,134 @@
 		<part name="parameters"
 				element="tns:PostSNResponse"/>
 	</message>
-	<message name="PostFLsRequestMessage">
+	<message name="PostProductTypeRequestMessage">
 		<part name="parameters"
-				element="tns:PostFLs"/>
+				element="tns:PostProductType"/>
 	</message>
-	<message name="PostFLsResponseMessage">
+	<message name="PostProductTypeResponseMessage">
 		<part name="parameters"
-				element="tns:PostFLsResponse"/>
+				element="tns:PostProductTypeResponse"/>
 	</message>
-	<message name="PostFLRequestMessage">
+	<message name="PostProductTypesRequestMessage">
 		<part name="parameters"
-				element="tns:PostFL"/>
+				element="tns:PostProductTypes"/>
 	</message>
-	<message name="PostFLResponseMessage">
+	<message name="PostProductTypesResponseMessage">
 		<part name="parameters"
-				element="tns:PostFLResponse"/>
+				element="tns:PostProductTypesResponse"/>
+	</message>
+	<message name="PostProductSubcategorysRequestMessage">
+		<part name="parameters"
+				element="tns:PostProductSubcategorys"/>
+	</message>
+	<message name="PostProductSubcategorysResponseMessage">
+		<part name="parameters"
+				element="tns:PostProductSubcategorysResponse"/>
+	</message>
+	<message name="PostProductSubcategoryRequestMessage">
+		<part name="parameters"
+				element="tns:PostProductSubcategory"/>
+	</message>
+	<message name="PostProductSubcategoryResponseMessage">
+		<part name="parameters"
+				element="tns:PostProductSubcategoryResponse"/>
+	</message>
+	<message name="PostProductCategorysRequestMessage">
+		<part name="parameters"
+				element="tns:PostProductCategorys"/>
+	</message>
+	<message name="PostProductCategorysResponseMessage">
+		<part name="parameters"
+				element="tns:PostProductCategorysResponse"/>
+	</message>
+	<message name="PostProductCategoryRequestMessage">
+		<part name="parameters"
+				element="tns:PostProductCategory"/>
+	</message>
+	<message name="PostProductCategoryResponseMessage">
+		<part name="parameters"
+				element="tns:PostProductCategoryResponse"/>
+	</message>
+	<message name="PostDeviceTypeRequestMessage">
+		<part name="parameters"
+				element="tns:PostDeviceType"/>
+	</message>
+	<message name="PostDeviceTypeResponseMessage">
+		<part name="parameters"
+				element="tns:PostDeviceTypeResponse"/>
+	</message>
+	<message name="PostDeviceTypesRequestMessage">
+		<part name="parameters"
+				element="tns:PostDeviceTypes"/>
+	</message>
+	<message name="PostDeviceTypesResponseMessage">
+		<part name="parameters"
+				element="tns:PostDeviceTypesResponse"/>
 	</message>
 	<portType name="ObmenCreationPortType">
-		<operation name="PostClients">
-			<input message="tns:PostClientsRequestMessage"/>
-			<output message="tns:PostClientsResponseMessage"/>
-		</operation>
-		<operation name="PostClient">
-			<input message="tns:PostClientRequestMessage"/>
-			<output message="tns:PostClientResponseMessage"/>
-		</operation>
-		<operation name="PostTovars">
-			<input message="tns:PostTovarsRequestMessage"/>
-			<output message="tns:PostTovarsResponseMessage"/>
-		</operation>
-		<operation name="PostTovar">
-			<input message="tns:PostTovarRequestMessage"/>
-			<output message="tns:PostTovarResponseMessage"/>
-		</operation>
-		<operation name="PostClientDefects">
-			<input message="tns:PostClientDefectsRequestMessage"/>
-			<output message="tns:PostClientDefectsResponseMessage"/>
-		</operation>
-		<operation name="PostClientDefect">
-			<input message="tns:PostClientDefectRequestMessage"/>
-			<output message="tns:PostClientDefectResponseMessage"/>
-		</operation>
-		<operation name="PostManagers">
-			<input message="tns:PostManagersRequestMessage"/>
-			<output message="tns:PostManagersResponseMessage"/>
-		</operation>
-		<operation name="PostManager">
-			<input message="tns:PostManagerRequestMessage"/>
-			<output message="tns:PostManagerResponseMessage"/>
+		<operation name="PostOrder">
+			<input message="tns:PostOrderRequestMessage"/>
+			<output message="tns:PostOrderResponseMessage"/>
 		</operation>
 		<operation name="PostOrders">
 			<input message="tns:PostOrdersRequestMessage"/>
 			<output message="tns:PostOrdersResponseMessage"/>
 		</operation>
-		<operation name="PostOrder">
-			<input message="tns:PostOrderRequestMessage"/>
-			<output message="tns:PostOrderResponseMessage"/>
+		<operation name="PostSaleSource">
+			<input message="tns:PostSaleSourceRequestMessage"/>
+			<output message="tns:PostSaleSourceResponseMessage"/>
+		</operation>
+		<operation name="PostSaleSources">
+			<input message="tns:PostSaleSourcesRequestMessage"/>
+			<output message="tns:PostSaleSourcesResponseMessage"/>
+		</operation>
+		<operation name="PostContact">
+			<input message="tns:PostContactRequestMessage"/>
+			<output message="tns:PostContactResponseMessage"/>
+		</operation>
+		<operation name="PostContacts">
+			<input message="tns:PostContactsRequestMessage"/>
+			<output message="tns:PostContactsResponseMessage"/>
+		</operation>
+		<operation name="PostAccount">
+			<input message="tns:PostAccountRequestMessage"/>
+			<output message="tns:PostAccountResponseMessage"/>
+		</operation>
+		<operation name="PostAccounts">
+			<input message="tns:PostAccountsRequestMessage"/>
+			<output message="tns:PostAccountsResponseMessage"/>
+		</operation>
+		<operation name="PostEmployee">
+			<input message="tns:PostEmployeeRequestMessage"/>
+			<output message="tns:PostEmployeeResponseMessage"/>
+		</operation>
+		<operation name="PostEmployees">
+			<input message="tns:PostEmployeesRequestMessage"/>
+			<output message="tns:PostEmployeesResponseMessage"/>
+		</operation>
+		<operation name="PostProduct">
+			<input message="tns:PostProductRequestMessage"/>
+			<output message="tns:PostProductResponseMessage"/>
+		</operation>
+		<operation name="PostProducts">
+			<input message="tns:PostProductsRequestMessage"/>
+			<output message="tns:PostProductsResponseMessage"/>
+		</operation>
+		<operation name="PostClientDefect">
+			<input message="tns:PostClientDefectRequestMessage"/>
+			<output message="tns:PostClientDefectResponseMessage"/>
+		</operation>
+		<operation name="PostClientDefects">
+			<input message="tns:PostClientDefectsRequestMessage"/>
+			<output message="tns:PostClientDefectsResponseMessage"/>
+		</operation>
+		<operation name="PostManager">
+			<input message="tns:PostManagerRequestMessage"/>
+			<output message="tns:PostManagerResponseMessage"/>
+		</operation>
+		<operation name="PostManagers">
+			<input message="tns:PostManagersRequestMessage"/>
+			<output message="tns:PostManagersResponseMessage"/>
 		</operation>
 		<operation name="PostRequests">
 			<input message="tns:PostRequestsRequestMessage"/>
@@ -1107,92 +1570,46 @@
 			<input message="tns:PostSNRequestMessage"/>
 			<output message="tns:PostSNResponseMessage"/>
 		</operation>
-		<operation name="PostFLs">
-			<input message="tns:PostFLsRequestMessage"/>
-			<output message="tns:PostFLsResponseMessage"/>
+		<operation name="PostProductType">
+			<input message="tns:PostProductTypeRequestMessage"/>
+			<output message="tns:PostProductTypeResponseMessage"/>
 		</operation>
-		<operation name="PostFL">
-			<input message="tns:PostFLRequestMessage"/>
-			<output message="tns:PostFLResponseMessage"/>
+		<operation name="PostProductTypes">
+			<input message="tns:PostProductTypesRequestMessage"/>
+			<output message="tns:PostProductTypesResponseMessage"/>
+		</operation>
+		<operation name="PostProductSubcategorys">
+			<input message="tns:PostProductSubcategorysRequestMessage"/>
+			<output message="tns:PostProductSubcategorysResponseMessage"/>
+		</operation>
+		<operation name="PostProductSubcategory">
+			<input message="tns:PostProductSubcategoryRequestMessage"/>
+			<output message="tns:PostProductSubcategoryResponseMessage"/>
+		</operation>
+		<operation name="PostProductCategorys">
+			<input message="tns:PostProductCategorysRequestMessage"/>
+			<output message="tns:PostProductCategorysResponseMessage"/>
+		</operation>
+		<operation name="PostProductCategory">
+			<input message="tns:PostProductCategoryRequestMessage"/>
+			<output message="tns:PostProductCategoryResponseMessage"/>
+		</operation>
+		<operation name="PostDeviceType">
+			<input message="tns:PostDeviceTypeRequestMessage"/>
+			<output message="tns:PostDeviceTypeResponseMessage"/>
+		</operation>
+		<operation name="PostDeviceTypes">
+			<input message="tns:PostDeviceTypesRequestMessage"/>
+			<output message="tns:PostDeviceTypesResponseMessage"/>
 		</operation>
 	</portType>
 	<binding name="ObmenCreationSoapBinding"
 			type="tns:ObmenCreationPortType">
 		<soapbind:binding style="document"
 				transport="http://schemas.xmlsoap.org/soap/http"/>
-		<operation name="PostClients">
+		<operation name="PostOrder">
 			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClients"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostClient">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClient"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostTovars">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovars"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostTovar">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovar"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostClientDefects">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostClientDefect">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostManagers">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManagers"/>
-			<input>
-				<soapbind:body use="literal"/>
-			</input>
-			<output>
-				<soapbind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostManager">
-			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManager"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrder"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1210,9 +1627,139 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostOrder">
+		<operation name="PostSaleSource">
 			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrder"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSaleSource"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostSaleSources">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSaleSources"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostContact">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostContact"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostContacts">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostContacts"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostAccount">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostAccount"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostAccounts">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostAccounts"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostEmployee">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostEmployee"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostEmployees">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostEmployees"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProduct">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProduct"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProducts">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProducts"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefect">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefects">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostManager">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManager"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostManagers">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManagers"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1260,9 +1807,9 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostFLs">
+		<operation name="PostProductType">
 			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFLs"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductType"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1270,9 +1817,69 @@
 				<soapbind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostFL">
+		<operation name="PostProductTypes">
 			<soapbind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFL"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductTypes"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductSubcategorys">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductSubcategorys"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductSubcategory">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductSubcategory"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductCategorys">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductCategorys"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductCategory">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductCategory"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostDeviceType">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostDeviceType"/>
+			<input>
+				<soapbind:body use="literal"/>
+			</input>
+			<output>
+				<soapbind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostDeviceTypes">
+			<soapbind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostDeviceTypes"/>
 			<input>
 				<soapbind:body use="literal"/>
 			</input>
@@ -1285,79 +1892,9 @@
 			type="tns:ObmenCreationPortType">
 		<soap12bind:binding style="document"
 				transport="http://schemas.xmlsoap.org/soap/http"/>
-		<operation name="PostClients">
+		<operation name="PostOrder">
 			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClients"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostClient">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClient"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostTovars">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovars"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostTovar">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostTovar"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostClientDefects">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostClientDefect">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostManagers">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManagers"/>
-			<input>
-				<soap12bind:body use="literal"/>
-			</input>
-			<output>
-				<soap12bind:body use="literal"/>
-			</output>
-		</operation>
-		<operation name="PostManager">
-			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManager"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrder"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1375,9 +1912,139 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostOrder">
+		<operation name="PostSaleSource">
 			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostOrder"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSaleSource"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostSaleSources">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostSaleSources"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostContact">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostContact"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostContacts">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostContacts"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostAccount">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostAccount"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostAccounts">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostAccounts"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostEmployee">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostEmployee"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostEmployees">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostEmployees"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProduct">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProduct"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProducts">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProducts"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefect">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostClientDefects">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostManager">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManager"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostManagers">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostManagers"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1425,9 +2092,9 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostFLs">
+		<operation name="PostProductType">
 			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFLs"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductType"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1435,9 +2102,69 @@
 				<soap12bind:body use="literal"/>
 			</output>
 		</operation>
-		<operation name="PostFL">
+		<operation name="PostProductTypes">
 			<soap12bind:operation style="document"
-					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostFL"/>
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductTypes"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductSubcategorys">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductSubcategorys"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductSubcategory">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductSubcategory"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductCategorys">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductCategorys"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostProductCategory">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostProductCategory"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostDeviceType">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostDeviceType"/>
+			<input>
+				<soap12bind:body use="literal"/>
+			</input>
+			<output>
+				<soap12bind:body use="literal"/>
+			</output>
+		</operation>
+		<operation name="PostDeviceTypes">
+			<soap12bind:operation style="document"
+					soapAction="http://crm1ctest.dyson.ru#ObmenCreation:PostDeviceTypes"/>
 			<input>
 				<soap12bind:body use="literal"/>
 			</input>
@@ -1453,11 +2180,11 @@
 				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
 						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
-			<soapbind:address location="https://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
+			<soapbind:address location="http://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
 		</port>
 		<port name="ObmenCreationSoap12"
 				binding="tns:ObmenCreationSoap12Binding">
-			<soap12bind:address location="https://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
+			<soap12bind:address location="http://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
 		</port>
 	</service>
 </definitions>

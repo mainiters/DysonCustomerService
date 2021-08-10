@@ -23,6 +23,8 @@ namespace DysonCustomerService.EntityDataProviders
             
             esq.AddColumn("PrimaryContact.Email");
             esq.AddColumn("PrimaryContact.Name");
+            esq.AddColumn("TrcTypeLE.Name");
+            
             esq.AddColumn("PrimaryContact.MobilePhone");
             esq.AddColumn("PrimaryContact.JobTitle");
 
@@ -47,8 +49,6 @@ namespace DysonCustomerService.EntityDataProviders
         public override object GetEntityData(Guid EntityId)
         {
             var res = new Контрагенты();
-
-            //res.ID_Pack = new Guid().ToString();
 
             var clientId = this.EntityObject.GetTypedColumnValue<Guid>("Id");
             var address = this.EntityObject.GetTypedColumnValue<string>("Address");
@@ -76,6 +76,8 @@ namespace DysonCustomerService.EntityDataProviders
             // Данные Контрагента
             res = new Контрагенты()
             {
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
+
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
                 ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_TrcCode"),
@@ -104,21 +106,25 @@ namespace DysonCustomerService.EntityDataProviders
                 FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                 FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
                 IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
-                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
-                
-                Legal = true,
-                FIO_F = string.Empty,
-                MiddleName_F = string.Empty,
-                Name_F = string.Empty,
+
+                //Legal = true,
+                //FIO_F = string.Empty,
+                //MiddleName_F = string.Empty,
+                //Name_F = string.Empty,
+                //DysonChannelCode = string.Empty,
+
                 PhoneNumber = string.Empty,
-                DysonChannelCode = string.Empty,
                 StatusClient = string.Empty,
 
                 ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsRegisteredOnSite"),
                 PointSale = this.EntityObject.GetTypedColumnValue<bool>("TrcPointSale"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
 
-                Email = this.GetEmail()
+                Email = this.GetEmail(),
+
+                TypeLE = this.EntityObject.GetTypedColumnValue<string>("TrcTypeLE_Name"),
+                Korp = this.EntityObject.GetTypedColumnValue<string>("TrcBlock")
+
             };
 
             return res;
@@ -145,10 +151,6 @@ namespace DysonCustomerService.EntityDataProviders
                     .And("Address").IsEqual(Column.Parameter(address)) as Select;
 
             return select.ExecuteScalar<Guid>();
-        }
-        public override string GetServiceMethodName()
-        {
-            return "PostClient";
         }
     }
 }

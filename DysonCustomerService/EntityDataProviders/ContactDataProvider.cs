@@ -70,9 +70,9 @@ namespace DysonCustomerService.EntityDataProviders
                 AddressFact = addressFact,
                 AddressLegal = string.Empty,
                 
-                FIO_F = this.EntityObject.GetTypedColumnValue<string>("Surname"),
-                MiddleName_F = this.EntityObject.GetTypedColumnValue<string>("MiddleName"),
-                Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
+                //FIO_F = this.EntityObject.GetTypedColumnValue<string>("Surname"),
+                //MiddleName_F = this.EntityObject.GetTypedColumnValue<string>("MiddleName"),
+                //Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
                 StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
                 Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
 
@@ -80,9 +80,9 @@ namespace DysonCustomerService.EntityDataProviders
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
                 
                 PointSale = false,
-                Legal = false,
+                //Legal = false,
                 LegalPhoneNumber = string.Empty,
-                DysonChannelCode = string.Empty,
+                //DysonChannelCode = string.Empty,
                 ObjectTypeList = string.Empty,
                 INN = string.Empty,
                 KPP = string.Empty,

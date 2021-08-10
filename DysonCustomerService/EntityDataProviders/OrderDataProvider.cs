@@ -24,6 +24,7 @@ namespace DysonCustomerService.EntityDataProviders
                     "Product.Trc1CProductID",
                     "PriceList.TrcCode",
                     "TrcSalesSource.TrcCode",
+                    "TrcDysonChannelCode.TrcCode",
                     "TrcSerialNumber.TrcSerialNumber.Name"
                 }
             });
@@ -78,8 +79,7 @@ namespace DysonCustomerService.EntityDataProviders
                 TimeDeliveryTo = this.EntityObject.GetTypedColumnValue<int>("TrcDeliveryToTime"),
                 TK_Plandate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDeliveryDate"),
                 completeDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcActualDeliveryDate"),
-                modifyDate = this.EntityObject.GetTypedColumnValue<DateTime>("ModifiedOn"),
-                orderID = string.Empty,
+                orderID = this.EntityObject.GetTypedColumnValue<string>("TrcIOrderID"),
                 orderIdPublic = int.Parse(new string(this.EntityObject.GetTypedColumnValue<string>("Number").Where(c => char.IsDigit(c)).ToArray())),
                 
                 OrderStatus = this.EntityObject.GetTypedColumnValue<string>("TrcOrderState_Id").ToUpper() != "32B5554A-8975-475D-BAA0-E8B47F1B9973" || true
@@ -88,9 +88,7 @@ namespace DysonCustomerService.EntityDataProviders
 
                 TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
                 TK = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryCompany_TrcCode"),
-                PayType = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
                 LogisticComment = this.EntityObject.GetTypedColumnValue<string>("TrcTransportDepartmentComment"),
-                OrderSumRUB = this.EntityObject.GetTypedColumnValue<decimal>("Amount"),
                 PayTransaction = this.EntityObject.GetTypedColumnValue<string>("TrcTransactionCodePayU"),
                 DataReleaseH = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDateHoldingClientsFunds"),
                 DataReleaseM = this.EntityObject.GetTypedColumnValue<DateTime>("TrcActualWriteOffClientsFunds"),
@@ -100,15 +98,12 @@ namespace DysonCustomerService.EntityDataProviders
                 DeliveryCost = this.EntityObject.GetTypedColumnValue<decimal>("TrcDeliveryCost"),
                 Comment = this.EntityObject.GetTypedColumnValue<string>("TrcCommentFrom1C"),
                 Manager = this.EntityObject.GetTypedColumnValue<string>("Owner_Trc1CContactID"),
-                ManagerPhone = this.EntityObject.GetTypedColumnValue<string>("ContactNumber"),
                 email = this.EntityObject.GetTypedColumnValue<string>("TrcClientEmail"),
                 CourierInfo = this.EntityObject.GetTypedColumnValue<string>("Comment"),
                 ShipDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcShipmentDate"),
                 Organization = string.IsNullOrEmpty(AscAndKcCode) ? OrganizationCode : AscAndKcCode,
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_TrcCode"),
-                CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
-                StatusTK = this.EntityObject.GetTypedColumnValue<string>("TrcStatusTK_Description"),
 
                 FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),
                 Metro = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcMetroStation"),
@@ -123,34 +118,45 @@ namespace DysonCustomerService.EntityDataProviders
                 Area = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcArea_Name"),
                 Lat = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>(string.IsNullOrEmpty(AccountId) ? "TrcGPSE" : "GPSE"),
                 Lon = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>(string.IsNullOrEmpty(AccountId) ? "TrcGPSN" : "GPSN"),
-                kladr = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcKladrCode"),
                 Region = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("Region_Name"),
                 Street = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcStreet"),
                 Locality = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
+                DistanceFromMKAD = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcDistanceFromMKAD"),
 
-                CreditStatus = string.Empty,
-                CreditSumm = 0,
-                paper_id = string.Empty,
-                InCash = 0,
-                OnLinePaid = 0,
-                PanType = string.Empty,
-                DistanceFromMKAD = string.Empty,
+                //modifyDate = this.EntityObject.GetTypedColumnValue<DateTime>("ModifiedOn"),
+                //PayType = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
+                //OrderSumRUB = this.EntityObject.GetTypedColumnValue<decimal>("Amount"),
+                //ManagerPhone = this.EntityObject.GetTypedColumnValue<string>("ContactNumber"),
+                //CommentTK = this.EntityObject.GetTypedColumnValue<string>("TrcCourierServiceComment"),
+                //StatusTK = this.EntityObject.GetTypedColumnValue<string>("TrcStatusTK_Description"),
+                //kladr = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcKladrCode"),
 
-                DysonChannelCode = this.RelatedEntitiesData.Count > 0 && this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").Count() > 0 &&
-                                    this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection.Count() > 0 ?
-                                    this.RelatedEntitiesData.Where(e => e.Name == "OrderProduct").First().EntityCollection.First().GetTypedColumnValue<string>("TrcSalesSource_TrcCode") :
-                                    string.Empty,
+                //CreditStatus = string.Empty,
+                //CreditSumm = 0,
+                //paper_id = string.Empty,
+                //InCash = 0,
+                //OnLinePaid = 0,
+                //PanType = string.Empty,
+                //NumberDeparture = string.Empty,
+                //OrderType = 0,
+                //PromoSum = DiscountAmount,
+                //SOCR_Area = string.Empty,
+                //SOCR_City = string.Empty,
+                //SOCR_Locality = string.Empty,
+                //SOCR_Region = string.Empty,
+                //SOCR_Street = string.Empty,
 
-                NumberDeparture = string.Empty,
-                OrderType = 0,
+                DysonChannelCode = this.EntityObject.GetTypedColumnValue<string>("TrcDysonChannelCode_TrcCode"),
 
-                PromoSum = DiscountAmount,
+                Date_Tk_Load = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDateTKLoad"),
+                deliveryDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDesiredDeliveryDate"),
+                Payment = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
+                PayTransacrionOD = this.EntityObject.GetTypedColumnValue<string>("TrcPayTransacrionOD"),
+                DataPayChekOD = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDataPayChekOD"),
+                RetTrasactionOD = this.EntityObject.GetTypedColumnValue<string>("TrcRetTrasactionOD"),
+                DataRetCheckOD = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDataRetCheckOD"),
+                NewPrPay = this.EntityObject.GetTypedColumnValue<bool>("TrcNewPrPay"),
 
-                SOCR_Area = string.Empty,
-                SOCR_City = string.Empty,
-                SOCR_Locality = string.Empty,
-                SOCR_Region = string.Empty,
-                SOCR_Street = string.Empty
             };
 
             // Деталь продуктов

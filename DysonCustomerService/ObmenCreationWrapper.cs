@@ -75,6 +75,14 @@ namespace DysonCustomerService
                     return new OrderDataProvider(EntityId, this.userConnection);
                 case "TrcCustomerDefect":
                     return new CustomerDefectDataProvider(EntityId, this.userConnection);
+                case "ProductType":
+                    return new ProductTypeDataProvider(EntityId, this.userConnection);
+                case "ProductCategory":
+                    return new ProductCategoryDataProvider(EntityId, this.userConnection);
+                case "TrcProductSubcategory":
+                    return new TrcProductSubcategoryDataProvider(EntityId, this.userConnection);
+                case "TrcDeviceType":
+                    return new TrcDeviceTypeDataProvider(EntityId, this.userConnection);
             }
 
             throw new ArgumentException($"No DataProvider was found by EntityName {EntityName}");
