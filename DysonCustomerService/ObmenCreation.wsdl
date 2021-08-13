@@ -61,7 +61,7 @@
 							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="CreateDate"
+					<xs:element name="createDate"
 							type="xs:dateTime"/>
 					<xs:element name="Date_Tk_Load"
 							type="xs:dateTime"/>
@@ -169,7 +169,7 @@
 							type="xs:string"/>
 					<xs:element name="CreateSystem"
 							type="xs:string"/>
-					<xs:element name="Tovars"
+					<xs:element name="Product"
 							maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:attribute name="TovarCod"
@@ -216,6 +216,8 @@
 									use="required"/>
 						</xs:complexType>
 					</xs:element>
+					<xs:element name="Kladr"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="ЗаявкаНаРемонт">
@@ -388,7 +390,7 @@
 							type="xs:string"/>
 					<xs:element name="MarkDeletion"
 							type="xs:boolean"/>
-					<xs:element name="Name"
+					<xs:element name="Name_F"
 							type="xs:string"/>
 					<xs:element name="Surname"
 							type="xs:string"/>
@@ -458,7 +460,7 @@
 							type="xs:string"/>
 					<xs:element name="Lon"
 							type="xs:string"/>
-					<xs:element name="NameL"
+					<xs:element name="Name"
 							type="xs:string"/>
 					<xs:element name="FullName"
 							type="xs:string"/>
@@ -807,11 +809,11 @@
 							type="xs:boolean"/>
 					<xs:element name="Name"
 							type="xs:string"/>
-					<xs:element name="SEX"
+					<xs:element name="Sex"
 							type="xs:string"/>
 					<xs:element name="Email"
 							type="xs:string"/>
-					<xs:element name="TEL"
+					<xs:element name="MobTel"
 							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>

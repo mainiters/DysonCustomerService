@@ -27,7 +27,11 @@ namespace DysonCustomerService.EntityDataProviders
                 AdditionalColumns = new List<string>()
                 {
                     "TrcFiasCode",
-                    "Primary"
+                    "Primary",
+                    "Region.Name",
+                    "TrcSettlement.Name",
+                    "City.Name",
+                    "Area.Name"
                 }
             });
 
@@ -42,20 +46,20 @@ namespace DysonCustomerService.EntityDataProviders
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
-            var addressFact = RelatedEntitiesData.Where(e => e.Name == "ContactAddress")
+            var addressFactEntity = RelatedEntitiesData.Where(e => e.Name == "ContactAddress")
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<bool>("Primary"))
-                .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
+                .FirstOrDefault();
 
-            if(string.IsNullOrEmpty(addressFact))
+            var addressFact = string.Empty;
+
+            if (addressFactEntity != null)
             {
-                addressFact = string.Empty;
+                addressFact = addressFactEntity.GetTypedColumnValue<string>("Address");
             }
 
             // Данные Контактов
             res = new Контрагенты()
             {
-                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
-                PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("MobilePhone"),
                 FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
                 FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
                 FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
@@ -64,25 +68,40 @@ namespace DysonCustomerService.EntityDataProviders
                 FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
                 FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                 FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
-                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CContactID"),
+                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
+                Patronymic = this.EntityObject.GetTypedColumnValue<string>("MiddleName"),
+                PhoneNumber = this.EntityObject.GetTypedColumnValue<string>("MobilePhone"),
+                Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
+                ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsLkLinkSend"),
+                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
+                StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
+                Surname = this.EntityObject.GetTypedColumnValue<string>("Surname"),
+                Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
 
                 AddressFact = addressFact,
-                AddressLegal = string.Empty,
-                
-                //FIO_F = this.EntityObject.GetTypedColumnValue<string>("Surname"),
-                //MiddleName_F = this.EntityObject.GetTypedColumnValue<string>("MiddleName"),
-                //Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
-                StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
-                Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
 
-                ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsRegisteredOnSite"),
-                MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
-                
+                FIAS = addressFactEntity.GetTypedColumnValue<string>("TrcFiasCode"),
+                Region = addressFactEntity.GetTypedColumnValue<string>("Region_Name"),
+                Locality = addressFactEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
+                Street = addressFactEntity.GetTypedColumnValue<string>("TrcStreet"),
+                Metro = addressFactEntity.GetTypedColumnValue<string>("TrcMetroStation"),
+                House = addressFactEntity.GetTypedColumnValue<string>("TrcHouse"),
+                Korp = addressFactEntity.GetTypedColumnValue<string>("TrcBlock"),
+                Flat = addressFactEntity.GetTypedColumnValue<string>("TrcApartment"),
+                Entrance = addressFactEntity.GetTypedColumnValue<string>("TrcEntrance"),
+                FLOOR = addressFactEntity.GetTypedColumnValue<string>("TrcFloor"),
+                Intercom = addressFactEntity.GetTypedColumnValue<string>("TrcIntercom"),
+                City = addressFactEntity.GetTypedColumnValue<string>("City_Name"),
+                Area = addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
+                Lat = addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
+                Lon = addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
+
                 PointSale = false,
-                //Legal = false,
+                AddressLegal = string.Empty,
+                Name = string.Empty,
+                OPTINsent = new DateTime(),
                 LegalPhoneNumber = string.Empty,
-                //DysonChannelCode = string.Empty,
                 ObjectTypeList = string.Empty,
                 INN = string.Empty,
                 KPP = string.Empty,
@@ -93,15 +112,30 @@ namespace DysonCustomerService.EntityDataProviders
                 FIOYD = string.Empty,
                 PostYD = string.Empty,
                 MobTelYD = string.Empty,
-                EmailYD = string.Empty
+                EmailYD = string.Empty,
+                Building = string.Empty,
+
+                AreaL = string.Empty,
+                FIASL = string.Empty,
+                BuildingL = string.Empty,
+                CityL = string.Empty,
+                EntranceL = string.Empty,
+                FlatL = string.Empty,
+                FLOORL = string.Empty,
+                FullName = string.Empty,
+                HouseL = string.Empty,
+                IntercomL = string.Empty,
+                KorpL = string.Empty,
+                LatL = string.Empty,
+                LonL = string.Empty,
+                MetroL = string.Empty,
+                LocalityL = string.Empty,
+                RegionL = string.Empty,
+                StreetL = string.Empty,
+                TypeLE = string.Empty
             };
 
             return res;
-        }
-
-        public override string GetServiceMethodName()
-        {
-            return "PostClient";
         }
 
         protected Guid GetOrderAddressData(Guid clientId, string address)

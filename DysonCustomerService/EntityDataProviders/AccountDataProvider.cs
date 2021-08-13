@@ -40,7 +40,20 @@ namespace DysonCustomerService.EntityDataProviders
                 {
                     "TrcFiasCode",
                     "Primary",
-                    "AddressType"
+                    "AddressType",
+                    "Region.Name",
+                    "TrcSettlement.Name",
+                    "City.Name",
+                    "Area.Name"
+                }
+            });
+
+            relatedEntitiesData.Add(new RelatedEntitiesData()
+            {
+                Name = "AccountBillingInfo",
+                AdditionalColumns = new List<string>()
+                {
+                    "TrcCurrency.Name"
                 }
             });
 
@@ -55,77 +68,117 @@ namespace DysonCustomerService.EntityDataProviders
 
             var addressData = this.GetOrderAddressData(clientId, address);
 
-            var addressLegal = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
+            var addressLegalEntity = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<Guid>("AddressTypeId") == Guid.Parse("770bf68c-4b6e-df11-b988-001d60e938c6"))
-                .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
+                .FirstOrDefault();
 
-            var addressFact = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
+            var addressFactEntity = RelatedEntitiesData.Where(e => e.Name == "AccountAddress")
                 .First().EntityCollection.Where(e => e.GetTypedColumnValue<Guid>("AddressTypeId") == Guid.Parse("780bf68c-4b6e-df11-b988-001d60e938c6"))
-                .FirstOrDefault()?.GetTypedColumnValue<string>("Address");
+                .FirstOrDefault();
 
-            if (string.IsNullOrEmpty(addressLegal))
+            var addressLegal = string.Empty;
+            var addressFact = string.Empty;
+
+            if (addressLegalEntity != null)
             {
-                addressLegal = string.Empty;
+                addressLegal = addressLegalEntity.GetTypedColumnValue<string>("Address");
             }
 
-            if (string.IsNullOrEmpty(addressFact))
+            if (addressFactEntity != null)
             {
-                addressFact = string.Empty;
+                addressFact = addressFactEntity.GetTypedColumnValue<string>("Address");
             }
 
             // Данные Контрагента
             res = new Контрагенты()
             {
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
-
-                Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
+                Name = this.EntityObject.GetTypedColumnValue<string>("TrcShortName"),
+                FullName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkingTitle"),
+                TypeLE = this.EntityObject.GetTypedColumnValue<string>("TrcTypeLE_Name"),
                 LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
+                FSRL = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
+                FMRL = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
                 ObjectTypeList = this.EntityObject.GetTypedColumnValue<string>("TrcCustomerSegment_TrcCode"),
                 INN = this.EntityObject.GetTypedColumnValue<string>("TrcInn"),
                 KPP = this.EntityObject.GetTypedColumnValue<string>("TrcKpp"),
-
-                AddressFact = addressFact,
-                AddressLegal = addressLegal,
-
                 FIOYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_Name"),
                 PostYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_JobTitle"),
                 MobTelYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_MobilePhone"),
                 EmailYO = this.EntityObject.GetTypedColumnValue<string>("PrimaryContact_Email"),
-
                 FIOYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_Name"),
                 PostYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_JobTitle"),
                 MobTelYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_MobilePhone"),
                 EmailYD = this.EntityObject.GetTypedColumnValue<string>("TrcAdditionalContact_Email"),
+                PointSale = this.EntityObject.GetTypedColumnValue<bool>("TrcPointSale"),
+                HeadCP = this.EntityObject.GetTypedColumnValue<bool>("TrcHeadCP"),
 
-                FSSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceSMS"),
-                FSE = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceEmail"),
-                FME = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingEmail"),
-                FSCO = this.EntityObject.GetTypedColumnValue<bool>("TrcServiceCall"),
-                FMCO = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingCall"),
-                FMSMS = this.EntityObject.GetTypedColumnValue<bool>("TrcMarketingSMS"),
-                FSR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
-                FMR = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
-                IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
+                AddressFact = addressFact,
+                FIAS = addressFactEntity.GetTypedColumnValue<string>("TrcFiasCode"),
+                Region = addressFactEntity.GetTypedColumnValue<string>("Region_Name"),
+                Locality = addressFactEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
+                Street = addressFactEntity.GetTypedColumnValue<string>("TrcStreet"),
+                Metro = addressFactEntity.GetTypedColumnValue<string>("TrcMetroStation"),
+                House = addressFactEntity.GetTypedColumnValue<string>("TrcHouse"),
+                Korp = addressFactEntity.GetTypedColumnValue<string>("TrcBlock"),
+                Flat = addressFactEntity.GetTypedColumnValue<string>("TrcApartment"),
+                Entrance = addressFactEntity.GetTypedColumnValue<string>("TrcEntrance"),
+                FLOOR = addressFactEntity.GetTypedColumnValue<string>("TrcFloor"),
+                Intercom = addressFactEntity.GetTypedColumnValue<string>("TrcIntercom"),
+                City = addressFactEntity.GetTypedColumnValue<string>("City_Name"),
+                Area = addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
+                Lat = addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
+                Lon = addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
 
-                //Legal = true,
-                //FIO_F = string.Empty,
-                //MiddleName_F = string.Empty,
-                //Name_F = string.Empty,
-                //DysonChannelCode = string.Empty,
+                AddressLegal = addressLegal,
+                FIASL = addressLegalEntity.GetTypedColumnValue<string>("TrcFiasCode"),
+                RegionL = addressLegalEntity.GetTypedColumnValue<string>("Region_Name"),
+                LocalityL = addressLegalEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
+                StreetL = addressLegalEntity.GetTypedColumnValue<string>("TrcStreet"),
+                MetroL = addressLegalEntity.GetTypedColumnValue<string>("TrcMetroStation"),
+                HouseL = addressLegalEntity.GetTypedColumnValue<string>("TrcHouse"),
+                KorpL = addressLegalEntity.GetTypedColumnValue<string>("TrcBlock"),
+                FlatL = addressLegalEntity.GetTypedColumnValue<string>("TrcApartment"),
+                EntranceL = addressLegalEntity.GetTypedColumnValue<string>("TrcEntrance"),
+                FLOORL = addressLegalEntity.GetTypedColumnValue<string>("TrcFloor"),
+                IntercomL = addressLegalEntity.GetTypedColumnValue<string>("TrcIntercom"),
+                CityL = addressLegalEntity.GetTypedColumnValue<string>("City_Name"),
+                AreaL = addressLegalEntity.GetTypedColumnValue<string>("TrcArea_Name"),
+                LatL = addressLegalEntity.GetTypedColumnValue<string>("TrcGPSE"),
+                LonL = addressLegalEntity.GetTypedColumnValue<string>("TrcGPSN"),
 
+                IDDepersonalizedClient = string.Empty,
                 PhoneNumber = string.Empty,
                 StatusClient = string.Empty,
+                Building = string.Empty,
+                BuildingL = string.Empty,
+                OPTINsent = new DateTime(),
+                Patronymic = string.Empty,
+                Surname = string.Empty,
+                Name_F = string.Empty,
 
-                ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsRegisteredOnSite"),
-                PointSale = this.EntityObject.GetTypedColumnValue<bool>("TrcPointSale"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
 
                 Email = this.GetEmail(),
-
-                TypeLE = this.EntityObject.GetTypedColumnValue<string>("TrcTypeLE_Name"),
-                Korp = this.EntityObject.GetTypedColumnValue<string>("TrcBlock")
-
+                
             };
+
+            var billinginfo = new List<КонтрагентыBillinginfo>();
+
+            if (this.RelatedEntitiesData.Count > 0)
+            {
+                foreach (var item in this.RelatedEntitiesData.Where(e => e.Name == "AccountBillingInfo").First().EntityCollection)
+                {
+                    billinginfo.Add(new КонтрагентыBillinginfo()
+                    {
+                        AccountNumber = item.GetTypedColumnValue<string>("TrcAccountNumber"),
+                        BIK = item.GetTypedColumnValue<string>("TrcBik"),
+                        Currency = item.GetTypedColumnValue<string>("TrcCurrency_Name"),
+                    });
+                }
+            }
+
+            res.Billinginfo = billinginfo.ToArray();
 
             return res;
         }

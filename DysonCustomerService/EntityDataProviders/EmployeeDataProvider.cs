@@ -21,6 +21,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("Contact.Gender.Name");
             esq.AddColumn("Contact.Email");
             esq.AddColumn("Contact.MobilePhone");
+            esq.AddColumn("Contact.Trc1CContactID");
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -31,10 +32,10 @@ namespace DysonCustomerService.EntityDataProviders
             {
                 Name = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
-                ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcCode"),
+                ID_1С = this.EntityObject.GetTypedColumnValue<string>("Contact_Trc1CContactID"),
                 Email = this.EntityObject.GetTypedColumnValue<string>("Contact_Email"),
-                SEX = this.EntityObject.GetTypedColumnValue<string>("Contact_Gender_Name"),
-                TEL = this.EntityObject.GetTypedColumnValue<string>("Contact_MobilePhone"),
+                Sex = this.EntityObject.GetTypedColumnValue<string>("Contact_Gender_Name"),
+                MobTel = this.EntityObject.GetTypedColumnValue<string>("Contact_MobilePhone"),
             };
 
             return res;

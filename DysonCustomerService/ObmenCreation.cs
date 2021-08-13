@@ -1483,7 +1483,9 @@ namespace DysonCustomerService {
         
         private string createSystemField;
         
-        private ЗаказКлиентаTovars[] tovarsField;
+        private ЗаказКлиентаProduct[] productField;
+        
+        private string kladrField;
         
         /// <remarks/>
         public string ID_1С {
@@ -1506,7 +1508,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public System.DateTime CreateDate {
+        public System.DateTime createDate {
             get {
                 return this.createDateField;
             }
@@ -2050,13 +2052,23 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Tovars")]
-        public ЗаказКлиентаTovars[] Tovars {
+        [System.Xml.Serialization.XmlElementAttribute("Product")]
+        public ЗаказКлиентаProduct[] Product {
             get {
-                return this.tovarsField;
+                return this.productField;
             }
             set {
-                this.tovarsField = value;
+                this.productField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Kladr {
+            get {
+                return this.kladrField;
+            }
+            set {
+                this.kladrField = value;
             }
         }
     }
@@ -2067,7 +2079,7 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ЗаказКлиентаTovars {
+    public partial class ЗаказКлиентаProduct {
         
         private string tovarCodField;
         
@@ -4060,11 +4072,11 @@ namespace DysonCustomerService {
         
         private string nameField;
         
-        private string sEXField;
+        private string sexField;
         
         private string emailField;
         
-        private string tELField;
+        private string mobTelField;
         
         /// <remarks/>
         public string ID_1С {
@@ -4097,12 +4109,12 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string SEX {
+        public string Sex {
             get {
-                return this.sEXField;
+                return this.sexField;
             }
             set {
-                this.sEXField = value;
+                this.sexField = value;
             }
         }
         
@@ -4117,12 +4129,12 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string TEL {
+        public string MobTel {
             get {
-                return this.tELField;
+                return this.mobTelField;
             }
             set {
-                this.tELField = value;
+                this.mobTelField = value;
             }
         }
     }
@@ -4173,7 +4185,7 @@ namespace DysonCustomerService {
         
         private bool markDeletionField;
         
-        private string nameField;
+        private string name_FField;
         
         private string surnameField;
         
@@ -4243,7 +4255,7 @@ namespace DysonCustomerService {
         
         private string lonField;
         
-        private string nameLField;
+        private string nameField;
         
         private string fullNameField;
         
@@ -4336,12 +4348,12 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string Name {
+        public string Name_F {
             get {
-                return this.nameField;
+                return this.name_FField;
             }
             set {
-                this.nameField = value;
+                this.name_FField = value;
             }
         }
         
@@ -4686,12 +4698,12 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        public string NameL {
+        public string Name {
             get {
-                return this.nameLField;
+                return this.nameField;
             }
             set {
-                this.nameLField = value;
+                this.nameField = value;
             }
         }
         

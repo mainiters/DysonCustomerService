@@ -13,7 +13,6 @@ namespace DysonCustomerService.EntityDataProviders
         public ProductCategoryDataProvider(Guid Id, UserConnection UserConnection)
             : base("ProductCategory", Id, UserConnection, "TrcCode")
         {
-
         }
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)

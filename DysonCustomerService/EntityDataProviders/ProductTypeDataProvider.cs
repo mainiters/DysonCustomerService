@@ -18,7 +18,7 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            esq.AddColumn("ProductCategory.TrcCode");
+            esq.AddColumn("TrcProductCategory.TrcCode");
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -33,7 +33,7 @@ namespace DysonCustomerService.EntityDataProviders
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcCode"),
                 EquipCode = new КатегорииEquipCode[]
                 {
-                    new КатегорииEquipCode() { EquipmentCode = this.EntityObject.GetTypedColumnValue<string>("ProductCategory_TrcCode") }
+                    new КатегорииEquipCode() { EquipmentCode = this.EntityObject.GetTypedColumnValue<string>("TrcProductCategory_TrcCode") }
                 }
             };
 
