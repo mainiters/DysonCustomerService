@@ -43,7 +43,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcASCAndKC.TrcCode");
             esq.AddColumn("TrcOrganization.Trc1CAccountID");
             esq.AddColumn("TrcStatusTK.Description");
-            esq.AddColumn("SourceOrder.Name");
+            esq.AddColumn("SourceOrder.Description");
             esq.AddColumn("DsnBundle.Trc1CProductID");
             
             base.AddRelatedColumns(esq, relatedEntitiesData);
@@ -112,7 +112,7 @@ namespace DysonCustomerService.EntityDataProviders
                 WarehouseCode = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrder_TrcCode"),
                 Organization = this.EntityObject.GetTypedColumnValue<string>("TrcASCAndKC_TrcCode"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
-                SalesChannel = this.EntityObject.GetTypedColumnValue<string>("SourceOrder_Name"),
+                SalesChannel = this.EntityObject.GetTypedColumnValue<string>("SourceOrder_Description"),
                 CreateSystem = this.EntityObject.GetTypedColumnValue<string>("TrcCreateSystem"),
 
                 FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),

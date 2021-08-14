@@ -19,7 +19,7 @@ namespace DysonCustomerService.EntityDataProviders
 
         protected override void AddRelatedColumns(EntitySchemaQuery esq, List<RelatedEntitiesData> relatedEntitiesData)
         {
-            esq.AddColumn("TrcContactCategory.Name");
+            esq.AddColumn("TrcContactCategory.TrcCode");
 
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
@@ -75,7 +75,7 @@ namespace DysonCustomerService.EntityDataProviders
                 Email = this.EntityObject.GetTypedColumnValue<string>("Email"),
                 ThereAreLK = this.EntityObject.GetTypedColumnValue<bool>("TrcIsLkLinkSend"),
                 IDDepersonalizedClient = this.EntityObject.GetTypedColumnValue<string>("TrcIDDepersonalizedClient"),
-                StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_Name"),
+                StatusClient = this.EntityObject.GetTypedColumnValue<string>("TrcContactCategory_TrcCode"),
                 Surname = this.EntityObject.GetTypedColumnValue<string>("Surname"),
                 Name_F = this.EntityObject.GetTypedColumnValue<string>("GivenName"),
 

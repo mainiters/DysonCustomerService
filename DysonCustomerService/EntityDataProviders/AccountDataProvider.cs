@@ -23,7 +23,7 @@ namespace DysonCustomerService.EntityDataProviders
             
             esq.AddColumn("PrimaryContact.Email");
             esq.AddColumn("PrimaryContact.Name");
-            esq.AddColumn("TrcTypeLE.Name");
+            esq.AddColumn("TrcTypeLE.Description");
             
             esq.AddColumn("PrimaryContact.MobilePhone");
             esq.AddColumn("PrimaryContact.JobTitle");
@@ -95,7 +95,7 @@ namespace DysonCustomerService.EntityDataProviders
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CAccountID"),
                 Name = this.EntityObject.GetTypedColumnValue<string>("TrcShortName"),
                 FullName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkingTitle"),
-                TypeLE = this.EntityObject.GetTypedColumnValue<string>("TrcTypeLE_Name"),
+                TypeLE = this.EntityObject.GetTypedColumnValue<string>("TrcTypeLE_Description"),
                 LegalPhoneNumber = this.EntityObject.GetTypedColumnValue<string>("Phone"),
                 FSRL = this.EntityObject.GetTypedColumnValue<bool>("TrcIsServiceMailing"),
                 FMRL = this.EntityObject.GetTypedColumnValue<bool>("TrcIsMarketingMailing"),
@@ -178,7 +178,7 @@ namespace DysonCustomerService.EntityDataProviders
                     {
                         AccountNumber = item.GetTypedColumnValue<string>("TrcAccountNumber"),
                         BIK = item.GetTypedColumnValue<string>("TrcBik"),
-                        Currency = item.GetTypedColumnValue<string>("TrcCurrency_Name"),
+                        Currency ="RUB"
                     });
                 }
             }

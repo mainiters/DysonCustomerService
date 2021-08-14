@@ -30,7 +30,7 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcPipeType.Name");
             esq.AddColumn("TrcPowerSource.Name");
             esq.AddColumn("TrcProductModel.Name");
-            esq.AddColumn("TrcProductSubcategory.Name");
+            esq.AddColumn("TrcProductSubcategory.TrcCode");
             esq.AddColumn("TradeMark.Name");
             esq.AddColumn("Type.Name");
             esq.AddColumn("TrcProductColor.Name");
@@ -46,7 +46,7 @@ namespace DysonCustomerService.EntityDataProviders
                 FilterFieldName = "DsnProduct",
                 AdditionalColumns = new List<string>()
                 {
-                    "DsnProduct.Code"
+                    "DsnProduct.Trc1CProductID"
                 }
             });
 
@@ -70,7 +70,7 @@ namespace DysonCustomerService.EntityDataProviders
                 CRM_Category = this.EntityObject.GetTypedColumnValue<string>("Type_TrcCode"),
                 CRM_DeviceType = this.EntityObject.GetTypedColumnValue<string>("Category_TrcCode"),
                 CRM_TypeItem = this.EntityObject.GetTypedColumnValue<string>("TrcDeviceType_TrcCode"),
-                ProductSubcategory = this.EntityObject.GetTypedColumnValue<string>("TrcProductSubcategory_Name"),
+                ProductSubcategory = this.EntityObject.GetTypedColumnValue<string>("TrcProductSubcategory_TrcCode"),
                 UnitID = this.EntityObject.GetTypedColumnValue<string>("Unit_Name"),
                 WeightNet = this.EntityObject.GetTypedColumnValue<decimal>("TrcWeight"),
                 Height = this.EntityObject.GetTypedColumnValue<decimal>("TrcPackingHeight"),
