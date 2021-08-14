@@ -24,8 +24,9 @@ namespace DysonCustomerService.EntityDataProviders
                     "Product.Trc1CProductID",
                     "PriceList.TrcCode",
                     "TrcSalesSource.TrcCode",
-                    "TrcDysonChannelCode.TrcCode",
-                    "TrcSerialNumber.TrcSerialNumber.Name"
+                    "TrcSerialNumber.TrcSerialNumber.Name",
+                    "DsnBundle.Trc1CProductID",
+                    "TrcFoilColor.TrcCode"
                 }
             });
 
@@ -44,8 +45,9 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("TrcOrganization.Trc1CAccountID");
             esq.AddColumn("TrcStatusTK.Description");
             esq.AddColumn("SourceOrder.Description");
-            esq.AddColumn("DsnBundle.Trc1CProductID");
-            
+            esq.AddColumn("TrcDysonChannelCode.TrcCode");
+            esq.AddColumn("TrcReasonCancelingOrder.TrcCode");
+
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
 
@@ -152,9 +154,10 @@ namespace DysonCustomerService.EntityDataProviders
                         NDS_S = this.EntityObject.GetTypedColumnValue<int>("TrcVATrate"),
                         NDS = this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT"),
                         ProductsCanceled = item.GetTypedColumnValue<bool>("TrcProductsCanceled"),
-                        ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
+                        ReasonCancellation = this.EntityObject.GetTypedColumnValue<string>("TrcReasonCancelingOrder_TrcCode"),
+                        //ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
                         Personalization = item.GetTypedColumnValue<bool>("TrcPersonalization"),
-                        FoilColor = item.GetTypedColumnValue<string>("TrcFoilColor"),
+                        FoilColor = item.GetTypedColumnValue<string>("TrcFoilColor_TrcCode"),
                         Initials = item.GetTypedColumnValue<string>("TrcInitials"),
                         Bundle = item.GetTypedColumnValue<string>("DsnBundle_Trc1CProductID"),
                         PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode")
