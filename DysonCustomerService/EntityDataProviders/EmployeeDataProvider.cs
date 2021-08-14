@@ -11,7 +11,7 @@ namespace DysonCustomerService.EntityDataProviders
     public class EmployeeDataProvider : BaseEntityDataProvider
     {
         public EmployeeDataProvider(Guid Id, UserConnection UserConnection)
-            : base("Employee", Id, UserConnection, "TrcCode")
+            : base("Employee", Id, UserConnection)
         {
 
         }

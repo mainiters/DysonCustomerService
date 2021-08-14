@@ -31,7 +31,7 @@ namespace DysonCustomerService.EntityDataProviders
                     "Region.Name",
                     "TrcSettlement.Name",
                     "City.Name",
-                    "Area.Name"
+                    "TrcArea.Name"
                 }
             });
 
@@ -81,22 +81,22 @@ namespace DysonCustomerService.EntityDataProviders
 
                 AddressFact = addressFact,
 
-                FIAS = addressFactEntity.GetTypedColumnValue<string>("TrcFiasCode"),
-                Region = addressFactEntity.GetTypedColumnValue<string>("Region_Name"),
-                Locality = addressFactEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
-                Street = addressFactEntity.GetTypedColumnValue<string>("TrcStreet"),
-                Metro = addressFactEntity.GetTypedColumnValue<string>("TrcMetroStation"),
-                House = addressFactEntity.GetTypedColumnValue<string>("TrcHouse"),
-                Korp = addressFactEntity.GetTypedColumnValue<string>("TrcBlock"),
-                Flat = addressFactEntity.GetTypedColumnValue<string>("TrcApartment"),
-                Entrance = addressFactEntity.GetTypedColumnValue<string>("TrcEntrance"),
-                FLOOR = addressFactEntity.GetTypedColumnValue<string>("TrcFloor"),
-                Intercom = addressFactEntity.GetTypedColumnValue<string>("TrcIntercom"),
-                City = addressFactEntity.GetTypedColumnValue<string>("City_Name"),
-                Area = addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
-                Lat = addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
-                Lon = addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
-
+                FIAS = addressFactEntity == null ? string. Empty : addressFactEntity.GetTypedColumnValue<string>("TrcFiasCode"),
+                Region = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("Region_Name"),
+                Locality = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
+                Street = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcStreet"),
+                Metro = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcMetroStation"),
+                House = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcHouse"),
+                Korp = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcBlock"),
+                Flat = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcApartment"),
+                Entrance = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcEntrance"),
+                FLOOR = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcFloor"),
+                Intercom = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcIntercom"),
+                City = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("City_Name"),
+                Area = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
+                Lat = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
+                Lon = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
+                
                 PointSale = false,
                 AddressLegal = string.Empty,
                 Name = string.Empty,
