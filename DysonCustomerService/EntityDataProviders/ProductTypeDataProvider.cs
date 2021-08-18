@@ -31,11 +31,17 @@ namespace DysonCustomerService.EntityDataProviders
                 Description = this.EntityObject.GetTypedColumnValue<string>("Description"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcCode"),
-                EquipCode = new КатегорииEquipCode[]
-                {
-                    new КатегорииEquipCode() { EquipmentCode = this.EntityObject.GetTypedColumnValue<string>("TrcProductSubcategory_TrcCode") }
-                }
             };
+
+            var equipCode = this.EntityObject.GetTypedColumnValue<string>("TrcProductSubcategory_TrcCode");
+
+            if(!string.IsNullOrEmpty(equipCode))
+            {
+                res.EquipCode = new КатегорииEquipCode[]
+                {
+                    new КатегорииEquipCode() { EquipmentCode = equipCode }
+                };
+            }
 
             return res;
         }

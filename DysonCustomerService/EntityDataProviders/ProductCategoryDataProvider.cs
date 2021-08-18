@@ -29,6 +29,38 @@ namespace DysonCustomerService.EntityDataProviders
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("TrcCode"),
             };
 
+            var categories = this.GetCategories();
+
+            if (categories != null)
+            {
+                res.Сategories = categories;
+            }
+
+            return res;
+        }
+
+        protected ВидыНоменклатурыCRMСategories[] GetCategories()
+        {
+            ВидыНоменклатурыCRMСategories[] res = null;
+
+            var esq = new EntitySchemaQuery(this.UserConnection.EntitySchemaManager, "ProductType");
+
+            esq.AddAllSchemaColumns();
+
+            esq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, "TrcProductCategory", this.EntityId));
+
+            var collection = esq.GetEntityCollection(UserConnection);
+
+            if(collection != null && collection.Count > 0)
+            {
+                var notEmptyItems = collection.Where(e => !string.IsNullOrEmpty(e.GetTypedColumnValue<string>("TrcCode")));
+
+                if (notEmptyItems.Count() > 0)
+                {
+                    res = notEmptyItems.Select(e => new ВидыНоменклатурыCRMСategories() { Сategorie = e.GetTypedColumnValue<string>("TrcCode") }).ToArray();
+                }
+            }
+
             return res;
         }
     }

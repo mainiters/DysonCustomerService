@@ -96,7 +96,9 @@ namespace DysonCustomerService.EntityDataProviders
                 Area = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
                 Lat = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
                 Lon = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
-                
+
+                TypeLE = "ФизЛицо",
+
                 PointSale = false,
                 AddressLegal = string.Empty,
                 Name = string.Empty,
@@ -131,8 +133,7 @@ namespace DysonCustomerService.EntityDataProviders
                 MetroL = string.Empty,
                 LocalityL = string.Empty,
                 RegionL = string.Empty,
-                StreetL = string.Empty,
-                TypeLE = string.Empty
+                StreetL = string.Empty
             };
 
             return res;
