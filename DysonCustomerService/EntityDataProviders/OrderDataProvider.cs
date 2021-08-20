@@ -134,7 +134,8 @@ namespace DysonCustomerService.EntityDataProviders
                 Street = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcStreet"),
                 Locality = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcSettlement_Name"),
                 DistanceFromMKAD = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcDistanceFromMKAD"),
-                Kladr = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcKladrCode")
+                Kladr = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcKladrCode"),
+                DeliveryAddress = this.EntityObject.GetTypedColumnValue<string>("DeliveryAddress")
             };
 
             // Деталь продуктов

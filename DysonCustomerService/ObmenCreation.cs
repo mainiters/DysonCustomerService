@@ -25,6 +25,7 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="ObmenCreationSoapBinding", Namespace="http://crm1ctest.dyson.ru")]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(Ответ))]
     public partial class ObmenCreation : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback PostOrderOperationCompleted;
@@ -1487,6 +1488,8 @@ namespace DysonCustomerService {
         
         private string kladrField;
         
+        private object deliveryAddressField;
+        
         /// <remarks/>
         public string ID_1С {
             get {
@@ -2071,6 +2074,16 @@ namespace DysonCustomerService {
                 this.kladrField = value;
             }
         }
+        
+        /// <remarks/>
+        public object DeliveryAddress {
+            get {
+                return this.deliveryAddressField;
+            }
+            set {
+                this.deliveryAddressField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -2270,11 +2283,92 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетТипыУстройств {
+    public partial class ФизическиеЛица {
+        
+        private string iD_1СField;
+        
+        private bool markDeletionField;
+        
+        private string nameField;
+        
+        private string sexField;
+        
+        private string emailField;
+        
+        private string mobTelField;
+        
+        /// <remarks/>
+        public string ID_1С {
+            get {
+                return this.iD_1СField;
+            }
+            set {
+                this.iD_1СField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Sex {
+            get {
+                return this.sexField;
+            }
+            set {
+                this.sexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Email {
+            get {
+                return this.emailField;
+            }
+            set {
+                this.emailField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string MobTel {
+            get {
+                return this.mobTelField;
+            }
+            set {
+                this.mobTelField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетФизическиеЛица {
         
         private string iD_PackField;
         
-        private ТипыУстройств[] deviceTypeField;
+        private ФизическиеЛица[] userField;
         
         /// <remarks/>
         public string ID_Pack {
@@ -2287,13 +2381,13 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("DeviceType")]
-        public ТипыУстройств[] DeviceType {
+        [System.Xml.Serialization.XmlElementAttribute("User")]
+        public ФизическиеЛица[] User {
             get {
-                return this.deviceTypeField;
+                return this.userField;
             }
             set {
-                this.deviceTypeField = value;
+                this.userField = value;
             }
         }
     }
@@ -2361,91 +2455,11 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ВидыНоменклатурыCRM {
-        
-        private string iD_1СField;
-        
-        private bool markDeletionField;
-        
-        private string nameField;
-        
-        private ВидыНоменклатурыCRMСategories[] сategoriesField;
-        
-        /// <remarks/>
-        public string ID_1С {
-            get {
-                return this.iD_1СField;
-            }
-            set {
-                this.iD_1СField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool MarkDeletion {
-            get {
-                return this.markDeletionField;
-            }
-            set {
-                this.markDeletionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Сategories", IsNullable=true)]
-        public ВидыНоменклатурыCRMСategories[] Сategories {
-            get {
-                return this.сategoriesField;
-            }
-            set {
-                this.сategoriesField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ВидыНоменклатурыCRMСategories {
-        
-        private string сategorieField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Сategorie {
-            get {
-                return this.сategorieField;
-            }
-            set {
-                this.сategorieField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетВидыНоменклатурыCRM {
+    public partial class ПакетТипыУстройств {
         
         private string iD_PackField;
         
-        private ВидыНоменклатурыCRM[] productCategoryField;
+        private ТипыУстройств[] deviceTypeField;
         
         /// <remarks/>
         public string ID_Pack {
@@ -2458,230 +2472,13 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ProductCategory")]
-        public ВидыНоменклатурыCRM[] ProductCategory {
+        [System.Xml.Serialization.XmlElementAttribute("DeviceType")]
+        public ТипыУстройств[] DeviceType {
             get {
-                return this.productCategoryField;
+                return this.deviceTypeField;
             }
             set {
-                this.productCategoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class КодОборудования {
-        
-        private string iD_1СField;
-        
-        private bool markDeletionField;
-        
-        private string nameField;
-        
-        private string descriptionField;
-        
-        /// <remarks/>
-        public string ID_1С {
-            get {
-                return this.iD_1СField;
-            }
-            set {
-                this.iD_1СField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool MarkDeletion {
-            get {
-                return this.markDeletionField;
-            }
-            set {
-                this.markDeletionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетКодОборудования {
-        
-        private string iD_PackField;
-        
-        private КодОборудования[] productSubcategoryField;
-        
-        /// <remarks/>
-        public string ID_Pack {
-            get {
-                return this.iD_PackField;
-            }
-            set {
-                this.iD_PackField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ProductSubcategory")]
-        public КодОборудования[] ProductSubcategory {
-            get {
-                return this.productSubcategoryField;
-            }
-            set {
-                this.productSubcategoryField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетКатегории {
-        
-        private string iD_PackField;
-        
-        private Категории[] productTypeField;
-        
-        /// <remarks/>
-        public string ID_Pack {
-            get {
-                return this.iD_PackField;
-            }
-            set {
-                this.iD_PackField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ProductType")]
-        public Категории[] ProductType {
-            get {
-                return this.productTypeField;
-            }
-            set {
-                this.productTypeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class Категории {
-        
-        private string iD_1СField;
-        
-        private bool markDeletionField;
-        
-        private string nameField;
-        
-        private string descriptionField;
-        
-        private КатегорииEquipCode[] equipCodeField;
-        
-        /// <remarks/>
-        public string ID_1С {
-            get {
-                return this.iD_1СField;
-            }
-            set {
-                this.iD_1СField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool MarkDeletion {
-            get {
-                return this.markDeletionField;
-            }
-            set {
-                this.markDeletionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Description {
-            get {
-                return this.descriptionField;
-            }
-            set {
-                this.descriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("EquipCode", IsNullable=true)]
-        public КатегорииEquipCode[] EquipCode {
-            get {
-                return this.equipCodeField;
-            }
-            set {
-                this.equipCodeField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class КатегорииEquipCode {
-        
-        private string equipmentCodeField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string EquipmentCode {
-            get {
-                return this.equipmentCodeField;
-            }
-            set {
-                this.equipmentCodeField = value;
+                this.deviceTypeField = value;
             }
         }
     }
@@ -2856,715 +2653,6 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ЗаявкаНаРемонт {
-        
-        private string iD_1СField;
-        
-        private bool markDeletionField;
-        
-        private System.DateTime createDateField;
-        
-        private string organizationField;
-        
-        private string accountField;
-        
-        private string warehouseCodeField;
-        
-        private string serviceOptionField;
-        
-        private string typeRepairField;
-        
-        private string articleField;
-        
-        private string snField;
-        
-        private System.DateTime dateDepartureField;
-        
-        private string masterField;
-        
-        private string shopField;
-        
-        private System.DateTime datePurchaseField;
-        
-        private string typeGuaranteeField;
-        
-        private bool renewalWarrantyField;
-        
-        private System.DateTime actualDateRepairExecutionField;
-        
-        private string informationClientField;
-        
-        private string internalCommentField;
-        
-        private bool violationOperationField;
-        
-        private string commentsResultRepairField;
-        
-        private string interviewStatusField;
-        
-        private string customerNoteField;
-        
-        private int nPSServiceIndexField;
-        
-        private string serviceDescriptionField;
-        
-        private int nPSProductIndexField;
-        
-        private string productDescriptionField;
-        
-        private string requestStatusField;
-        
-        private string requestFailureReasonField;
-        
-        private bool replacementEquipmentRequiredField;
-        
-        private ЗаявкаНаРемонтRequestOpinion[] requestOpinionField;
-        
-        private ЗаявкаНаРемонтClientDefect[] clientDefectField;
-        
-        private ЗаявкаНаРемонтSparePart[] sparePartField;
-        
-        private ЗаявкаНаРемонтService[] serviceField;
-        
-        /// <remarks/>
-        public string ID_1С {
-            get {
-                return this.iD_1СField;
-            }
-            set {
-                this.iD_1СField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool MarkDeletion {
-            get {
-                return this.markDeletionField;
-            }
-            set {
-                this.markDeletionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime CreateDate {
-            get {
-                return this.createDateField;
-            }
-            set {
-                this.createDateField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Organization {
-            get {
-                return this.organizationField;
-            }
-            set {
-                this.organizationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Account {
-            get {
-                return this.accountField;
-            }
-            set {
-                this.accountField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string WarehouseCode {
-            get {
-                return this.warehouseCodeField;
-            }
-            set {
-                this.warehouseCodeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ServiceOption {
-            get {
-                return this.serviceOptionField;
-            }
-            set {
-                this.serviceOptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TypeRepair {
-            get {
-                return this.typeRepairField;
-            }
-            set {
-                this.typeRepairField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Article {
-            get {
-                return this.articleField;
-            }
-            set {
-                this.articleField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string SN {
-            get {
-                return this.snField;
-            }
-            set {
-                this.snField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public System.DateTime DateDeparture {
-            get {
-                return this.dateDepartureField;
-            }
-            set {
-                this.dateDepartureField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Master {
-            get {
-                return this.masterField;
-            }
-            set {
-                this.masterField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Shop {
-            get {
-                return this.shopField;
-            }
-            set {
-                this.shopField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
-        public System.DateTime DatePurchase {
-            get {
-                return this.datePurchaseField;
-            }
-            set {
-                this.datePurchaseField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string TypeGuarantee {
-            get {
-                return this.typeGuaranteeField;
-            }
-            set {
-                this.typeGuaranteeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool RenewalWarranty {
-            get {
-                return this.renewalWarrantyField;
-            }
-            set {
-                this.renewalWarrantyField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
-        public System.DateTime ActualDateRepairExecution {
-            get {
-                return this.actualDateRepairExecutionField;
-            }
-            set {
-                this.actualDateRepairExecutionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string InformationClient {
-            get {
-                return this.informationClientField;
-            }
-            set {
-                this.informationClientField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string InternalComment {
-            get {
-                return this.internalCommentField;
-            }
-            set {
-                this.internalCommentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ViolationOperation {
-            get {
-                return this.violationOperationField;
-            }
-            set {
-                this.violationOperationField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CommentsResultRepair {
-            get {
-                return this.commentsResultRepairField;
-            }
-            set {
-                this.commentsResultRepairField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string InterviewStatus {
-            get {
-                return this.interviewStatusField;
-            }
-            set {
-                this.interviewStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string CustomerNote {
-            get {
-                return this.customerNoteField;
-            }
-            set {
-                this.customerNoteField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int NPSServiceIndex {
-            get {
-                return this.nPSServiceIndexField;
-            }
-            set {
-                this.nPSServiceIndexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ServiceDescription {
-            get {
-                return this.serviceDescriptionField;
-            }
-            set {
-                this.serviceDescriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public int NPSProductIndex {
-            get {
-                return this.nPSProductIndexField;
-            }
-            set {
-                this.nPSProductIndexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string ProductDescription {
-            get {
-                return this.productDescriptionField;
-            }
-            set {
-                this.productDescriptionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string RequestStatus {
-            get {
-                return this.requestStatusField;
-            }
-            set {
-                this.requestStatusField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string RequestFailureReason {
-            get {
-                return this.requestFailureReasonField;
-            }
-            set {
-                this.requestFailureReasonField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool ReplacementEquipmentRequired {
-            get {
-                return this.replacementEquipmentRequiredField;
-            }
-            set {
-                this.replacementEquipmentRequiredField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("RequestOpinion")]
-        public ЗаявкаНаРемонтRequestOpinion[] RequestOpinion {
-            get {
-                return this.requestOpinionField;
-            }
-            set {
-                this.requestOpinionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ClientDefect")]
-        public ЗаявкаНаРемонтClientDefect[] ClientDefect {
-            get {
-                return this.clientDefectField;
-            }
-            set {
-                this.clientDefectField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("SparePart")]
-        public ЗаявкаНаРемонтSparePart[] SparePart {
-            get {
-                return this.sparePartField;
-            }
-            set {
-                this.sparePartField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Service")]
-        public ЗаявкаНаРемонтService[] Service {
-            get {
-                return this.serviceField;
-            }
-            set {
-                this.serviceField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ЗаявкаНаРемонтRequestOpinion {
-        
-        private string defectField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Defect {
-            get {
-                return this.defectField;
-            }
-            set {
-                this.defectField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ЗаявкаНаРемонтClientDefect {
-        
-        private string defectsAccordingClientField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string DefectsAccordingClient {
-            get {
-                return this.defectsAccordingClientField;
-            }
-            set {
-                this.defectsAccordingClientField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ЗаявкаНаРемонтSparePart {
-        
-        private string spareField;
-        
-        private int requiredField;
-        
-        private int availabilityField;
-        
-        private decimal priceField;
-        
-        private bool paidField;
-        
-        private decimal spareAmountField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Spare {
-            get {
-                return this.spareField;
-            }
-            set {
-                this.spareField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int Required {
-            get {
-                return this.requiredField;
-            }
-            set {
-                this.requiredField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int Availability {
-            get {
-                return this.availabilityField;
-            }
-            set {
-                this.availabilityField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal Price {
-            get {
-                return this.priceField;
-            }
-            set {
-                this.priceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool Paid {
-            get {
-                return this.paidField;
-            }
-            set {
-                this.paidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal SpareAmount {
-            get {
-                return this.spareAmountField;
-            }
-            set {
-                this.spareAmountField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ЗаявкаНаРемонтService {
-        
-        private string serviceField;
-        
-        private int kolField;
-        
-        private decimal amountField;
-        
-        private bool paidField;
-        
-        private string contentField;
-        
-        private decimal priceField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Service {
-            get {
-                return this.serviceField;
-            }
-            set {
-                this.serviceField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public int Kol {
-            get {
-                return this.kolField;
-            }
-            set {
-                this.kolField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal Amount {
-            get {
-                return this.amountField;
-            }
-            set {
-                this.amountField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public bool Paid {
-            get {
-                return this.paidField;
-            }
-            set {
-                this.paidField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Content {
-            get {
-                return this.contentField;
-            }
-            set {
-                this.contentField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public decimal Price {
-            get {
-                return this.priceField;
-            }
-            set {
-                this.priceField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетЗаявок {
-        
-        private string iD_PackField;
-        
-        private ЗаявкаНаРемонт[] requestField;
-        
-        /// <remarks/>
-        public string ID_Pack {
-            get {
-                return this.iD_PackField;
-            }
-            set {
-                this.iD_PackField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Request")]
-        public ЗаявкаНаРемонт[] Request {
-            get {
-                return this.requestField;
-            }
-            set {
-                this.requestField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетПользователи {
-        
-        private string iD_PackField;
-        
-        private Пользователи[] userField;
-        
-        /// <remarks/>
-        public string ID_Pack {
-            get {
-                return this.iD_PackField;
-            }
-            set {
-                this.iD_PackField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("User")]
-        public Пользователи[] User {
-            get {
-                return this.userField;
-            }
-            set {
-                this.userField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class Пользователи {
         
         private string iD_1СField;
@@ -3610,11 +2698,11 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетДефектыКлиента {
+    public partial class ПакетПользователи {
         
         private string iD_PackField;
         
-        private ДефектыСоСловКлиента[] clientDefectField;
+        private Пользователи[] userField;
         
         /// <remarks/>
         public string ID_Pack {
@@ -3627,13 +2715,13 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("ClientDefect")]
-        public ДефектыСоСловКлиента[] ClientDefect {
+        [System.Xml.Serialization.XmlElementAttribute("User")]
+        public Пользователи[] User {
             get {
-                return this.clientDefectField;
+                return this.userField;
             }
             set {
-                this.clientDefectField = value;
+                this.userField = value;
             }
         }
     }
@@ -3644,41 +2732,77 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ДефектыСоСловКлиента {
+    public partial class ПакетОтвета {
         
-        private string iD_1СField;
+        private string iD_PackField;
         
-        private bool markDeletionField;
+        private bool yesErrorField;
         
-        private string nameField;
+        private ПакетОтветаErrors[] errorsField;
         
         /// <remarks/>
-        public string ID_1С {
+        public string ID_Pack {
             get {
-                return this.iD_1СField;
+                return this.iD_PackField;
             }
             set {
-                this.iD_1СField = value;
+                this.iD_PackField = value;
             }
         }
         
         /// <remarks/>
-        public bool MarkDeletion {
+        public bool YesError {
             get {
-                return this.markDeletionField;
+                return this.yesErrorField;
             }
             set {
-                this.markDeletionField = value;
+                this.yesErrorField = value;
             }
         }
         
         /// <remarks/>
-        public string Name {
+        [System.Xml.Serialization.XmlElementAttribute("Errors")]
+        public ПакетОтветаErrors[] Errors {
             get {
-                return this.nameField;
+                return this.errorsField;
             }
             set {
-                this.nameField = value;
+                this.errorsField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетОтветаErrors {
+        
+        private string idField;
+        
+        private string errorField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string ID {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Error {
+            get {
+                return this.errorField;
+            }
+            set {
+                this.errorField = value;
             }
         }
     }
@@ -4020,121 +3144,6 @@ namespace DysonCustomerService {
             }
             set {
                 this.partBundlePriceField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетФизическиеЛица {
-        
-        private string iD_PackField;
-        
-        private ФизическиеЛица[] userField;
-        
-        /// <remarks/>
-        public string ID_Pack {
-            get {
-                return this.iD_PackField;
-            }
-            set {
-                this.iD_PackField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("User")]
-        public ФизическиеЛица[] User {
-            get {
-                return this.userField;
-            }
-            set {
-                this.userField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ФизическиеЛица {
-        
-        private string iD_1СField;
-        
-        private bool markDeletionField;
-        
-        private string nameField;
-        
-        private string sexField;
-        
-        private string emailField;
-        
-        private string mobTelField;
-        
-        /// <remarks/>
-        public string ID_1С {
-            get {
-                return this.iD_1СField;
-            }
-            set {
-                this.iD_1СField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public bool MarkDeletion {
-            get {
-                return this.markDeletionField;
-            }
-            set {
-                this.markDeletionField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Name {
-            get {
-                return this.nameField;
-            }
-            set {
-                this.nameField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Sex {
-            get {
-                return this.sexField;
-            }
-            set {
-                this.sexField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string Email {
-            get {
-                return this.emailField;
-            }
-            set {
-                this.emailField = value;
-            }
-        }
-        
-        /// <remarks/>
-        public string MobTel {
-            get {
-                return this.mobTelField;
-            }
-            set {
-                this.mobTelField = value;
             }
         }
     }
@@ -5110,6 +4119,1125 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетКодОборудования {
+        
+        private string iD_PackField;
+        
+        private КодОборудования[] productSubcategoryField;
+        
+        /// <remarks/>
+        public string ID_Pack {
+            get {
+                return this.iD_PackField;
+            }
+            set {
+                this.iD_PackField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ProductSubcategory")]
+        public КодОборудования[] ProductSubcategory {
+            get {
+                return this.productSubcategoryField;
+            }
+            set {
+                this.productSubcategoryField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class КодОборудования {
+        
+        private string iD_1СField;
+        
+        private bool markDeletionField;
+        
+        private string nameField;
+        
+        private string descriptionField;
+        
+        /// <remarks/>
+        public string ID_1С {
+            get {
+                return this.iD_1СField;
+            }
+            set {
+                this.iD_1СField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетКатегории {
+        
+        private string iD_PackField;
+        
+        private Категории[] productTypeField;
+        
+        /// <remarks/>
+        public string ID_Pack {
+            get {
+                return this.iD_PackField;
+            }
+            set {
+                this.iD_PackField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ProductType")]
+        public Категории[] ProductType {
+            get {
+                return this.productTypeField;
+            }
+            set {
+                this.productTypeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class Категории {
+        
+        private string iD_1СField;
+        
+        private bool markDeletionField;
+        
+        private string nameField;
+        
+        private string descriptionField;
+        
+        private КатегорииEquipCode[] equipCodeField;
+        
+        /// <remarks/>
+        public string ID_1С {
+            get {
+                return this.iD_1СField;
+            }
+            set {
+                this.iD_1СField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("EquipCode", IsNullable=true)]
+        public КатегорииEquipCode[] EquipCode {
+            get {
+                return this.equipCodeField;
+            }
+            set {
+                this.equipCodeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class КатегорииEquipCode {
+        
+        private string equipmentCodeField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string EquipmentCode {
+            get {
+                return this.equipmentCodeField;
+            }
+            set {
+                this.equipmentCodeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетЗаявок {
+        
+        private string iD_PackField;
+        
+        private ЗаявкаНаРемонт[] requestField;
+        
+        /// <remarks/>
+        public string ID_Pack {
+            get {
+                return this.iD_PackField;
+            }
+            set {
+                this.iD_PackField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Request")]
+        public ЗаявкаНаРемонт[] Request {
+            get {
+                return this.requestField;
+            }
+            set {
+                this.requestField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ЗаявкаНаРемонт {
+        
+        private string iD_1СField;
+        
+        private bool markDeletionField;
+        
+        private System.DateTime createDateField;
+        
+        private string organizationField;
+        
+        private string accountField;
+        
+        private string warehouseCodeField;
+        
+        private string serviceOptionField;
+        
+        private string typeRepairField;
+        
+        private string articleField;
+        
+        private string snField;
+        
+        private System.DateTime dateDepartureField;
+        
+        private string masterField;
+        
+        private string shopField;
+        
+        private System.DateTime datePurchaseField;
+        
+        private string typeGuaranteeField;
+        
+        private bool renewalWarrantyField;
+        
+        private System.DateTime actualDateRepairExecutionField;
+        
+        private string informationClientField;
+        
+        private string internalCommentField;
+        
+        private bool violationOperationField;
+        
+        private string commentsResultRepairField;
+        
+        private string interviewStatusField;
+        
+        private string customerNoteField;
+        
+        private int nPSServiceIndexField;
+        
+        private string serviceDescriptionField;
+        
+        private int nPSProductIndexField;
+        
+        private string productDescriptionField;
+        
+        private string requestStatusField;
+        
+        private string requestFailureReasonField;
+        
+        private bool replacementEquipmentRequiredField;
+        
+        private ЗаявкаНаРемонтRequestOpinion[] requestOpinionField;
+        
+        private ЗаявкаНаРемонтClientDefect[] clientDefectField;
+        
+        private ЗаявкаНаРемонтSparePart[] sparePartField;
+        
+        private ЗаявкаНаРемонтService[] serviceField;
+        
+        /// <remarks/>
+        public string ID_1С {
+            get {
+                return this.iD_1СField;
+            }
+            set {
+                this.iD_1СField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime CreateDate {
+            get {
+                return this.createDateField;
+            }
+            set {
+                this.createDateField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Organization {
+            get {
+                return this.organizationField;
+            }
+            set {
+                this.organizationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Account {
+            get {
+                return this.accountField;
+            }
+            set {
+                this.accountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string WarehouseCode {
+            get {
+                return this.warehouseCodeField;
+            }
+            set {
+                this.warehouseCodeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ServiceOption {
+            get {
+                return this.serviceOptionField;
+            }
+            set {
+                this.serviceOptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeRepair {
+            get {
+                return this.typeRepairField;
+            }
+            set {
+                this.typeRepairField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Article {
+            get {
+                return this.articleField;
+            }
+            set {
+                this.articleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string SN {
+            get {
+                return this.snField;
+            }
+            set {
+                this.snField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public System.DateTime DateDeparture {
+            get {
+                return this.dateDepartureField;
+            }
+            set {
+                this.dateDepartureField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Master {
+            get {
+                return this.masterField;
+            }
+            set {
+                this.masterField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Shop {
+            get {
+                return this.shopField;
+            }
+            set {
+                this.shopField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime DatePurchase {
+            get {
+                return this.datePurchaseField;
+            }
+            set {
+                this.datePurchaseField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string TypeGuarantee {
+            get {
+                return this.typeGuaranteeField;
+            }
+            set {
+                this.typeGuaranteeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool RenewalWarranty {
+            get {
+                return this.renewalWarrantyField;
+            }
+            set {
+                this.renewalWarrantyField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(DataType="date")]
+        public System.DateTime ActualDateRepairExecution {
+            get {
+                return this.actualDateRepairExecutionField;
+            }
+            set {
+                this.actualDateRepairExecutionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string InformationClient {
+            get {
+                return this.informationClientField;
+            }
+            set {
+                this.informationClientField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string InternalComment {
+            get {
+                return this.internalCommentField;
+            }
+            set {
+                this.internalCommentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ViolationOperation {
+            get {
+                return this.violationOperationField;
+            }
+            set {
+                this.violationOperationField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CommentsResultRepair {
+            get {
+                return this.commentsResultRepairField;
+            }
+            set {
+                this.commentsResultRepairField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string InterviewStatus {
+            get {
+                return this.interviewStatusField;
+            }
+            set {
+                this.interviewStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string CustomerNote {
+            get {
+                return this.customerNoteField;
+            }
+            set {
+                this.customerNoteField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int NPSServiceIndex {
+            get {
+                return this.nPSServiceIndexField;
+            }
+            set {
+                this.nPSServiceIndexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ServiceDescription {
+            get {
+                return this.serviceDescriptionField;
+            }
+            set {
+                this.serviceDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int NPSProductIndex {
+            get {
+                return this.nPSProductIndexField;
+            }
+            set {
+                this.nPSProductIndexField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string ProductDescription {
+            get {
+                return this.productDescriptionField;
+            }
+            set {
+                this.productDescriptionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RequestStatus {
+            get {
+                return this.requestStatusField;
+            }
+            set {
+                this.requestStatusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string RequestFailureReason {
+            get {
+                return this.requestFailureReasonField;
+            }
+            set {
+                this.requestFailureReasonField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool ReplacementEquipmentRequired {
+            get {
+                return this.replacementEquipmentRequiredField;
+            }
+            set {
+                this.replacementEquipmentRequiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("RequestOpinion")]
+        public ЗаявкаНаРемонтRequestOpinion[] RequestOpinion {
+            get {
+                return this.requestOpinionField;
+            }
+            set {
+                this.requestOpinionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ClientDefect")]
+        public ЗаявкаНаРемонтClientDefect[] ClientDefect {
+            get {
+                return this.clientDefectField;
+            }
+            set {
+                this.clientDefectField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("SparePart")]
+        public ЗаявкаНаРемонтSparePart[] SparePart {
+            get {
+                return this.sparePartField;
+            }
+            set {
+                this.sparePartField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Service")]
+        public ЗаявкаНаРемонтService[] Service {
+            get {
+                return this.serviceField;
+            }
+            set {
+                this.serviceField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ЗаявкаНаРемонтRequestOpinion {
+        
+        private string defectField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Defect {
+            get {
+                return this.defectField;
+            }
+            set {
+                this.defectField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ЗаявкаНаРемонтClientDefect {
+        
+        private string defectsAccordingClientField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string DefectsAccordingClient {
+            get {
+                return this.defectsAccordingClientField;
+            }
+            set {
+                this.defectsAccordingClientField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ЗаявкаНаРемонтSparePart {
+        
+        private string spareField;
+        
+        private int requiredField;
+        
+        private int availabilityField;
+        
+        private decimal priceField;
+        
+        private bool paidField;
+        
+        private decimal spareAmountField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Spare {
+            get {
+                return this.spareField;
+            }
+            set {
+                this.spareField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int Required {
+            get {
+                return this.requiredField;
+            }
+            set {
+                this.requiredField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int Availability {
+            get {
+                return this.availabilityField;
+            }
+            set {
+                this.availabilityField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal Price {
+            get {
+                return this.priceField;
+            }
+            set {
+                this.priceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool Paid {
+            get {
+                return this.paidField;
+            }
+            set {
+                this.paidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal SpareAmount {
+            get {
+                return this.spareAmountField;
+            }
+            set {
+                this.spareAmountField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ЗаявкаНаРемонтService {
+        
+        private string serviceField;
+        
+        private int kolField;
+        
+        private decimal amountField;
+        
+        private bool paidField;
+        
+        private string contentField;
+        
+        private decimal priceField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Service {
+            get {
+                return this.serviceField;
+            }
+            set {
+                this.serviceField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public int Kol {
+            get {
+                return this.kolField;
+            }
+            set {
+                this.kolField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal Amount {
+            get {
+                return this.amountField;
+            }
+            set {
+                this.amountField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public bool Paid {
+            get {
+                return this.paidField;
+            }
+            set {
+                this.paidField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Content {
+            get {
+                return this.contentField;
+            }
+            set {
+                this.contentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal Price {
+            get {
+                return this.priceField;
+            }
+            set {
+                this.priceField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетЗаказов {
+        
+        private string iD_PackField;
+        
+        private ЗаказКлиента[] orderField;
+        
+        /// <remarks/>
+        public string ID_Pack {
+            get {
+                return this.iD_PackField;
+            }
+            set {
+                this.iD_PackField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Order")]
+        public ЗаказКлиента[] Order {
+            get {
+                return this.orderField;
+            }
+            set {
+                this.orderField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетДефектыКлиента {
+        
+        private string iD_PackField;
+        
+        private ДефектыСоСловКлиента[] clientDefectField;
+        
+        /// <remarks/>
+        public string ID_Pack {
+            get {
+                return this.iD_PackField;
+            }
+            set {
+                this.iD_PackField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ClientDefect")]
+        public ДефектыСоСловКлиента[] ClientDefect {
+            get {
+                return this.clientDefectField;
+            }
+            set {
+                this.clientDefectField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ДефектыСоСловКлиента {
+        
+        private string iD_1СField;
+        
+        private bool markDeletionField;
+        
+        private string nameField;
+        
+        /// <remarks/>
+        public string ID_1С {
+            get {
+                return this.iD_1СField;
+            }
+            set {
+                this.iD_1СField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ПакетВидыНоменклатурыCRM {
+        
+        private string iD_PackField;
+        
+        private ВидыНоменклатурыCRM[] productCategoryField;
+        
+        /// <remarks/>
+        public string ID_Pack {
+            get {
+                return this.iD_PackField;
+            }
+            set {
+                this.iD_PackField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("ProductCategory")]
+        public ВидыНоменклатурыCRM[] ProductCategory {
+            get {
+                return this.productCategoryField;
+            }
+            set {
+                this.productCategoryField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ВидыНоменклатурыCRM {
+        
+        private string iD_1СField;
+        
+        private bool markDeletionField;
+        
+        private string nameField;
+        
+        private ВидыНоменклатурыCRMСategories[] сategoriesField;
+        
+        /// <remarks/>
+        public string ID_1С {
+            get {
+                return this.iD_1СField;
+            }
+            set {
+                this.iD_1СField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool MarkDeletion {
+            get {
+                return this.markDeletionField;
+            }
+            set {
+                this.markDeletionField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string Name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute("Сategories", IsNullable=true)]
+        public ВидыНоменклатурыCRMСategories[] Сategories {
+            get {
+                return this.сategoriesField;
+            }
+            set {
+                this.сategoriesField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
+    public partial class ВидыНоменклатурыCRMСategories {
+        
+        private string сategorieField;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public string Сategorie {
+            get {
+                return this.сategorieField;
+            }
+            set {
+                this.сategorieField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетISU_ИсточникиПродаж {
         
         private string iD_PackField;
@@ -5189,55 +5317,21 @@ namespace DysonCustomerService {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетЗаказов {
+    public partial class Ответ {
         
-        private string iD_PackField;
-        
-        private ЗаказКлиента[] orderField;
-        
-        /// <remarks/>
-        public string ID_Pack {
-            get {
-                return this.iD_PackField;
-            }
-            set {
-                this.iD_PackField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Order")]
-        public ЗаказКлиента[] Order {
-            get {
-                return this.orderField;
-            }
-            set {
-                this.orderField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетОтвета {
-        
-        private string iD_PackField;
+        private string iD_1СField;
         
         private bool yesErrorField;
         
-        private ПакетОтветаErrors[] errorsField;
+        private string[] errorsField;
         
         /// <remarks/>
-        public string ID_Pack {
+        public string ID_1С {
             get {
-                return this.iD_PackField;
+                return this.iD_1СField;
             }
             set {
-                this.iD_PackField = value;
+                this.iD_1СField = value;
             }
         }
         
@@ -5253,47 +5347,12 @@ namespace DysonCustomerService {
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("Errors")]
-        public ПакетОтветаErrors[] Errors {
+        public string[] Errors {
             get {
                 return this.errorsField;
             }
             set {
                 this.errorsField = value;
-            }
-        }
-    }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
-    [System.SerializableAttribute()]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
-    public partial class ПакетОтветаErrors {
-        
-        private string idField;
-        
-        private string errorField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string ID {
-            get {
-                return this.idField;
-            }
-            set {
-                this.idField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute()]
-        public string Error {
-            get {
-                return this.errorField;
-            }
-            set {
-                this.errorField = value;
             }
         }
     }
