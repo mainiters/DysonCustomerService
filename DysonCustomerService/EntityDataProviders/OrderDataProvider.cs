@@ -32,7 +32,7 @@ namespace DysonCustomerService.EntityDataProviders
 
             esq.AddColumn("TrcOrderState.Id");
             esq.AddColumn("TrcOrderState.Description");
-            esq.AddColumn("TrcOrcerPaymentWay.Name");
+            esq.AddColumn("TrcOrcerPaymentWay.Description");
             esq.AddColumn("TrcDeliveryCompany.TrcCode");
             esq.AddColumn("Owner.Trc1CContactID");
             esq.AddColumn("TrcOrganization.Name");
@@ -90,7 +90,7 @@ namespace DysonCustomerService.EntityDataProviders
                     : "ОтмененКлиентом",
                 TK_Track = this.EntityObject.GetTypedColumnValue<string>("TrcTrackNumber"),
                 TK = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryCompany_TrcCode"),
-                Payment = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Name"),
+                Payment = this.EntityObject.GetTypedColumnValue<string>("TrcOrcerPaymentWay_Description"),
                 LogisticComment = this.EntityObject.GetTypedColumnValue<string>("TrcTransportDepartmentComment"),
                 PayTransaction = this.EntityObject.GetTypedColumnValue<string>("TrcTransactionCodePayU"),
                 DataReleaseH = this.EntityObject.GetTypedColumnValue<DateTime>("TrcDateHoldingClientsFunds"),

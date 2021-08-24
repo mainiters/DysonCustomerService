@@ -43,7 +43,7 @@ namespace DysonCustomerService.EntityDataProviders
             relatedEntitiesData.Add(new RelatedEntitiesData()
             {
                 Name = "DsnProductInBundle",
-                FilterFieldName = "DsnProduct",
+                FilterFieldName = "DsnBundleProduct",
                 AdditionalColumns = new List<string>()
                 {
                     "DsnProduct.Trc1CProductID"
