@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
+using Terrasoft.Trace;
 
 namespace DysonCustomerService.EntityDataProviders
 {
@@ -193,6 +194,18 @@ namespace DysonCustomerService.EntityDataProviders
             esq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, "Address", address));
 
             return esq.GetEntityCollection(this.UserConnection).FirstOrDefault();
+        }
+
+        protected override void UpdateEntityIdFromPackage(ПакетОтвета response)
+        {
+            base.UpdateEntityIdFromPackage(response);
+
+            if(response != null && !string.IsNullOrWhiteSpace(response.ID_Pack) && !string.IsNullOrEmpty(this.ExternalSystemId) 
+                && string.IsNullOrEmpty(this.EntityObject.GetTypedColumnValue<string>("TrcOrderCode1C")))
+            {
+                var helper = new TrcPreOrderHelper(UserConnection);
+                helper.ReserveOrderCart(this.EntityObject.GetTypedColumnValue<string>("Id"), this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrderId"), false);
+            }
         }
     }
 }
