@@ -147,11 +147,12 @@ namespace DysonCustomerService.EntityDataProviders
                 //LatL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcGPSE"),
                 //LonL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcGPSN"),
 
+                NameObject = this.EntityObject.GetTypedColumnValue<string>("Name"),
+
                 Lat = string.Empty,
                 LatL = string.Empty,
                 Lon = string.Empty,
                 LonL = string.Empty,
-
                 IDDepersonalizedClient = string.Empty,
                 PhoneNumber = string.Empty,
                 StatusClient = string.Empty,

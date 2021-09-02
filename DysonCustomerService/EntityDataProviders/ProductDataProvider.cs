@@ -62,7 +62,7 @@ namespace DysonCustomerService.EntityDataProviders
             var res = new Номенклатура()
             {
                 ID_1С = this.EntityObject.GetTypedColumnValue<string>("Trc1CProductID"),
-                WorkName = this.EntityObject.GetTypedColumnValue<string>("TrcWorkName"),
+                WorkName = this.EntityObject.GetTypedColumnValue<string>("Name"),
                 PrintName = this.EntityObject.GetTypedColumnValue<string>("TrcPrintName"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
                 Article = this.EntityObject.GetTypedColumnValue<string>("Code"),
@@ -80,7 +80,7 @@ namespace DysonCustomerService.EntityDataProviders
                 WeightGross = this.EntityObject.GetTypedColumnValue<decimal>("TrcProductGrossWeightInPackaging"),
                 BundleCode = this.EntityObject.GetTypedColumnValue<string>("TrcBundleCode"),
                 Bundle = this.EntityObject.GetTypedColumnValue<bool>("TrcBundle"),
-                BundleDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcBundleExpirationDate")
+                BundleDate = this.EntityObject.GetTypedColumnValue<DateTime>("TrcBundleExpirationDate"),
             };
 
             var DsnProductInBundle = new List<НоменклатураBundleSet>();

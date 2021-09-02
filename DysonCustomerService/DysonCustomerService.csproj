@@ -261,7 +261,6 @@
     <Compile Include="EntityDataProviders\SysAdminUnitDataProvider.cs" />
     <Compile Include="ServiceConstants.cs" />
     <Compile Include="SoapMessageLogger.cs" />
-    <Compile Include="TrcPreOrderHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

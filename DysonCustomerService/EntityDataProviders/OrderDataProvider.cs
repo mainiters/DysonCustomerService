@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Terrasoft.Core;
 using Terrasoft.Core.Entities;
-using Terrasoft.Trace;
 
 namespace DysonCustomerService.EntityDataProviders
 {
@@ -153,8 +152,8 @@ namespace DysonCustomerService.EntityDataProviders
                         TovarSum = item.GetTypedColumnValue<decimal>("TotalAmount"),
                         RRC = item.GetTypedColumnValue<decimal>("Price"),
                         SN = item.GetTypedColumnValue<string>("TrcSerialNumber_TrcSerialNumber_Name"),
-                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TrcVATrate"),
-                        NDS = this.EntityObject.GetTypedColumnValue<decimal>("TrcVAT"),
+                        NDS = this.EntityObject.GetTypedColumnValue<decimal>("DiscountTax"),
+                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TaxAmount"),
                         ProductsCanceled = item.GetTypedColumnValue<bool>("TrcProductsCanceled"),
                         ReasonCancellation = this.EntityObject.GetTypedColumnValue<string>("TrcReasonCancelingOrder_TrcCode"),
                         //ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
@@ -162,7 +161,7 @@ namespace DysonCustomerService.EntityDataProviders
                         FoilColor = item.GetTypedColumnValue<string>("TrcFoilColor_TrcCode"),
                         Initials = item.GetTypedColumnValue<string>("TrcInitials"),
                         Bundle = item.GetTypedColumnValue<string>("DsnBundle_Trc1CProductID"),
-                        PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode")
+                        PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode"),
                     });
                 }
             }
@@ -203,8 +202,38 @@ namespace DysonCustomerService.EntityDataProviders
             if(response != null && !string.IsNullOrWhiteSpace(response.ID_Pack) && !string.IsNullOrEmpty(this.ExternalSystemId) 
                 && string.IsNullOrEmpty(this.EntityObject.GetTypedColumnValue<string>("TrcOrderCode1C")))
             {
-                var helper = new TrcPreOrderHelper(UserConnection);
-                helper.ReserveOrderCart(this.EntityObject.GetTypedColumnValue<string>("Id"), this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrderId"), false);
+                var warehouseForShippingOrderId = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrderId");
+                var orderId = this.EntityObject.GetTypedColumnValue<string>("Id");
+
+                var esq = new EntitySchemaQuery(UserConnection.EntitySchemaManager, "OrderProduct");
+
+                esq.AddAllSchemaColumns();
+
+                esq.Filters.Add(esq.CreateFilterWithParameters(FilterComparisonType.Equal, "Order", orderId));
+
+                var orderProducts = esq.GetEntityCollection(UserConnection);
+
+                foreach (var item in orderProducts)
+                {
+                    var balanceEsq = new EntitySchemaQuery(UserConnection.EntitySchemaManager, "ProductStockBalance");
+
+                    balanceEsq.AddAllSchemaColumns();
+
+                    balanceEsq.Filters.Add(balanceEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Product", item.GetTypedColumnValue<Guid>("ProductId")));
+                    balanceEsq.Filters.Add(balanceEsq.CreateFilterWithParameters(FilterComparisonType.Equal, "Warehouse", warehouseForShippingOrderId));
+
+                    var count = item.GetTypedColumnValue<double>("Quantity") * (-1);
+
+                    var balanceItem = balanceEsq.GetEntityCollection(UserConnection).FirstOrDefault();
+
+                    if (balanceItem != null)
+                    {
+                        balanceItem.SetColumnValue("ReserveQuantity", balanceItem.GetTypedColumnValue<double>("ReserveQuantity") + count);
+                        balanceItem.SetColumnValue("AvailableQuantity", balanceItem.GetTypedColumnValue<double>("AvailableQuantity") - count);
+
+                        balanceItem.Save();
+                    }
+                }
             }
         }
     }

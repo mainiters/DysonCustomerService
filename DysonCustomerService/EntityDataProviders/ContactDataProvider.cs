@@ -96,7 +96,6 @@ namespace DysonCustomerService.EntityDataProviders
                 Area = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
                 Lat = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
                 Lon = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
-
                 TypeLE = "ФизЛицо",
 
                 PointSale = false,
@@ -116,7 +115,8 @@ namespace DysonCustomerService.EntityDataProviders
                 MobTelYD = string.Empty,
                 EmailYD = string.Empty,
                 Building = string.Empty,
-
+                NameObject = string.Empty,
+                
                 AreaL = string.Empty,
                 FIASL = string.Empty,
                 BuildingL = string.Empty,

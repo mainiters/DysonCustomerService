@@ -34,7 +34,6 @@
 					<xs:element name="Name"
 							type="xs:string"/>
 					<xs:element name="Сategories"
-							nillable="true"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -362,7 +361,6 @@
 					<xs:element name="Description"
 							type="xs:string"/>
 					<xs:element name="EquipCode"
-							nillable="true"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -532,7 +530,6 @@
 					<xs:element name="LonL"
 							type="xs:string"/>
 					<xs:element name="Billinginfo"
-							nillable="true"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -546,6 +543,8 @@
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
+					<xs:element name="NameObject"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="Номенклатура">
@@ -591,7 +590,6 @@
 					<xs:element name="BundleDate"
 							type="xs:dateTime"/>
 					<xs:element name="BundleSet"
-							nillable="true"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>

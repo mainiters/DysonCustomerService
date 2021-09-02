@@ -3092,7 +3092,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("BundleSet", IsNullable=true)]
+        [System.Xml.Serialization.XmlElementAttribute("BundleSet")]
         public НоменклатураBundleSet[] BundleSet {
             get {
                 return this.bundleSetField;
@@ -3335,6 +3335,8 @@ namespace DysonCustomerService {
         private string lonLField;
         
         private КонтрагентыBillinginfo[] billinginfoField;
+        
+        private string nameObjectField;
         
         /// <remarks/>
         public string ID_1С {
@@ -4057,13 +4059,23 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Billinginfo", IsNullable=true)]
+        [System.Xml.Serialization.XmlElementAttribute("Billinginfo")]
         public КонтрагентыBillinginfo[] Billinginfo {
             get {
                 return this.billinginfoField;
             }
             set {
                 this.billinginfoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string NameObject {
+            get {
+                return this.nameObjectField;
+            }
+            set {
+                this.nameObjectField = value;
             }
         }
     }
@@ -4297,7 +4309,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("EquipCode", IsNullable=true)]
+        [System.Xml.Serialization.XmlElementAttribute("EquipCode")]
         public КатегорииEquipCode[] EquipCode {
             get {
                 return this.equipCodeField;
@@ -5199,7 +5211,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute("Сategories", IsNullable=true)]
+        [System.Xml.Serialization.XmlElementAttribute("Сategories")]
         public ВидыНоменклатурыCRMСategories[] Сategories {
             get {
                 return this.сategoriesField;
