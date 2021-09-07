@@ -2122,6 +2122,10 @@ namespace DysonCustomerService {
         
         private string bundleField;
         
+        private decimal discountPercentField;
+        
+        private decimal discountField;
+        
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute()]
         public string TovarCod {
@@ -2273,6 +2277,28 @@ namespace DysonCustomerService {
             }
             set {
                 this.bundleField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal DiscountPercent {
+            get {
+                return this.discountPercentField;
+            }
+            set {
+                this.discountPercentField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute()]
+        public decimal Discount {
+            get {
+                return this.discountField;
+            }
+            set {
+                this.discountField = value;
             }
         }
     }

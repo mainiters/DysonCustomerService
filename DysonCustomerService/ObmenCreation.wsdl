@@ -213,6 +213,12 @@
 							<xs:attribute name="Bundle"
 									type="xs:string"
 									use="required"/>
+							<xs:attribute name="DiscountPercent"
+									type="xs:decimal"
+									use="required"/>
+							<xs:attribute name="Discount"
+									type="xs:decimal"
+									use="required"/>
 						</xs:complexType>
 					</xs:element>
 					<xs:element name="Kladr"

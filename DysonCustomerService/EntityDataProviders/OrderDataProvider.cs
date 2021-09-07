@@ -51,6 +51,12 @@ namespace DysonCustomerService.EntityDataProviders
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
 
+        protected Dictionary<string, string> TrcCreateSystemMapReplacement = new Dictionary<string, string>()
+        {
+            { "Сайт", "Website" },
+            { "1С", "ОдинС" }
+        };
+
         public override object GetEntityData(Guid EntityId)
         {
             string AccountId = this.EntityObject.GetTypedColumnValue<string>("Account_Trc1CAccountID");
@@ -69,6 +75,8 @@ namespace DysonCustomerService.EntityDataProviders
                     DiscountAmount += item.GetTypedColumnValue<decimal>("DiscountAmount");
                 }
             }
+
+            var TrcCreateSystem = this.EntityObject.GetTypedColumnValue<string>("TrcCreateSystem");
 
             // Данные заказа
             var res = new ЗаказКлиента()
@@ -115,7 +123,7 @@ namespace DysonCustomerService.EntityDataProviders
                 Organization = this.EntityObject.GetTypedColumnValue<string>("TrcASCAndKC_TrcCode"),
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
                 SalesChannel = this.EntityObject.GetTypedColumnValue<string>("SourceOrder_Description"),
-                CreateSystem = this.EntityObject.GetTypedColumnValue<string>("TrcCreateSystem"),
+                CreateSystem = this.TrcCreateSystemMapReplacement.ContainsKey(TrcCreateSystem) ? this.TrcCreateSystemMapReplacement[TrcCreateSystem] : TrcCreateSystem,
 
                 FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),
                 Metro = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcMetroStation"),
@@ -152,8 +160,8 @@ namespace DysonCustomerService.EntityDataProviders
                         TovarSum = item.GetTypedColumnValue<decimal>("TotalAmount"),
                         RRC = item.GetTypedColumnValue<decimal>("Price"),
                         SN = item.GetTypedColumnValue<string>("TrcSerialNumber_TrcSerialNumber_Name"),
-                        NDS = this.EntityObject.GetTypedColumnValue<decimal>("DiscountTax"),
-                        NDS_S = this.EntityObject.GetTypedColumnValue<int>("TaxAmount"),
+                        NDS = item.GetTypedColumnValue<decimal>("DiscountTax"),
+                        NDS_S = item.GetTypedColumnValue<int>("TaxAmount"),
                         ProductsCanceled = item.GetTypedColumnValue<bool>("TrcProductsCanceled"),
                         ReasonCancellation = this.EntityObject.GetTypedColumnValue<string>("TrcReasonCancelingOrder_TrcCode"),
                         //ReasonCancellation = item.GetTypedColumnValue<string>("TrcReasonCancellation"),
@@ -162,6 +170,8 @@ namespace DysonCustomerService.EntityDataProviders
                         Initials = item.GetTypedColumnValue<string>("TrcInitials"),
                         Bundle = item.GetTypedColumnValue<string>("DsnBundle_Trc1CProductID"),
                         PROMOCODE = item.GetTypedColumnValue<string>("TrcPromocode"),
+                        Discount = item.GetTypedColumnValue<decimal>("DiscountAmount"),
+                        DiscountPercent = item.GetTypedColumnValue<decimal>("DiscountPercent")
                     });
                 }
             }

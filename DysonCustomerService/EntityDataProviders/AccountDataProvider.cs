@@ -182,6 +182,10 @@ namespace DysonCustomerService.EntityDataProviders
                         Currency ="RUB"
                     });
                 }
+            } 
+            else
+            {
+                billinginfo.Add(null);
             }
 
             res.Billinginfo = billinginfo.ToArray();
