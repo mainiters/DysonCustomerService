@@ -53,7 +53,8 @@ namespace DysonCustomerService.EntityDataProviders
                 Name = "AccountBillingInfo",
                 AdditionalColumns = new List<string>()
                 {
-                    "TrcCurrency.Name"
+                    "TrcCurrency.Name",
+                    "TrcCurrency.Description"
                 }
             });
 
@@ -179,16 +180,23 @@ namespace DysonCustomerService.EntityDataProviders
                     {
                         AccountNumber = item.GetTypedColumnValue<string>("TrcAccountNumber"),
                         BIK = item.GetTypedColumnValue<string>("TrcBik"),
-                        Currency ="RUB"
+                        Currency = item.GetTypedColumnValue<string>("TrcCurrency_Description")
                     });
                 }
             } 
-            else
+
+            if(billinginfo.Count < 1)
             {
-                billinginfo.Add(null);
+                billinginfo.Add(new КонтрагентыBillinginfo()
+                {
+                    AccountNumber = string.Empty,
+                    BIK = string.Empty,
+                    Currency = string.Empty
+                });
             }
 
             res.Billinginfo = billinginfo.ToArray();
+
 
             return res;
         }

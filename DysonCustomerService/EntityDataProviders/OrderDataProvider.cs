@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Terrasoft.Core;
+using Terrasoft.Core.DB;
 using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService.EntityDataProviders
@@ -47,6 +48,9 @@ namespace DysonCustomerService.EntityDataProviders
             esq.AddColumn("SourceOrder.Description");
             esq.AddColumn("TrcDysonChannelCode.TrcCode");
             esq.AddColumn("TrcReasonCancelingOrder.TrcCode");
+
+            esq.AddColumn("TrcOrderDeliveryWay.Description");
+            esq.AddColumn("TrcDeliveryType.Description");
 
             base.AddRelatedColumns(esq, relatedEntitiesData);
         }
@@ -124,6 +128,9 @@ namespace DysonCustomerService.EntityDataProviders
                 MarkDeletion = this.EntityObject.GetTypedColumnValue<bool>("TrcMarkDeletion"),
                 SalesChannel = this.EntityObject.GetTypedColumnValue<string>("SourceOrder_Description"),
                 CreateSystem = this.TrcCreateSystemMapReplacement.ContainsKey(TrcCreateSystem) ? this.TrcCreateSystemMapReplacement[TrcCreateSystem] : TrcCreateSystem,
+
+                OrderDeliveryWay = this.EntityObject.GetTypedColumnValue<string>("TrcOrderDeliveryWay_Description"),
+                TypeOfDelivery = this.EntityObject.GetTypedColumnValue<string>("TrcDeliveryType_Description"),
 
                 FIAS = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcFiasCode"),
                 Metro = addresEntity == null ? string.Empty : addresEntity.GetTypedColumnValue<string>("TrcMetroStation"),
@@ -214,6 +221,11 @@ namespace DysonCustomerService.EntityDataProviders
             {
                 var warehouseForShippingOrderId = this.EntityObject.GetTypedColumnValue<string>("TrcWarehouseForShippingOrderId");
                 var orderId = this.EntityObject.GetTypedColumnValue<string>("Id");
+
+                var updateUploadedIn1C = new Update(UserConnection, this.EntitySchemaName)
+                       .Set("TrcUploadedIn1C", Column.Parameter(true))
+                       .Where("Id").IsEqual(Column.Parameter(orderId));
+                updateUploadedIn1C.Execute();
 
                 var esq = new EntitySchemaQuery(UserConnection.EntitySchemaManager, "OrderProduct");
 

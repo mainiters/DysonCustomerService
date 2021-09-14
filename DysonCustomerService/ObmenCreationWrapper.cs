@@ -28,10 +28,6 @@ namespace DysonCustomerService
             {
                 service = new ObmenCreation();
             }
-
-            service.Url = options.Url;
-
-            service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
 
         protected Dictionary<string, string> methodsToEntityNamesMap = null;
@@ -117,9 +113,6 @@ namespace DysonCustomerService
             {
                 this.options = new ObmenCreationOptions()
                 {
-                    Url = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cUrl", string.Empty),
-                    Login = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cLogin", string.Empty),
-                    Password = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cPassword", string.Empty),
                     RetryErrorCodes = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cRetryErrorCodes", string.Empty).Split(';').ToList(),
                     RetryDelay = Terrasoft.Core.Configuration.SysSettings.GetValue<int>(userConnection, "TrcCreatioTo1cRetryDelay", 60 * 1000),
                     RetryLimit = Terrasoft.Core.Configuration.SysSettings.GetValue<int>(userConnection, "TrcCreatioTo1cRetryLimit", 3),
@@ -148,6 +141,9 @@ namespace DysonCustomerService
 
             requestStr = string.Empty;
             responseStr = string.Empty;
+
+            service.Url = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cUrl", string.Empty);
+            service.Credentials = new NetworkCredential(Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cLogin", string.Empty), Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cPassword", string.Empty));
 
             while (true)
             {

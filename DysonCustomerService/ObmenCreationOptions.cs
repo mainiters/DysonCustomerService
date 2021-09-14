@@ -8,6 +8,7 @@ namespace DysonCustomerService
 {
     public class ObmenCreationOptions
     {
+        //а где происходит чтение\заполнение этих настроек?
         public string Url { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }

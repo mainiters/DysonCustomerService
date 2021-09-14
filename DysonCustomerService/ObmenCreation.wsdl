@@ -223,7 +223,12 @@
 					</xs:element>
 					<xs:element name="Kladr"
 							type="xs:string"/>
-					<xs:element name="DeliveryAddress"/>
+					<xs:element name="DeliveryAddress"
+							type="xs:string"/>
+					<xs:element name="OrderDeliveryWay"
+							type="xs:string"/>
+					<xs:element name="TypeOfDelivery"
+							type="xs:string"/>
 				</xs:sequence>
 			</xs:complexType>
 			<xs:complexType name="ЗаявкаНаРемонт">
@@ -536,6 +541,7 @@
 					<xs:element name="LonL"
 							type="xs:string"/>
 					<xs:element name="Billinginfo"
+							nillable="true"
 							minOccurs="0"
 							maxOccurs="unbounded">
 						<xs:complexType>
@@ -2187,11 +2193,11 @@
 				<wsi:Claim xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/"
 						conformsTo="http://ws-i.org/profiles/basic/1.1"/>
 			</documentation>
-			<soapbind:address location="http://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
+			<soapbind:address location="https://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
 		</port>
 		<port name="ObmenCreationSoap12"
 				binding="tns:ObmenCreationSoap12Binding">
-			<soap12bind:address location="http://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
+			<soap12bind:address location="https://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws"/>
 		</port>
 	</service>
 </definitions>
