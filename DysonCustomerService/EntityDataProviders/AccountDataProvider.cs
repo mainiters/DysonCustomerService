@@ -128,8 +128,8 @@ namespace DysonCustomerService.EntityDataProviders
                 Intercom = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcIntercom"),
                 City = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("City_Name"),
                 Area = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcArea_Name"),
-                //Lat = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSE"),
-                //Lon = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("TrcGPSN"),
+                Lat = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("GPSE"),
+                Lon = addressFactEntity == null ? string.Empty : addressFactEntity.GetTypedColumnValue<string>("GPSN"),
 
                 AddressLegal = addressLegal,
                 FIASL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcFiasCode"),
@@ -145,15 +145,11 @@ namespace DysonCustomerService.EntityDataProviders
                 IntercomL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcIntercom"),
                 CityL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("City_Name"),
                 AreaL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcArea_Name"),
-                //LatL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcGPSE"),
-                //LonL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("TrcGPSN"),
+                LatL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("GPSE"),
+                LonL = addressLegalEntity == null ? string.Empty : addressLegalEntity.GetTypedColumnValue<string>("GPSN"),
 
                 NameObject = this.EntityObject.GetTypedColumnValue<string>("Name"),
 
-                Lat = string.Empty,
-                LatL = string.Empty,
-                Lon = string.Empty,
-                LonL = string.Empty,
                 IDDepersonalizedClient = string.Empty,
                 PhoneNumber = string.Empty,
                 StatusClient = string.Empty,

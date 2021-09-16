@@ -17,6 +17,9 @@ namespace DysonCustomerService
     public class ObmenCreationWrapper
     {
         static protected ObmenCreation service { get; set; }
+        static protected string serviceUrl { get; set; }
+        static protected string serviceLogin { get; set; }
+        static protected string servicePassword { get; set; }
         protected ObmenCreationOptions options { get; set; }
         protected UserConnection userConnection { get; set; }
 
@@ -28,6 +31,13 @@ namespace DysonCustomerService
             {
                 service = new ObmenCreation();
             }
+
+            service.Url = options.Url;
+
+            serviceLogin = options.Login;
+            servicePassword = options.Password;
+
+            service.Credentials = new NetworkCredential(serviceLogin, servicePassword);
         }
 
         protected Dictionary<string, string> methodsToEntityNamesMap = null;
@@ -100,7 +110,7 @@ namespace DysonCustomerService
 
             return MethodsToEntityNamesMap[methodName];
         }
-        
+
         public ObmenCreationWrapper(UserConnection userConnection, ObmenCreationOptions options = null)
         {
             this.userConnection = userConnection;
@@ -113,6 +123,9 @@ namespace DysonCustomerService
             {
                 this.options = new ObmenCreationOptions()
                 {
+                    Url = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cUrl", string.Empty),
+                    Login = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cLogin", string.Empty),
+                    Password = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cPassword", string.Empty),
                     RetryErrorCodes = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cRetryErrorCodes", string.Empty).Split(';').ToList(),
                     RetryDelay = Terrasoft.Core.Configuration.SysSettings.GetValue<int>(userConnection, "TrcCreatioTo1cRetryDelay", 60 * 1000),
                     RetryLimit = Terrasoft.Core.Configuration.SysSettings.GetValue<int>(userConnection, "TrcCreatioTo1cRetryLimit", 3),
@@ -135,6 +148,29 @@ namespace DysonCustomerService
             service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
 
+        public void CheckForUpdateSettingsNeeded()
+        {
+            var Url = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cUrl", string.Empty);
+            var Login = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cLogin", string.Empty);
+            var Password = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cPassword", string.Empty);
+
+            if (!string.IsNullOrWhiteSpace(Url) && Url != serviceUrl)
+            {
+                serviceUrl = Url;
+
+                service.Url = service.Url;
+            }
+
+            if (!string.IsNullOrWhiteSpace(Login) && Login != serviceLogin 
+                || !string.IsNullOrWhiteSpace(Password) && Password != servicePassword)
+            {
+                serviceLogin = Login;
+                servicePassword = Password;
+
+                service.Credentials = new NetworkCredential(serviceLogin, servicePassword);
+            }
+        }
+
         public void SendRequest(string methodName, Guid entityId, out string requestStr, out string responseStr)
         {
             var retryCount = 0;
@@ -142,13 +178,12 @@ namespace DysonCustomerService
             requestStr = string.Empty;
             responseStr = string.Empty;
 
-            service.Url = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cUrl", string.Empty);
-            service.Credentials = new NetworkCredential(Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cLogin", string.Empty), Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cPassword", string.Empty));
-
             while (true)
             {
                 try
                 {
+                    CheckForUpdateSettingsNeeded();
+
                     var entityName = GetEntityNameByMethod(methodName);
 
                     var dataProvider = GetEntityDataProvider(entityName, entityId);
