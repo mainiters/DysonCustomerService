@@ -158,7 +158,7 @@ namespace DysonCustomerService
             {
                 serviceUrl = Url;
 
-                service.Url = service.Url;
+                service.Url = serviceUrl;
             }
 
             if (!string.IsNullOrWhiteSpace(Login) && Login != serviceLogin 
@@ -182,8 +182,6 @@ namespace DysonCustomerService
             {
                 try
                 {
-                    CheckForUpdateSettingsNeeded();
-
                     var entityName = GetEntityNameByMethod(methodName);
 
                     var dataProvider = GetEntityDataProvider(entityName, entityId);
@@ -238,15 +236,6 @@ namespace DysonCustomerService
                 var serializer = new XmlSerializer(data.GetType());
                 serializer.Serialize(writer, data, ns);
                 var res = stream.ToString();
-
-                int index = res.IndexOf(removingNs);
-
-                while (index > 0)
-                {
-                    res = res.Remove(index, removingNs.Length);
-                    index = res.IndexOf(removingNs);
-                }
-
                 return res;
             }
         }
