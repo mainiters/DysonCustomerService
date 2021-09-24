@@ -24,7 +24,7 @@ namespace DysonCustomerService {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("wsdl", "4.8.3928.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="ObmenCreationSoapBinding", Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="ObmenCreationSoapBinding", Namespace="http://crm1ctest.dyson.ru")]
     public partial class ObmenCreation : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback PostOrderOperationCompleted;
@@ -85,7 +85,7 @@ namespace DysonCustomerService {
         
         /// <remarks/>
         public ObmenCreation() {
-            this.Url = "https://1cservice.dyson-team.ru/Dysoncs/ws/ObmenCreation.1cws";
+            this.Url = "http://crm1ctest.dyson.ru/CRM_TEST/ws/ObmenCreation.1cws";
         }
         
         /// <remarks/>
@@ -172,8 +172,6 @@ namespace DysonCustomerService {
         /// <remarks/>
         public event PostDeviceTypesCompletedEventHandler PostDeviceTypesCompleted;
 
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostTovars", Use = System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle = System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public object PostData(string methodName, object data)
         {
             object[] results = this.Invoke(methodName, new object[] { data });
@@ -182,7 +180,7 @@ namespace DysonCustomerService {
         }
 
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostOrder", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostOrder", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostOrder(ЗаказКлиента Object) {
             object[] results = this.Invoke("PostOrder", new object[] {
@@ -224,7 +222,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostOrders", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostOrders", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostOrders(ПакетЗаказов Pack) {
             object[] results = this.Invoke("PostOrders", new object[] {
@@ -266,7 +264,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostSaleSource", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSaleSource", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostSaleSource(ISU_ИсточникиПродаж Object) {
             object[] results = this.Invoke("PostSaleSource", new object[] {
@@ -308,7 +306,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostSaleSources", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSaleSources", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostSaleSources(ПакетISU_ИсточникиПродаж Pack) {
             object[] results = this.Invoke("PostSaleSources", new object[] {
@@ -350,7 +348,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostContact", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostContact", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostContact(Контрагенты Object) {
             object[] results = this.Invoke("PostContact", new object[] {
@@ -392,7 +390,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostContacts", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostContacts", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostContacts(ПакетКонтрагентов Pack) {
             object[] results = this.Invoke("PostContacts", new object[] {
@@ -434,7 +432,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostAccount", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostAccount", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostAccount(Контрагенты Object) {
             object[] results = this.Invoke("PostAccount", new object[] {
@@ -476,7 +474,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostAccounts", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostAccounts", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostAccounts(ПакетКонтрагентов Pack) {
             object[] results = this.Invoke("PostAccounts", new object[] {
@@ -518,7 +516,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostEmployee", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostEmployee", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostEmployee(ФизическиеЛица Object) {
             object[] results = this.Invoke("PostEmployee", new object[] {
@@ -560,7 +558,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostEmployees", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostEmployees", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostEmployees(ПакетФизическиеЛица Pack) {
             object[] results = this.Invoke("PostEmployees", new object[] {
@@ -602,7 +600,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProduct", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProduct", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProduct(Номенклатура Object) {
             object[] results = this.Invoke("PostProduct", new object[] {
@@ -644,7 +642,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProducts", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProducts", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProducts(ПакетНоменклатуры Pack) {
             object[] results = this.Invoke("PostProducts", new object[] {
@@ -686,7 +684,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostClientDefect", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefect", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClientDefect(ДефектыСоСловКлиента Object) {
             object[] results = this.Invoke("PostClientDefect", new object[] {
@@ -728,7 +726,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostClientDefects", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostClientDefects", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostClientDefects(ПакетДефектыКлиента Pack) {
             object[] results = this.Invoke("PostClientDefects", new object[] {
@@ -770,7 +768,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostManager", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostManager", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostManager(Пользователи Object) {
             object[] results = this.Invoke("PostManager", new object[] {
@@ -812,7 +810,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostManagers", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostManagers", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostManagers(ПакетПользователи Pack) {
             object[] results = this.Invoke("PostManagers", new object[] {
@@ -854,7 +852,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostRequests", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostRequests", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostRequests(ПакетЗаявок Pack) {
             object[] results = this.Invoke("PostRequests", new object[] {
@@ -896,7 +894,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostRequest", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostRequest", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostRequest(ЗаявкаНаРемонт Object) {
             object[] results = this.Invoke("PostRequest", new object[] {
@@ -938,7 +936,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostSNs", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSNs", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostSNs(ПакетРегистрация Pack) {
             object[] results = this.Invoke("PostSNs", new object[] {
@@ -980,7 +978,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostSN", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostSN", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostSN(РегистрацияСерийныхНомеровКлиентов Object) {
             object[] results = this.Invoke("PostSN", new object[] {
@@ -1022,7 +1020,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProductType", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProductType", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProductType(Категории Object) {
             object[] results = this.Invoke("PostProductType", new object[] {
@@ -1064,7 +1062,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProductTypes", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProductTypes", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProductTypes(ПакетКатегории Pack) {
             object[] results = this.Invoke("PostProductTypes", new object[] {
@@ -1106,7 +1104,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProductSubcategorys", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProductSubcategorys", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProductSubcategorys(ПакетКодОборудования Pack) {
             object[] results = this.Invoke("PostProductSubcategorys", new object[] {
@@ -1148,7 +1146,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProductSubcategory", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProductSubcategory", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProductSubcategory(КодОборудования Object) {
             object[] results = this.Invoke("PostProductSubcategory", new object[] {
@@ -1190,7 +1188,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProductCategorys", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProductCategorys", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProductCategorys(ПакетВидыНоменклатурыCRM Pack) {
             object[] results = this.Invoke("PostProductCategorys", new object[] {
@@ -1232,7 +1230,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostProductCategory", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostProductCategory", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostProductCategory(ВидыНоменклатурыCRM Object) {
             object[] results = this.Invoke("PostProductCategory", new object[] {
@@ -1274,7 +1272,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostDeviceType", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostDeviceType", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostDeviceType(ТипыУстройств Object) {
             object[] results = this.Invoke("PostDeviceType", new object[] {
@@ -1316,7 +1314,7 @@ namespace DysonCustomerService {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("https://1cservice.dyson-team.ru/Dysoncs#ObmenCreation:PostDeviceTypes", RequestNamespace="https://1cservice.dyson-team.ru/Dysoncs", ResponseNamespace="https://1cservice.dyson-team.ru/Dysoncs", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://crm1ctest.dyson.ru#ObmenCreation:PostDeviceTypes", RequestNamespace="http://crm1ctest.dyson.ru", ResponseNamespace="http://crm1ctest.dyson.ru", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public ПакетОтвета PostDeviceTypes(ПакетТипыУстройств Pack) {
             object[] results = this.Invoke("PostDeviceTypes", new object[] {
@@ -1368,7 +1366,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаказКлиента {
         
         private string iD_1СField;
@@ -2114,7 +2112,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаказКлиентаProduct {
         
         private string tovarCodField;
@@ -2331,7 +2329,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетТипыУстройств {
         
         private string iD_PackField;
@@ -2365,7 +2363,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ТипыУстройств {
         
         private string iD_1СField;
@@ -2422,7 +2420,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ВидыНоменклатурыCRM {
         
         private string iD_1СField;
@@ -2480,7 +2478,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ВидыНоменклатурыCRMСategories {
         
         private string сategorieField;
@@ -2502,7 +2500,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетВидыНоменклатурыCRM {
         
         private string iD_PackField;
@@ -2536,7 +2534,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class КодОборудования {
         
         private string iD_1СField;
@@ -2593,7 +2591,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетКодОборудования {
         
         private string iD_PackField;
@@ -2627,7 +2625,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетКатегории {
         
         private string iD_PackField;
@@ -2661,7 +2659,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class Категории {
         
         private string iD_1СField;
@@ -2731,7 +2729,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class КатегорииEquipCode {
         
         private string equipmentCodeField;
@@ -2753,7 +2751,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class РегистрацияСерийныхНомеровКлиентов {
         
         private string iD_1СField;
@@ -2883,7 +2881,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетРегистрация {
         
         private string iD_PackField;
@@ -2917,7 +2915,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаявкаНаРемонт {
         
         private string iD_1СField;
@@ -3340,7 +3338,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаявкаНаРемонтRequestOpinion {
         
         private string defectField;
@@ -3362,7 +3360,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаявкаНаРемонтClientDefect {
         
         private string defectsAccordingClientField;
@@ -3384,7 +3382,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаявкаНаРемонтSparePart {
         
         private string spareField;
@@ -3471,7 +3469,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ЗаявкаНаРемонтService {
         
         private string serviceField;
@@ -3558,7 +3556,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетЗаявок {
         
         private string iD_PackField;
@@ -3592,7 +3590,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетПользователи {
         
         private string iD_PackField;
@@ -3626,7 +3624,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class Пользователи {
         
         private string iD_1СField;
@@ -3671,7 +3669,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетДефектыКлиента {
         
         private string iD_PackField;
@@ -3705,7 +3703,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ДефектыСоСловКлиента {
         
         private string iD_1СField;
@@ -3750,7 +3748,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетНоменклатуры {
         
         private string iD_PackField;
@@ -3784,7 +3782,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class Номенклатура {
         
         private string iD_1СField;
@@ -4046,7 +4044,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class НоменклатураBundleSet {
         
         private string tovarCodField;
@@ -4091,7 +4089,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетФизическиеЛица {
         
         private string iD_PackField;
@@ -4125,7 +4123,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ФизическиеЛица {
         
         private string iD_1СField;
@@ -4206,7 +4204,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетКонтрагентов {
         
         private string iD_PackField;
@@ -4240,7 +4238,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class Контрагенты {
         
         private string iD_1СField;
@@ -5138,7 +5136,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class КонтрагентыBillinginfo {
         
         private string bIKField;
@@ -5183,7 +5181,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетISU_ИсточникиПродаж {
         
         private string iD_PackField;
@@ -5217,7 +5215,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ISU_ИсточникиПродаж {
         
         private string iD_1СField;
@@ -5262,7 +5260,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетЗаказов {
         
         private string iD_PackField;
@@ -5296,7 +5294,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетОтвета {
         
         private string iD_PackField;
@@ -5342,7 +5340,7 @@ namespace DysonCustomerService {
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="https://1cservice.dyson-team.ru/Dysoncs")]
+    [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true, Namespace="http://crm1ctest.dyson.ru")]
     public partial class ПакетОтветаErrors {
         
         private string idField;

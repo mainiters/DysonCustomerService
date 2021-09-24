@@ -14,15 +14,32 @@ using Terrasoft.Core.Entities;
 
 namespace DysonCustomerService
 {
+    /// <summary>
+    /// Обертка над автоматически сгенерированным прокси-классом
+    /// Связывает прокси-класс с логикой СРМ и используется для взаимодействия с сервисом
+    /// </summary>
     public class ObmenCreationWrapper
     {
+        /// <summary>
+        /// Статический экземпляр службы
+        /// (инициализируется один раз при первом запросе и далее используется без пересоздания)
+        /// </summary>
         static protected ObmenCreation service { get; set; }
-        static protected string serviceUrl { get; set; }
-        static protected string serviceLogin { get; set; }
-        static protected string servicePassword { get; set; }
+
+        /// <summary>
+        /// Параметры инициализации службы
+        /// </summary>
         protected ObmenCreationOptions options { get; set; }
+
+        /// <summary>
+        /// Соединение пользователя
+        /// </summary>
         protected UserConnection userConnection { get; set; }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="options">Параметры инициализации сервиса</param>
         public ObmenCreationWrapper(ObmenCreationOptions options)
         {
             this.options = options;
@@ -34,14 +51,17 @@ namespace DysonCustomerService
 
             service.Url = options.Url;
 
-            serviceLogin = options.Login;
-            servicePassword = options.Password;
-
-            service.Credentials = new NetworkCredential(serviceLogin, servicePassword);
+            service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
 
+        /// <summary>
+        /// Словарь, определяющий соответствие названий методов сервиса и сущностей, на базе которых строится запрос
+        /// </summary>
         protected Dictionary<string, string> methodsToEntityNamesMap = null;
 
+        /// <summary>
+        /// Инициализатор словаря метод->сущность (использует справочник Метод из СРМ)
+        /// </summary>
         protected Dictionary<string, string> MethodsToEntityNamesMap
         {
             get
@@ -61,6 +81,12 @@ namespace DysonCustomerService
             }
         }
 
+        /// <summary>
+        /// Возвращает экземпляр провайдера данных в зависимости от наименования сущности СРМ (объекта интеграции)
+        /// </summary>
+        /// <param name="EntityName">Наименование сущности</param>
+        /// <param name="EntityId">Идентификатор сущности</param>
+        /// <returns></returns>
         protected BaseEntityDataProvider GetEntityDataProvider(string EntityName, Guid EntityId)
         {
             switch (EntityName)
@@ -96,6 +122,12 @@ namespace DysonCustomerService
             throw new ArgumentException($"No DataProvider was found by EntityName {EntityName}");
         }
 
+        /// <summary>
+        /// Обертка над словарем методов
+        /// Возвращает название сущности по названию метода сервиса
+        /// </summary>
+        /// <param name="methodName">Название метода сервиса</param>
+        /// <returns></returns>
         protected string GetEntityNameByMethod(string methodName)
         {
             if (string.IsNullOrWhiteSpace(methodName))
@@ -111,6 +143,11 @@ namespace DysonCustomerService
             return MethodsToEntityNamesMap[methodName];
         }
 
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="userConnection">Соединение пользователя</param>
+        /// <param name="options">Параметры инициализации сервиса (в случае их отсутствия, будут созданы на основании значений в системных натсройках конфигурации)</param>
         public ObmenCreationWrapper(UserConnection userConnection, ObmenCreationOptions options = null)
         {
             this.userConnection = userConnection;
@@ -139,6 +176,9 @@ namespace DysonCustomerService
             }
         }
 
+        /// <summary>
+        /// Инициализация серсвиса
+        /// </summary>
         protected void InitService()
         {
             service = new ObmenCreation();
@@ -148,29 +188,13 @@ namespace DysonCustomerService
             service.Credentials = new NetworkCredential(options.Login, options.Password);
         }
 
-        public void CheckForUpdateSettingsNeeded()
-        {
-            var Url = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cUrl", string.Empty);
-            var Login = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cLogin", string.Empty);
-            var Password = Terrasoft.Core.Configuration.SysSettings.GetValue<string>(userConnection, "TrcCreatioTo1cPassword", string.Empty);
-
-            if (!string.IsNullOrWhiteSpace(Url) && Url != serviceUrl)
-            {
-                serviceUrl = Url;
-
-                service.Url = serviceUrl;
-            }
-
-            if (!string.IsNullOrWhiteSpace(Login) && Login != serviceLogin 
-                || !string.IsNullOrWhiteSpace(Password) && Password != servicePassword)
-            {
-                serviceLogin = Login;
-                servicePassword = Password;
-
-                service.Credentials = new NetworkCredential(serviceLogin, servicePassword);
-            }
-        }
-
+        /// <summary>
+        /// Метод отправки запроса в сервис (передача интеграционной сущности)
+        /// </summary>
+        /// <param name="methodName">Название интеграционного метода</param>
+        /// <param name="entityId">Идентификтаор сущности</param>
+        /// <param name="requestStr">Выходной параметр, хранящий текст запроса</param>
+        /// <param name="responseStr">Выходной параметр, хранящий текст ответа от сервиса</param>
         public void SendRequest(string methodName, Guid entityId, out string requestStr, out string responseStr)
         {
             var retryCount = 0;
@@ -218,6 +242,11 @@ namespace DysonCustomerService
             }
         }
 
+        /// <summary>
+        /// Конвертация объекта запроса в XML представление
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         protected string ToXml(object data)
         {
 
@@ -238,17 +267,6 @@ namespace DysonCustomerService
                 var res = stream.ToString();
                 return res;
             }
-        }
-
-        protected string GetSerializedData(object data)
-        {
-            XmlSerializerNamespaces ns = new XmlSerializerNamespaces();
-            ns.Add("", "");
-
-            var serxml = new System.Xml.Serialization.XmlSerializer(data.GetType());
-            var ms = new MemoryStream();
-            serxml.Serialize(ms, data, ns);
-            return Encoding.UTF8.GetString(ms.ToArray());
         }
     }
 }
