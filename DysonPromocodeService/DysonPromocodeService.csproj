@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1F17E3C5-0F00-412E-B7B9-1C7114C22968}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DysonPromocodeService</RootNamespace>
+    <AssemblyName>DysonPromocodeService</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\Creatio\Dyson_Crm_3\Terrasoft.WebApp\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Terrasoft.ActorSystem">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ActorSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.AppAnalytics">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.AppAnalytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.AppDomainManagement">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.AppDomainManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Authentication">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.CodeAnalyzer">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.CodeAnalyzer.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Common">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.ComponentSpace">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ComponentSpace.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.ComponentSpace.Interfaces">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ComponentSpace.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Configuration">
+      <HintPath>E:\Creatio\Dyson_Crm_3\Terrasoft.WebApp\Terrasoft.Configuration\Terrasoft.Configuration.Tests\bin\Terrasoft.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ActorSystem">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ActorSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.AppInstallation">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.AppInstallation.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ClientContentGeneration">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ClientContentGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ConfigurationBuild">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ConfigurationBuild.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ContentGeneration">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ContentGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.DI">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.DI.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.DI.Bindings">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.DI.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.Packages">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.Packages.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.Process">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.Process.ActorSystem">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.Process.ActorSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.Scheduler">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ScriptEngine">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ScriptEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ServerContentGeneration">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ServerContentGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.ServiceModelContract">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.ServiceModelContract.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Core.Translation">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Core.Translation.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.DB.MSSql">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.DB.MSSql.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.DB.Oracle">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.DB.Oracle.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.DB.PostgreSql">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.DB.PostgreSql.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.ElasticSearch">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ElasticSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.GlobalSearch">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.GlobalSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.GoogleServerConnector">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.GoogleServerConnector.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.IO">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.IO.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Messaging.Common.Standard">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Messaging.Common.Standard.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Mobile">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Monitoring">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Monitoring.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Nui">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Nui.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Nui.ServiceModel">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Nui.ServiceModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Redis">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Redis.Abstractions">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Redis.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Redis.StackExchangeAdapters">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Redis.StackExchangeAdapters.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Reports">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Reports.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Security">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Security.AspNet">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Security.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.ServiceBus">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ServiceBus.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.ServiceBus.Abstractions">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ServiceBus.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.ServiceBus.Host">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.ServiceBus.Host.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Services">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Social">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Social.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Store.WebAdapters">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Store.WebAdapters.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.UI.WebControls">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.UI.WebControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Web.Common">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Web.Http.Abstractions">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Web.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.Web.Http.AspNetFramework">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.Web.Http.AspNetFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Terrasoft.WebApp.Loader">
+      <HintPath>E:\Creatio\Dyson_Crm_3\bin\Terrasoft.WebApp.Loader.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\ServiceReference1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="ObmenCreationOptions.cs" />
+    <Compile Include="ObmenCreationWrapper.cs" />
+    <Compile Include="PromocodeStatus.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoapMessageLogger.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Connected Services\ServiceReference1\DysonPromocodeService.ServiceReference1.GetStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference1\PromocodeStatus.wsdl" />
+    <None Include="PromocodeStatus.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ServiceReference1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference1\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference1\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ServiceReference1\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
